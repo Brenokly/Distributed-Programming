@@ -5,11 +5,13 @@ import lombok.Getter;
 
 @Getter
 public enum DroneId implements JsonSerializable {
-    NORTE("Norte"), SUL("Sul"), LESTE("Lest"), OESTE("Oeste");
+    NORTE("Norte", 0), SUL("Sul", 1), LESTE("Leste", 2), OESTE("Oeste", 3);
 
     final String value;
+    final int ordinal;
 
-    DroneId(String value) {
+    DroneId(String value, int ordinal) {
         this.value = value;
+        this.ordinal = ordinal;
     }
 }

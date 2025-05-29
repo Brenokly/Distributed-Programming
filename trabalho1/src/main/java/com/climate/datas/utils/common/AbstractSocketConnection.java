@@ -55,7 +55,7 @@ public class AbstractSocketConnection implements SocketConnection, Loggable {
 
             info(name + " conectado a " + host + ":" + port);
         } catch (Exception e) {
-            erro("Erro ao conectar ao " + name + " tentando conectar a " + host + ":" + port);
+            erro("Erro ao tentar conectar " + name + " a " + host + ":" + port);
         }
     }
 
@@ -69,7 +69,7 @@ public class AbstractSocketConnection implements SocketConnection, Loggable {
     @Override
     public synchronized void disconnect() {
         try {
-            if (socket != null && !socket.isClosed()) {
+            if (socket != null && socket.isConnected()) {
                 socket.close();
                 socket = null;
                 info("Conexão de " + name + " fechada com o " + inet.getHostName() + ".");

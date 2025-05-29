@@ -1,21 +1,18 @@
 package com.climate.datas.drone;
 
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import com.climate.datas.utils.Loggable;
 import com.climate.datas.utils.ServerInfo;
-import com.climate.datas.utils.common.Communicator;
-import com.climate.datas.utils.drone.DatagramDrone;
-import com.climate.datas.utils.drone.DroneId;
-import com.climate.datas.utils.drone.RegionFormat;
-
-import lombok.Data;
+import com.climate.datas.utils.drone.*;
 
 /*
  * Drones são coletores de dados que sobrevoam regiões (Norte, Sul, Leste, Oeste)
@@ -33,54 +30,36 @@ import lombok.Data;
  * Os drones utilizam um ScheduledExecutorService para agendar a coleta de dados periodicamente.
  * Cada drone coleta dados a cada 2 a 5 segundos, com um delay aleatório entre as coletas.
  */
+public class Drone implements AutoCloseable, Loggable {
 
-public class Drone extends Communicator implements AutoCloseable {
-    private final DroneId droneId;
-    private final RegionFormat regionFormat;
+    private final DroneId droneId;              // Identificador do drone (NORTE, SUL, LESTE, OESTE)
+    private final RegionFormat regionFormat;    // Formato de região do drone (NORTE, SUL, LESTE, OESTE)
     private double pressure;                    // hPa
     private double solarRadiation;              // W/m²
     private double temperature;                 // °C
     private double humidity;                    // %
-    private ServerInfo balancerInfo;            // Informações do Load Balancer
+    private final ServerInfo datacenter;        // Informações do Load Balancer
+    private final DatagramSocket droneSocket;   // Socket do drone para comunicação com o Data Center
 
     private final ScheduledExecutorService scheduler;
-    private final Runnable tarefa;
 
-    private static final Map<String, Supplier<Double>> generators = Map.of("pressure", () -> 950 + Math.random() * 100, "solarRadiation", () -> Math.random() * 1200, "temperature", () -> -30 + Math.random() * 80, "humidity", () -> 20 + Math.random() * 80);
+    private static final Map<String, DataGenerator> generators = Map.of(
+            "pressure", Generators.randomInRange(950, 1050, 2),
+            "solarRadiation", Generators.randomInRange(0, 1200, 2),
+            "temperature", Generators.randomInRange(-30, 50, 2),
+            "humidity", Generators.randomInRange(20, 100, 2)
+    );
 
-    public Drone(DroneId droneId, RegionFormat regionFormat) {
-        super("Drone " + droneId.getValue()); // Define o nome do drone
-
+    public Drone(DroneId droneId) {
         this.droneId = droneId;
-        this.regionFormat = regionFormat;
+        this.regionFormat = RegionFormat.fromDroneId(droneId);
         this.scheduler = Executors.newSingleThreadScheduledExecutor();
-        this.balancerInfo = new ServerInfo("26.137.178.91", 50000);
-
+        this.datacenter = new ServerInfo("230.0.0.1", 49999);
         try {
-            balancerInfo.setHost(InetAddress.getLocalHost().getHostAddress());
-            System.out.println(balancerInfo.getHost());
-        } catch (UnknownHostException e) {
-            System.err.println("Erro ao obter o endereço do host: " + e.getMessage());
-        }
-
-        connectBalancer();
-
-        if (isConnected()) {
-            // Define a tarefa que será executada periodicamente
-            this.tarefa = () -> {
-                try {
-                    collectData();
-                    String data = toString();
-                    System.out.println("Drone " + droneId + " collected data: " + data);
-
-                    // Envia os dados para o centro de dados
-
-                } catch (Exception e) {
-                    System.err.println("Erro no drone " + droneId + ": " + e.getMessage());
-                }
-            };
-        } else {
-            throw new IllegalStateException("O drone " + droneId + " não conseguiu se conectar ao Load Balancer.");
+            droneSocket = new DatagramSocket();
+        } catch (IOException e) {
+            erro("Não foi possível inicializar o socket do drone " + droneId.getValue() + ": " + e.getMessage());
+            throw new RuntimeException("Erro ao inicializar o drone", e);
         }
     }
 
@@ -95,14 +74,12 @@ public class Drone extends Communicator implements AutoCloseable {
             try {
                 collectData();
                 String data = toString();
-                System.out.println("Drone " + droneId.getValue() + " gerou: " + data);
+                info("Drone " + droneId.getValue() + " gerou: " + data);
 
-                // Aqui você pode enviar os dados para o centro de dados
-
-                DatagramDrone droneData = new DatagramDrone(droneId.getValue(), data);
-                sendJsonMessage(droneData);
+                // Enviando para o centro de dados
+                sendMessageDataCenter(new DatagramDrone(droneId, data));
             } catch (Exception e) {
-                System.err.println("Erro no drone " + droneId + ": " + e.getMessage());
+                erro("Houve um erro ao enviar dados do drone " + droneId.getValue() + ": " + e.getMessage());
             } finally {
                 // Agenda a próxima execução com novo delay
                 if (!scheduler.isShutdown()) {
@@ -112,28 +89,33 @@ public class Drone extends Communicator implements AutoCloseable {
         }, delay, TimeUnit.MILLISECONDS);
     }
 
-    public void stop() {
-        scheduler.shutdownNow();
-        if (isConnected()) {
-            disconnect();
+    public void sendMessageDataCenter(DatagramDrone message) {
+        if (message == null) {
+            erro("Mensagem nula não pode ser enviada.");
+            return;
         }
-        try {
-            if (!scheduler.awaitTermination(5, TimeUnit.SECONDS)) {
-                System.err.println("Drone " + droneId + " não terminou em tempo hábil.");
-            }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            System.err.println("Interrupção durante parada do drone " + droneId);
-        }
-    }
 
-    private void connectBalancer() {
-        connect(balancerInfo.getHost(), balancerInfo.getPort());
+        byte[] buffer = message.toBytes();
+        if (buffer.length == 0) {
+            erro("Mensagem vazia não pode ser enviada.");
+            return;
+        }
+
+        try {
+            InetAddress address = InetAddress.getByName(datacenter.getHost());
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, datacenter.getPort());
+            droneSocket.send(packet);
+        } catch (IOException e) {
+            erro("Falha ao enviar mensagem para o balanceador: " + e.getMessage());
+        }
     }
 
     @Override
     public void close() {
-        stop();
+        if (droneSocket != null && !droneSocket.isClosed()) {
+            droneSocket.close();
+        }
+        scheduler.shutdownNow();
     }
 
     private long getRandomDelay() {
@@ -141,10 +123,10 @@ public class Drone extends Communicator implements AutoCloseable {
     }
 
     public void collectData() {
-        this.pressure = generators.get("pressure").get();
-        this.solarRadiation = generators.get("solarRadiation").get();
-        this.temperature = generators.get("temperature").get();
-        this.humidity = generators.get("humidity").get();
+        this.pressure = generators.get("pressure").generate();
+        this.solarRadiation = generators.get("solarRadiation").generate();
+        this.temperature = generators.get("temperature").generate();
+        this.humidity = generators.get("humidity").generate();
     }
 
     @Override
@@ -159,17 +141,40 @@ public class Drone extends Communicator implements AutoCloseable {
     }
 
     public static void main(String[] args) {
-        Drone drone = new Drone(DroneId.NORTE, RegionFormat.NORTE);
-        drone.start();
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
 
-        // Simula a execução por 10 segundos
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        try (
+                executor;
+                Drone drone1 = new Drone(DroneId.NORTE);
+                Drone drone2 = new Drone(DroneId.SUL);
+                Drone drone3 = new Drone(DroneId.LESTE);
+                Drone drone4 = new Drone(DroneId.OESTE)
+        ) {
+            executor.execute(drone1::start);
+            executor.execute(drone2::start);
+            executor.execute(drone3::start);
+            executor.execute(drone4::start);
+
+            System.out.println("Simulação iniciada.");
+
+            executor.schedule(() -> {
+                System.out.println("Encerrando drones...");
+                drone1.close();
+                drone2.close();
+                drone3.close();
+                drone4.close();
+
+                System.out.println("Coleta e Envio de dados finalizados.");
+            }, 10, TimeUnit.SECONDS);
+
+            executor.shutdown();
+            if (!executor.awaitTermination(10, TimeUnit.SECONDS)) {
+                System.out.println("Forçando encerramento...");
+                executor.shutdownNow();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Houve problema com os drones: " + e.getMessage());
         }
-
-        drone.stop();
-        System.out.println("Drone " + drone.droneId + " finalizado.");
     }
 }

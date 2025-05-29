@@ -1,144 +1,169 @@
 package com.climate.datas.server;
 
-import com.climate.datas.utils.ServerInfo;
+import com.climate.datas.database.DataBase;
+import com.climate.datas.utils.Loggable;
+import com.climate.datas.utils.common.Communicator;
+import com.climate.datas.utils.drone.DatagramDrone;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.*;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-public class Server {
+import static com.climate.datas.utils.DataConverter.convertToStandardFormat;
+
+public class Server implements AutoCloseable, Loggable {
+    private final String name;                      // Nome do servidor
     private String host;                            // Endereço do servidor
     private final int port;                         // Porta do servidor
+    private final String ipMulticast;               // Endereço IP multicast para envio de dados
     private ServerSocket serverSocket;              // Socket do server atual
     private volatile boolean running = false;       // Flag indicadora de execução
     private final ExecutorService threadPool;       // Pool de threads para tratar as conexões
-    private final String grupo = "225.7.8.9";       // Grupo multicast
-    private final Random random = new Random();
-    private final AtomicInteger index = new AtomicInteger(0);
 
-    public Server(int port, ExecutorService threadPool) {
+    private final DataBase database;                 // Referência ao banco de dados
+
+    public Server(int port, String ipMulticast, DataBase database) throws IOException {
+        this.port = port;
+        this.ipMulticast = ipMulticast;
         try {
             this.host = InetAddress.getLocalHost().getHostAddress();
         } catch (UnknownHostException e) {
             this.host = "26.137.178.91";
         }
-        this.port = port;
-        this.threadPool = threadPool;
-
-        start();
+        this.name = "Server-" + port; // Nome do servidor baseado na porta
+        this.threadPool = Executors.newVirtualThreadPerTaskExecutor();
+        this.database = database;
+        initialize();
     }
 
-    public void start() {
+    public void initialize() throws IOException {
         try {
-            this.serverSocket = new ServerSocket(port);
+            this.serverSocket = new ServerSocket(port, 50, InetAddress.getByName(host));
             running = true;
-            System.out.println("Load Balancer rodando em " + host + ":" + port);
-
-            while (running) {
-                try {
-                    Socket droneSocket = serverSocket.accept();
-                    threadPool.submit(() -> handleConnection(droneSocket));
-                } catch (IOException e) {
-                    if (running) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
+            info(name + " rodando em " + host + ":" + port);
         } catch (IOException e) {
-            throw new RuntimeException("Erro ao iniciar LoadBalancer", e);
-        } finally {
-            stop();
+            erro("Erro ao iniciar o Servidor: " + e.getMessage());
+            throw new IOException("Não foi possível iniciar o Servidor na porta " + port + " em " + host, e);
         }
     }
 
-    public void stop() {
+    public void start() throws IllegalStateException {
+        if (!running) {
+            throw new IllegalStateException("Servidor não foi inicializado. Chame initialize() primeiro.");
+        }
+        try {
+            while (running) {
+                Socket loaderSocket = serverSocket.accept();
+                threadPool.execute(() -> handleConnection(loaderSocket));
+            }
+        } catch (IOException e) {
+            info("Conexão encerrada ou erro inesperado no " + name + ": " + e.getMessage());
+        } catch (Exception e) {
+            erro("Erro inesperado no Servidor: " + e.getMessage());
+        } finally {
+            close();
+        }
+    }
+
+    private void handleConnection(Socket DataCenter) {
+        try (Communicator communicatorSocket = new Communicator(DataCenter, name)) {
+            while (communicatorSocket.isConnected() && running) {
+                DatagramDrone data = communicatorSocket.receiveJsonMessage(DatagramDrone.class);
+
+                if (data == null) {
+                    erro("Dados recebidos são nulos — conexão provavelmente encerrada");
+                    break;
+                }
+
+                data.setData(convertToStandardFormat(data.getData()));
+
+                // Encaminha os dados para o banco de dados
+                database.saveData(data.getDroneId().getValue(), data.getData());
+
+                info(name + " Mensagem recebida e salva no banco de dados: " + data.getData());
+
+                // Encaminha os dados para o grupo multicast
+                sendMulticastMessage(data);
+            }
+        } catch (Exception e) {
+            erro("DataCenter desconectado ou erro ao processar dados: " + e.getMessage());
+        }
+    }
+
+    private void sendMulticastMessage(DatagramDrone message) {
+        try {
+            // Socket UDP para comunicação o usuários
+            DatagramSocket socketGrupo = new DatagramSocket();
+            InetAddress group = InetAddress.getByName(ipMulticast);
+            byte[] buffer = message.toBytes();
+            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, port);
+            socketGrupo.send(packet);
+
+            info("Mensagem multicast enviada para o grupo " + ipMulticast);
+
+            socketGrupo.close();
+        } catch (IOException e) {
+            erro("Erro ao enviar mensagem para o grupo MultiCast: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public void close() {
         running = false;
         try {
             if (serverSocket != null && !serverSocket.isClosed()) {
                 serverSocket.close();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            erro("Erro ao tentar fechar o socket do " + name + ": " + e.getMessage());
         }
         threadPool.shutdownNow();
     }
 
-    private void handleConnection(Socket loadBalancerSocket) {
-        try (Socket socket = loadBalancerSocket) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            String data = in.readLine();
+    public static void main(String[] args) {
+        DataBase dataBase = new DataBase();
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(2);
 
-            if (data == null || data.isBlank()) {
-                System.err.println("Dados inválidos recebidos do drone: " + socket.getRemoteSocketAddress());
-                return;
+        try (
+                executor;
+                Server server1 = new Server(50001, "230.0.0.2", dataBase);
+                Server server2 = new Server(50002, "230.0.0.3", dataBase)
+        ) {
+            // Dando start nos servidores
+            executor.execute(server1::start);
+            executor.execute(server2::start);
+
+            System.out.println("Servidores iniciados...");
+
+            executor.schedule(() -> {
+                System.out.println("Encerrando servidores...");
+                server2.close();
+                server1.close();
+
+            }, 180, TimeUnit.SECONDS);
+
+            LocalTime inicio = LocalTime.now().withNano(0);
+
+            executor.shutdown();
+            if (!executor.awaitTermination(180, TimeUnit.SECONDS)) {
+                System.out.println("Forçando encerramento...");
+                executor.shutdownNow();
             }
 
-            String formattedData = convertToStandardFormat(data);
+            LocalTime termino = LocalTime.now().withNano(0);
 
-            // Encaminha os dados para o banco de dados
+            Duration duracao = Duration.between(inicio, termino);
 
-
-            // Encaminha os dados para o grupo multicast
-            sendMulticastMessage(formattedData);
-        } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Tempo de execução: " + duracao.getSeconds() + " segundos");
+        } catch (Exception e) {
+            System.err.println("Erro ao iniciar os servidores: " + e.getMessage());
+        } finally {
+            System.out.println("Servidores finalizado.");
         }
     }
-
-    private void sendMulticastMessage(String message) {
-        try {
-            // Socket UDP para comunicação o usuários
-            DatagramSocket socketGrupo = new DatagramSocket();
-            InetAddress group = InetAddress.getByName(grupo);
-            byte[] buffer = message.getBytes();
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length, group, 50004);
-            socketGrupo.send(packet);
-
-            System.out.println("Mensagem multicast enviada: " + message);
-
-            socketGrupo.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static String convertToStandardFormat(String rawData) {
-        return Optional.ofNullable(rawData)
-                .filter(s -> !s.isBlank())
-                .map(String::trim)
-                .map(s -> s.replaceAll("[(){}\\[\\]]", ""))
-                .map(s -> {
-                    String delimiter = Stream.of("-", ";", ",", "#")
-                            .filter(s::contains)
-                            .findFirst()
-                            .orElseThrow(() -> new IllegalArgumentException("Delimitador desconhecido no dado: " + rawData));
-
-                    String[] parts = s.split("\\Q" + delimiter + "\\E");
-
-                    if (parts.length != 4) {
-                        throw new IllegalArgumentException("Formato inesperado de dados: " + rawData);
-                    }
-
-                    return List.of(
-                            parts[2].trim(), // temperatura
-                            parts[3].trim(), // umidade
-                            parts[0].trim(), // pressao
-                            parts[1].trim()  // radiacao
-                    );
-                })
-                .map(list -> list.stream().collect(Collectors.joining("//", "[", "]")))
-                .orElseThrow(() -> new IllegalArgumentException("Dados inválidos."));
-    }
-
-
 }

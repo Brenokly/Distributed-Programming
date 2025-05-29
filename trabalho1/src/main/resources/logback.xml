@@ -2,7 +2,7 @@
     <!-- Logger geral (todos os logs vão para este arquivo) -->
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>src\main\resources\logs\geral.log</file>
-        <append>true</append>
+        <append>false</append>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>

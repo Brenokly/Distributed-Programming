@@ -1,0 +1,21 @@
+2025-05-28 22:43:25 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Drone Leste gerou: {969.58,789.93,0.89,28.76}
+2025-05-28 22:43:25 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (1018.85;430.35;-5.75;72.33)
+2025-05-28 22:43:26 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Drone Norte gerou: 965.67-135.59-38.12-88.46
+2025-05-28 22:43:27 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 1026.19#793.17#1.57#91.16
+2025-05-28 22:43:29 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Drone Norte gerou: 964.01-1095.83-27.85-41.95
+2025-05-28 22:43:29 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Drone Leste gerou: {951.0,215.69,-10.27,39.98}
+2025-05-28 22:43:30 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (1014.59;774.5;43.1;79.74)
+2025-05-28 22:43:31 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Drone Norte gerou: 1046.65-635.34-14.12-26.77
+2025-05-28 22:43:31 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 973.65#909.93#-2.24#93.53
+ssageHandler - DataCenter enviou uma mensagem json: {"droneId":"NORTE","data":"965.67-135.59-38.12-88.46"}2025-05-28 22:43:26 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:49943
+2022025-05-28 22:43:27 [virtual-42] INFO  c.c.d.u.c.AbstractMessageHandler - DataCenter enviou uma mensagem json: {"droneId":"OESTE","data":"1026.19#793.17#1.572025-05-28 22:43:29 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:49945
+2025-05-28 22:43:29 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: NORTE, Dados: [964.01//-1095.83//-27.85//-41.95]
+2025-05-28 22:43:29 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:49946
+2025-05-28 22:43:29 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: LESTE, Dados: [951.0//215.69//-10.27//39.98]
+2025-05-28 22:43:31 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:49948
+2025-05-28 22:43:31 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: NORTE, Dados: [1046.65//-635.34//-14.12//-26.77]
+data":"(1014.59;774.5;43.1;79.74)"}
+2025-05-28 22:43:30 [virtual-45] INFO  c.c.datas.datacenter.Data2025-05-28 22:43:30 [virtual-43] INFO  com.climate.datas.ser2025-05-28 22:43:31 [virtual-46] INFO  c.c.d.u.c.AbstractMessageHandler - DataCenter enviou uma mensagem json: {"droneId":"NORTE","data":"1046.65-635.34-14.12-26.77"}
+2025-05-28 22:43:31 [virtual-46] INFO  c.c.datas.datacente2025-05-28 22:43:31 [virtual-29] INFO  com.climate.datas.server.Se2025-05-28 22:43:31 [virtual-47] INFO  c.c.d.u.c.AbstractMessageHandler - DataCenter enviou uma mensagem json: {"droneId":"OESTE","data":"973.65#909.93#-2.24#93.53"}
+2025-05-28 22:43:31 [virtual-47] INFO  c.c.datas.datacente2025-05-28 22:43:31 [virtual-43] INFO  com.climate.datas.server.Server - Server-50002 Mensagem recebida e salva no banco de dados: [973.65//909.93//-2.24//93.53]
+2025-05-28 22:43:31 [virtual-43] INFO  com.climate.datas.server.Server - Mensagem multicast enviada para o grupo 230.0.0.3

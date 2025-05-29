@@ -18,7 +18,17 @@ public enum RegionFormat {
         this.formatter = formatter;
     }
 
+    public static RegionFormat fromDroneId(DroneId droneId) {
+        return switch (droneId) {
+            case NORTE -> NORTE;
+            case SUL -> SUL;
+            case LESTE -> LESTE;
+            case OESTE -> OESTE;
+        };
+    }
+
     public String format(String[] values) {
         return formatter.format(values);
     }
+
 }

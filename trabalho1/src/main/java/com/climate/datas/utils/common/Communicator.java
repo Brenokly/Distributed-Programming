@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 @Getter
-public class Communicator {
+public class Communicator implements AutoCloseable {
     private final AbstractSocketConnection connection;
     private AbstractMessageHandler ioHandler;
     private final String name;
@@ -43,7 +43,10 @@ public class Communicator {
     }
 
     public void disconnect() {
-        if (ioHandler != null) ioHandler.close();
+        if (ioHandler != null) {
+            ioHandler.close();
+            ioHandler = null;
+        }
         connection.disconnect();
     }
 
@@ -73,5 +76,10 @@ public class Communicator {
 
     public Socket getSocket() {
         return connection.getSocket();
+    }
+
+    @Override
+    public void close() {
+        disconnect();
     }
 }

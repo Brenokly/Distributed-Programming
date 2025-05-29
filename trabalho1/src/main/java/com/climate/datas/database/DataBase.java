@@ -1,7 +1,5 @@
 package com.climate.datas.database;
 
-import com.climate.datas.utils.ClimateData;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,9 +7,9 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DataBase {
-    private final Map<String, List<ClimateData>> database = new ConcurrentHashMap<>();
+    private final Map<String, List<String>> database = new ConcurrentHashMap<>();
 
-    public void saveData(String droneId, ClimateData data) {
+    public void saveData(String droneId, String data) {
         if (droneId == null || data == null) {
             throw new IllegalArgumentException("DroneId ou dados não podem ser nulos.");
         }
@@ -21,11 +19,11 @@ public class DataBase {
     }
 
 
-    public List<ClimateData> getData(String droneId) {
+    public List<String> getData(String droneId) {
         return database.getOrDefault(droneId, List.of());
     }
 
-    public Map<String, List<ClimateData>> getAllData() {
+    public Map<String, List<String>> getAllData() {
         return Collections.unmodifiableMap(database);
     }
 

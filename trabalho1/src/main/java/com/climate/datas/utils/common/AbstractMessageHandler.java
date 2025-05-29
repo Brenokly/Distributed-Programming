@@ -64,17 +64,21 @@ public class AbstractMessageHandler implements MessageHandler, JsonSerializable,
             try {
                 String json = in.readLine();
 
-                message(name + " recebeu uma mensagem json: " + json);
+                if (json == null || json.isEmpty()) {
+                    return null;
+                }
 
                 return JsonSerializable.objectMapper.readValue(json, clas);
             } catch (IOException e) {
-                erro("Erro ao desserializar JSON: " + e);
-                return null;
+                if (!e.getMessage().contains("Connection reset")) {
+                    erro("Erro ao receber mensagem JSON: " + e);
+                }
             }
         } else {
             erro("O buffer de entrada está nulo. Fluxo de Dados não aberto.");
             return null;
         }
+        return null;
     }
 
     public void close() {
