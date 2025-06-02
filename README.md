@@ -12,16 +12,15 @@
 
 1. [Introdução](#introducao)
 2. [Objetivos](#objetivos)
-3. [Conteúdo Programático](#conteudo-programatico)
-4. [Prática Unidade 1 - Simulação de um Sistema Distribuído para Coleta de Dados Climáticos](#pratica-unidade-1)
+3. [Prática Unidade 1 - Simulação de um Sistema Distribuído para Coleta de Dados Climáticos](#pratica-unidade-1)
 
    * [Objetivo](#objetivo)
    * [Conceitos-Chave](#conceitos-chave)
    * [Requisitos do Sistema](#requisitos-do-sistema)
    * [Fluxo da Simulação](#fluxo-da-simulacao)
-5. [Metodologia](#metodologia)
-6. [Estrutura do Projeto](#estrutura-do-projeto)
-7. [Referências Bibliográficas](#referencias-bibliograficas)
+4. [Metodologia](#metodologia)
+5. [Estrutura do Projeto](#estrutura-do-projeto)
+6. [Referências Bibliográficas](#referencias-bibliograficas)
 
 ---
 
@@ -32,27 +31,6 @@ Este projeto é uma simulação de um sistema distribuído para coleta e gerenci
 ## 🎯 Objetivos <a id="objetivos"></a>
 
 O objetivo da disciplina é capacitar os alunos na construção de sistemas distribuídos, aplicando conceitos de comunicação entre processos, concorrência, paralelismo, balanceamento de carga, transmissão multicast e uso de serviços de execução concorrente.
-
-## 📌 Conteúdo Programático <a id="conteudo-programatico"></a>
-
-### Unidade I - Fundamentos de Programação Distribuída (20h)
-
-* Comunicação entre processos (Sockets TCP, UDP, Multicast).
-* Modelagem de aplicações distribuídas.
-* Balanceamento de carga e concorrência.
-* Gerenciamento de threads com serviços de execução.
-* Programação funcional: lambdas, interfaces funcionais e streams.
-
-### Unidade II - Coordenação e Sincronização (20h)
-
-* Exclusão mútua, coordenação e sincronização de processos.
-* Eleição de líderes e serviços de nomeação.
-
-### Unidade III - Replicação, Tolerância a Falhas e Middleware (20h)
-
-* Modelos de replicação.
-* Comunicação com middleware e brokers de mensagens.
-* Projeto de sistemas robustos e escaláveis.
 
 ---
 
