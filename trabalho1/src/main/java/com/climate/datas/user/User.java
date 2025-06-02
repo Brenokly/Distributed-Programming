@@ -23,6 +23,7 @@ public class User extends Communicator implements Loggable, AutoCloseable {
     private ServerInfo servidor;                    // Informações do servidor
     private final Scanner scanner;                  // Scanner para entrada do usuário
     private volatile boolean running = false;       // Flag indicadora de execução
+    private final String interfaceName = "Ethernet"; // Nome da interface de rede
 
     private static final Map<Integer, UserResponseEnum> OPTIONS = Map.of(0, UserResponseEnum.HASHING, 1, UserResponseEnum.ROUND_ROBIN);
 
@@ -37,7 +38,7 @@ public class User extends Communicator implements Loggable, AutoCloseable {
         }
         scanner = new Scanner(System.in);
         try {
-            interfaceAddress = NetworkInterface.getByName("Ethernet");
+            interfaceAddress = NetworkInterface.getByName(interfaceName);
         } catch (SocketException e) {
             erro("Erro ao obter a interface de rede: " + e.getMessage());
         }

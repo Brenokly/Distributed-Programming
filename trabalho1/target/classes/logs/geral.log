@@ -1,1 +1,40 @@
-2025-06-01 15:38:39 [main] ERROR c.c.datas.datacenter.DataCenter - Erro ao conectar com o servidor 192.168.0.4:50001: Connection refused: connect
+2025-06-02 14:49:46 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (1034.06;730.95;1.72;23.09)
+2025-06-02 14:49:46 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:49:46 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 1027.05#539.56#43.48#70.19
+2025-06-02 14:49:46 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:49:47 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Drone Norte gerou: 955.73-548.48-17.94-98.14
+2025-06-02 14:49:47 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:49:48 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Drone Leste gerou: {958.75,250.25,16.99,56.0}
+2025-06-02 14:49:48 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:49:50 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (1017.65;228.13;28.87;21.46)
+2025-06-02 14:49:50 [pool-3-th2025-06-02 14:49:51 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:53108
+2025-06-02 14:49:51 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: LESTE, Dados: [1021.96//332.17//24.58//87.04]
+2025-06-02 14:49:51 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:53110
+2025-06-02 14:49:51 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: OESTE, Dados: [1027.73//547.89//20.71//93.6]
+2025-06-02 14:50:13 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:65211
+2025-06-02 14:50:13 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: NORTE, Dados: [976.43//-507.41//-1.17//-97.79]
+2025-06-02 14:50:15 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:65212
+2025-06-02 14:50:15 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: LESTE, Dados: [961.09//763.39//9.79//24.75]
+2025-06-02 14:50:17 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:65214
+2025-06-02 14:50:17 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: OESTE, Dados: [967.39//880.78//38.35//46.86]
+2025-06-02 14:50:19 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:65216
+2025-06-02 14:50:19 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: LESTE, Dados: [1037.84//752.27//-28.3//45.39]
+2025-06-02 14:50:20 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:65217
+2025-06-02 14:50:20 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: OESTE, Dados: [1012.45//442.46//-20.36//84.65]
+2025-06-02 14:50:20 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: /26.97.230.179:65218
+2025-06-02 14:50:20 [main] INFO  com.climate.datas.user.User - Mensagem recebida do grupo multicast: Drone ID: SUL, Dados: [959.6//1093.66//20.66//67.46]
+5-06-02 14:50:17 [pool-10-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 967.39#880.78#38.35#46.86
+2025-06-02 14:50:17 [pool-10-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:50:18 [pool-8-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (1039.46;585.82;28.69;40.4)
+2025-06-02 14:50:18 [pool-8-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:50:19 [pool-9-thread-1] INFO  com.climate.datas.drone.Drone - Drone Leste gerou: {1037.84,752.27,-28.3,45.39}
+2025-06-02 14:50:19 [pool-9-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:50:20 [pool-10-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 1012.45#442.46#-20.36#84.65
+2025-06-02 14:50:20 [pool-10-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-02 14:50:20 [pool-8-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (959.6;1093.66;20.66;67.46)
+2025-06-02 14:50:20 [pool-8-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+mate.datas.server.Server - Server-50002 Mens2025-06-02 14:50:19 [virtual-54] INFO  c.c.d.u.c.AbstractMessageHandler - DataCenter enviou uma mensagem json: {"droneId":"LESTE","data":"{1037.84,752.27,-28.3,45.39}"}
+2025-06-02 14:50:19 [virtua2025-06-02 14:50:19 [virtual-38] INFO  com.climate.datas.server.Server - Server-50001 Mensagem re2025-06-02 14:50:20 [virtual-55] INFO  c.c.d.u.c.AbstractMessageHandler - DataCenter enviou uma mensagem json: {"droneId":"OESTE","data":"1012.45#442.46#-20.36#84.65"}
+2025-06-02 14:50:20 [v2025-06-02 14:50:20 [virtual-38] INFO  com.climate.datas.server.Server - Server-50001 Mensagem recebid2025-06-02 14:50:20 [virtual-56] INFO  c.c.d.u.c.AbstractMessageHandler - DataCenter enviou uma mensagem json: {"droneId":"SUL","data":"(959.6;1093.66;20.66;67.46)"}
+2025-06-02 14:50:20 2025-06-02 14:50:20 [virtual-38] INFO  com.climate.datas.server.Server - Server-50001 Mensagem recebida e salva no banco de dados: [959.6//1093.66//20.66//67.46]
+2025-06-02 14:50:20 [virtual-38] INFO  com.climate.datas.server.Server - Mensagem multicast enviada para o grupo 230.0.0.2

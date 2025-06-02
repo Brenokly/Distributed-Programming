@@ -1,1 +1,18 @@
-2025-06-01 15:38:39 [main] ERROR c.c.datas.datacenter.DataCenter - Erro ao conectar com o servidor 192.168.0.4:50001: Connection refused: connect
+2025-06-02 14:49:46 [virtual-37] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:49:46 [virtual-40] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:49:47 [virtual-41] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:49:48 [virtual-42] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:49:50 [virtual-43] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:49:51 [virtual-44] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:49:51 [virtual-45] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:49:51 [virtual-46] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:50:13 [virtual-47] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:50:13 [virtual-48] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:50:13 [virtual-49] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:50:15 [virtual-50] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:50:16 [virtual-51] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:50:17 [virtual-52] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:50:18 [virtual-53] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50002
+2025-06-02 14:50:19 [virtual-54] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:50:20 [virtual-55] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001
+2025-06-02 14:50:20 [virtual-56] INFO  c.c.datas.datacenter.DataCenter - Dados enviados para o servidor: 192.168.0.4:50001

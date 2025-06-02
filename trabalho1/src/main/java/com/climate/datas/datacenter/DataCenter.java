@@ -25,6 +25,7 @@ public class DataCenter implements AutoCloseable, Loggable {
     private final ExecutorService threadPool;       // Pool de threads para tratar as conexões
     private final List<ServerInfo> servers;         // Info dos servidores
     private final List<Communicator> communicators; // Lista de comunicadores para enviar dados
+    private final String interfaceName = "Ethernet"; // Nome da interface de rede
     Random random = new Random();
 
     @Getter
@@ -65,7 +66,7 @@ public class DataCenter implements AutoCloseable, Loggable {
         try {
             dataSocket = new MulticastSocket(port);
             grupo = new InetSocketAddress(InetAddress.getByName(host), port);
-            dataSocket.joinGroup(grupo, NetworkInterface.getByName("Ethernet"));
+            dataSocket.joinGroup(grupo, NetworkInterface.getByName(interfaceName));
             running = true;
         } catch (Exception e) {
             throw new Exception("Não foi possível iniciar o DataCenter na porta " + port + " em " + host, e);
@@ -165,7 +166,7 @@ public class DataCenter implements AutoCloseable, Loggable {
         running = false;
         if (dataSocket != null && !dataSocket.isClosed()) {
             try {
-                dataSocket.leaveGroup(grupo, NetworkInterface.getByName("Ethernet"));
+                dataSocket.leaveGroup(grupo, NetworkInterface.getByName(interfaceName));
                 dataSocket.close();
             } catch (Exception e) {
                 erro("Erro ao fechar o socket do DataCenter: " + e.getMessage());
