@@ -1,7 +1,3 @@
-Perfeito! Aqui está a documentação do repositório **[Distributed-Programming](https://github.com/Brenokly/Distributed-Programming.git)** no mesmo formato do exemplo que você forneceu:
-
----
-
 # ☁️ Projeto de Simulação de Coleta de Dados Climáticos Distribuídos
 
 ## Disciplina: Programação Distribuída 🌐
@@ -163,17 +159,3 @@ Desenvolver um sistema distribuído capaz de simular a coleta de dados climátic
 ### 📖 Obrigatórias:
 
 * Coulouris, George. *Sistemas distribuídos: conceitos e projeto*. Bookman, 2013.
-* Tanenbaum, Andrew S. *Sistemas operacionais modernos*. Pearson, 2010.
-* Kurose, James F.; Ross, Keith W. *Redes de computadores e a internet: uma abordagem top-down*. Addison Wesley, 2013.
-
-### 📚 Complementares:
-
-* Deitel, Paul J. *Java: como programar*. Pearson, 2017.
-* Lecheta, Ricardo R. *Web Services RESTful*. Novatec, 2015.
-* Chee, Brian J. S.; Franklin, Curtis. *Computação em nuvem: tecnologias e estratégias*. M. Books, 2013.
-* Summerfield, Mark. *Programação em Python 3*. Alta Books, 2012.
-* Richards, Mark; Ford, Neal; Sadalage, Pramod J. *Fundamentals of Software Architecture*. O’Reilly, 2020.
-
----
-
-Se desejar, posso gerar o arquivo `README.md` completo formatado e pronto para você adicionar diretamente ao seu repositório. Quer? 😊
