@@ -46,7 +46,7 @@ Desenvolver um sistema distribuído capaz de simular a coleta de dados climátic
 * **Balanceamento de Carga:** Distribuição de requisições entre servidores.
 * **Multicast:** Comunicação eficiente para grupos de usuários.
 * **Programação Concorrente:** Threads, executores, lambdas e streams.
-* **Conversão e Padronização de Dados:** Drones enviam dados em formatos diferentes, e o sistema central padroniza para armazenamento e distribuição.
+* **Programação Funcional: Streams, BinaryOperator, 
 
 ### 📜 Requisitos do Sistema <a id="requisitos-do-sistema"></a>
 
