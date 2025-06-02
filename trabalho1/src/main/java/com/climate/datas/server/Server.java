@@ -165,5 +165,8 @@ public class Server implements AutoCloseable, Loggable {
         } finally {
             System.out.println("Servidores finalizado.");
         }
+
+        // Imprime todos os dados armazenados no banco de dados
+        dataBase.printAllData();
     }
 }

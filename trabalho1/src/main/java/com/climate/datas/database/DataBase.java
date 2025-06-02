@@ -18,7 +18,6 @@ public class DataBase {
                 .add(data);
     }
 
-
     public List<String> getData(String droneId) {
         return database.getOrDefault(droneId, List.of());
     }
@@ -27,15 +26,11 @@ public class DataBase {
         return Collections.unmodifiableMap(database);
     }
 
-    public void clear() {
-        database.clear();
-    }
-
     public void printAllData() {
+        System.out.println("Dados armazenados no banco de dados:");
         database.forEach((drone, dataList) -> {
             System.out.println("Drone: " + drone);
             dataList.forEach(System.out::println);
         });
     }
-
 }

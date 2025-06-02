@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.BiFunction;
 import java.util.stream.Stream;
 
 import com.climate.datas.utils.Loggable;
@@ -41,14 +42,42 @@ public class Drone implements AutoCloseable, Loggable {
     private double humidity;                    // %
     private final ServerInfo datacenter;        // Informações do Load Balancer
     private final DatagramSocket droneSocket;   // Socket do drone para comunicação com o Data Center
+    private static final Generators g = new Generators();
 
     private final ScheduledExecutorService scheduler;
 
-    private static final Map<String, DataGenerator> generators = Map.of(
-            "pressure", Generators.randomInRange(950, 1050, 2),
-            "solarRadiation", Generators.randomInRange(0, 1200, 2),
-            "temperature", Generators.randomInRange(-30, 50, 2),
-            "humidity", Generators.randomInRange(20, 100, 2)
+    private static final Map<String, BiFunction<Double, Double, Double>> generators = Map.of(
+            "pressure", g::generate,
+            "solarRadiation", g::generate,
+            "temperature", g::generate,
+            "humidity", g::generate
+    );
+
+    private static final Map<DroneId, Map<String, Range>> rangesByRegion = Map.of(
+            DroneId.NORTE, Map.of(
+                    "pressure", new Range(950, 1000),
+                    "solarRadiation", new Range(800, 1200),
+                    "temperature", new Range(30, 40),
+                    "humidity", new Range(70, 90)
+            ),
+            DroneId.SUL, Map.of(
+                    "pressure", new Range(1000, 1050),
+                    "solarRadiation", new Range(400, 800),
+                    "temperature", new Range(10, 20),
+                    "humidity", new Range(60, 80)
+            ),
+            DroneId.LESTE, Map.of(
+                    "pressure", new Range(970, 1030),
+                    "solarRadiation", new Range(600, 1000),
+                    "temperature", new Range(25, 35),
+                    "humidity", new Range(50, 70)
+            ),
+            DroneId.OESTE, Map.of(
+                    "pressure", new Range(980, 1020),
+                    "solarRadiation", new Range(500, 900),
+                    "temperature", new Range(20, 30),
+                    "humidity", new Range(55, 75)
+            )
     );
 
     public Drone(DroneId droneId) {
@@ -125,10 +154,17 @@ public class Drone implements AutoCloseable, Loggable {
     }
 
     public void collectData() {
-        this.pressure = generators.get("pressure").generate();
-        this.solarRadiation = generators.get("solarRadiation").generate();
-        this.temperature = generators.get("temperature").generate();
-        this.humidity = generators.get("humidity").generate();
+        Map<String, Range> ranges = rangesByRegion.get(this.droneId);
+
+        this.pressure = generateValue("pressure", ranges);
+        this.solarRadiation = generateValue("solarRadiation", ranges);
+        this.temperature = generateValue("temperature", ranges);
+        this.humidity = generateValue("humidity", ranges);
+    }
+
+    private double generateValue(String key, Map<String, Range> ranges) {
+        Range range = ranges.get(key);
+        return generators.get(key).apply(range.min(), range.max());
     }
 
     @Override
