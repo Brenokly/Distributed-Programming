@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -24,6 +25,7 @@ public class DataCenter implements AutoCloseable, Loggable {
     private final ExecutorService threadPool;       // Pool de threads para tratar as conexões
     private final List<ServerInfo> servers;         // Info dos servidores
     private final List<Communicator> communicators; // Lista de comunicadores para enviar dados
+    Random random = new Random();
 
     @Getter
     private volatile boolean running = false;       // Flag indicadora de execução
@@ -118,7 +120,7 @@ public class DataCenter implements AutoCloseable, Loggable {
 
     private int chosenServer(int idHasCode) {
         // Hash-based Load Balancing
-        int serverIndex = idHasCode % servers.size();
+        int serverIndex = random.nextInt(servers.size());
 
         System.out.println("\nHash do Drone: " + idHasCode + ", Servidor escolhido: " + serverIndex);
 
