@@ -14,6 +14,11 @@ public interface Loggable {
         System.out.println("--------------------------------------------------------------");
     }
 
+    default void infoNoLine(String message) {
+        System.out.println("\n" + message);
+        logger().info(message);
+    }
+
     default void message(String message) {
         logger().info(message);
     }

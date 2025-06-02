@@ -5,6 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -74,7 +75,7 @@ public class Drone implements AutoCloseable, Loggable {
             try {
                 collectData();
                 String data = toString();
-                info("Drone " + droneId.getValue() + " gerou: " + data);
+                infoNoLine("Drone " + droneId.getValue() + " gerou: " + data);
 
                 // Enviando para o centro de dados
                 sendMessageDataCenter(new DatagramDrone(droneId, data));
@@ -105,6 +106,7 @@ public class Drone implements AutoCloseable, Loggable {
             InetAddress address = InetAddress.getByName(datacenter.getHost());
             DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, datacenter.getPort());
             droneSocket.send(packet);
+            info("Mensagem enviada com sucesso para o IP Multicast: " + datacenter.getHost() + ":" + datacenter.getPort());
         } catch (IOException e) {
             erro("Falha ao enviar mensagem para o balanceador: " + e.getMessage());
         }
@@ -141,40 +143,66 @@ public class Drone implements AutoCloseable, Loggable {
     }
 
     public static void main(String[] args) {
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
 
-        try (
-                executor;
-                Drone drone1 = new Drone(DroneId.NORTE);
-                Drone drone2 = new Drone(DroneId.SUL);
-                Drone drone3 = new Drone(DroneId.LESTE);
-                Drone drone4 = new Drone(DroneId.OESTE)
-        ) {
-            executor.execute(drone1::start);
-            executor.execute(drone2::start);
-            executor.execute(drone3::start);
-            executor.execute(drone4::start);
+        Scanner scanner = new Scanner(System.in);
 
-            System.out.println("Simulação iniciada.");
+        int option = -1;
+        while (option != 0) {
+            System.out.println("Selecione uma opção:");
+            System.out.println("1 - Iniciar simulação de drones");
+            System.out.println("0 - Sair");
+            System.out.print("Opção: ");
 
-            executor.schedule(() -> {
-                System.out.println("Encerrando drones...");
-                drone1.close();
-                drone2.close();
-                drone3.close();
-                drone4.close();
-
-                System.out.println("Coleta e Envio de dados finalizados.");
-            }, 10, TimeUnit.SECONDS);
-
-            executor.shutdown();
-            if (!executor.awaitTermination(10, TimeUnit.SECONDS)) {
-                System.out.println("Forçando encerramento...");
-                executor.shutdownNow();
+            try {
+                option = scanner.nextInt();
+                if (option != 0 && option != 1) {
+                    System.out.println("Opção inválida. Por favor, selecione uma opção válida.");
+                    continue;
+                } else if (option == 0) {
+                    System.out.println("Saindo...");
+                    break;
+                } else {
+                    System.out.println("Iniciando simulação de drones...");
+                }
+            } catch (Exception e) {
+                System.out.println("Opção inválida. Por favor, insira um número.");
+                scanner.next();
+                continue;
             }
 
-        } catch (Exception e) {
-            System.out.println("Houve problema com os drones: " + e.getMessage());
+            try (
+                    ScheduledExecutorService executor = Executors.newScheduledThreadPool(4);
+                    Drone drone1 = new Drone(DroneId.NORTE);
+                    Drone drone2 = new Drone(DroneId.SUL);
+                    Drone drone3 = new Drone(DroneId.LESTE);
+                    Drone drone4 = new Drone(DroneId.OESTE)
+            ) {
+                executor.execute(drone1::start);
+                executor.execute(drone2::start);
+                executor.execute(drone3::start);
+                executor.execute(drone4::start);
+
+                System.out.println("Simulação iniciada.");
+
+                executor.schedule(() -> {
+                    System.out.println("Encerrando drones...");
+                    drone1.close();
+                    drone2.close();
+                    drone3.close();
+                    drone4.close();
+
+                    System.out.println("Coleta e Envio de dados finalizados.");
+                }, 10, TimeUnit.SECONDS);
+
+                executor.shutdown();
+                if (!executor.awaitTermination(10, TimeUnit.SECONDS)) {
+                    System.out.println("Forçando encerramento...");
+                    executor.shutdownNow();
+                }
+
+            } catch (Exception e) {
+                System.out.println("Houve problema com os drones: " + e.getMessage());
+            }
         }
     }
 }

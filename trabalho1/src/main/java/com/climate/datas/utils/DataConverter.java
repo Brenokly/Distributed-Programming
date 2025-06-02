@@ -28,8 +28,6 @@ public class DataConverter {
                 .collect(Collectors.toList());
 
         // Montando a saída no formato padrão
-        String result = "[" + String.join("//", numbers) + "]";
-
-        return result;
+        return "[" + String.join("//", numbers) + "]";
     }
 }

@@ -88,7 +88,7 @@ public class LoadBalancer implements AutoCloseable, Loggable {
     public void sendServer(UserResponse userResponse, Communicator user) {
         switch (userResponse.getResponse().getValue()) {
             case 0 -> { // Hashing
-                ServerInfo server = chooseServerRandom();
+                ServerInfo server = chooseServerConsistentHash(String.valueOf(userResponse.getId()));
                 user.sendJsonMessage(server);
                 info("Usuário recebeu o grupo de servidores: " + server);
             }
@@ -100,8 +100,10 @@ public class LoadBalancer implements AutoCloseable, Loggable {
         }
     }
 
-    public ServerInfo chooseServerRandom() {
-        return multiCastIp.get(random.nextInt(multiCastIp.size()));
+    public ServerInfo chooseServerConsistentHash(String userId) {
+        int hash = Math.abs(userId.hashCode());
+        int serverIndex = hash % multiCastIp.size();
+        return multiCastIp.get(serverIndex);
     }
 
     public ServerInfo chooseServerRR() {

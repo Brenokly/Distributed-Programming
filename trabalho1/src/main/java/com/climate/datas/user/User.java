@@ -8,7 +8,10 @@ import com.climate.datas.utils.common.Communicator;
 import com.climate.datas.utils.user.UserResponse;
 
 import java.net.*;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class User extends Communicator implements Loggable, AutoCloseable {
     private final int id;                           // ID do usuário
@@ -20,6 +23,8 @@ public class User extends Communicator implements Loggable, AutoCloseable {
     private ServerInfo servidor;                    // Informações do servidor
     private final Scanner scanner;                  // Scanner para entrada do usuário
     private volatile boolean running = false;       // Flag indicadora de execução
+
+    private static final Map<Integer, UserResponseEnum> OPTIONS = Map.of(0, UserResponseEnum.HASHING, 1, UserResponseEnum.ROUND_ROBIN);
 
     public User(int id) {
         super("User-" + id);
@@ -55,21 +60,12 @@ public class User extends Communicator implements Loggable, AutoCloseable {
             System.out.print("Opção: ");
             int choice = scanner.nextInt();
 
-            if (choice < 0 || choice > 1) {
-                System.out.println("Opção inválida. Tente novamente.");
-                continue;
-            }
+            Optional.ofNullable(OPTIONS.get(choice)).ifPresentOrElse(responseEnum -> sendJsonMessage(new UserResponse(id, responseEnum)), () -> System.out.println("Opção inválida. Tente novamente."));
 
-            sendJsonMessage(new UserResponse(id, UserResponseEnum.fromValue(choice)));
-
-            servidor = receiveJsonMessage(ServerInfo.class);
-
-            if (servidor == null) {
-                erro("Nenhum grupo multicast disponível no LoadBalancer.");
-                continue;
-            } else {
+            Optional.ofNullable(receiveJsonMessage(ServerInfo.class)).ifPresentOrElse(s -> {
+                servidor = s;
                 info("Grupo de Servidor Recebido: " + servidor.getHost() + ":" + servidor.getPort());
-            }
+            }, () -> erro("Nenhum grupo multicast disponível no LoadBalancer."));
 
             received = true;
         }
@@ -95,15 +91,30 @@ public class User extends Communicator implements Loggable, AutoCloseable {
         }
         try {
             info("Usuário " + id + " aguardando mensagens do grupo multicast...");
-            while (running && !dataSocket.isClosed()) {
+
+            /*
+             * Testando esse Stream.Generate para receber pacotes de forma assíncrona.
+             * A ideia é que ele continue recebendo pacotes até que a flag 'running' seja false.
+             *
+             * O generate cria um fluxo infinito. Recebe uma função que gera uma saída a cada chamada.
+             * Nesse caso, ele gera um DatagramPacket a cada chamada, recebendo pacotes do MulticastSocket.
+             * Quando o pacote é recebido, ele é processado, validado e impresso.
+            */
+            Stream.generate(() -> {
                 byte[] buffer = new byte[1024];
                 DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-                dataSocket.receive(packet);
-
+                try {
+                    dataSocket.receive(packet);
+                    return packet;
+                } catch (Exception e) {
+                    erro("Erro ao receber pacote: " + e.getMessage());
+                    running = false;
+                    return null;
+                }
+            }).takeWhile(packet -> running && packet != null).forEach(packet -> {
                 info("Mensagem recebida do grupo multicast: " + packet.getAddress() + ":" + packet.getPort());
-
                 printMessage(DatagramDrone.fromPacket(packet));
-            }
+            });
         } catch (Exception e) {
             erro("Erro inesperado no LoadBalancer: " + e.getMessage());
         } finally {
@@ -122,22 +133,13 @@ public class User extends Communicator implements Loggable, AutoCloseable {
             scanner.close();
         }
         disconnect();
-        if (dataSocket != null && !dataSocket.isClosed() && grupo != null && interfaceAddress != null) {
+        Optional.ofNullable(dataSocket).filter(s -> !s.isClosed() && grupo != null && interfaceAddress != null).ifPresent(socket -> {
             try {
-                dataSocket.leaveGroup(grupo, interfaceAddress);
-                dataSocket.close();
+                socket.leaveGroup(grupo, interfaceAddress);
+                socket.close();
             } catch (Exception e) {
                 erro("Erro ao fechar o MulticastSocket: " + e.getMessage());
             }
-        }
+        });
     }
-
-    public static void main(String[] args) {
-        try (User user = new User(1)) {
-            user.start();
-        } catch (Exception e) {
-            System.err.println("Erro ao iniciar o usuário: " + e.getMessage());
-        }
-    }
-
 }

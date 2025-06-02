@@ -8,8 +8,54 @@
         </encoder>
     </appender>
 
+    <appender name="DATACENTER_LOG" class="ch.qos.logback.core.FileAppender">
+        <file>src\main\resources\logs\datacenter.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="LOADBALANCER_LOG" class="ch.qos.logback.core.FileAppender">
+        <file>src\main\resources\logs\loadbalancer.log</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SERVER_LOG" class="ch.qos.logback.core.FileAppender">
+        <file>src\main\resources\logs\server.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="DRONE_LOG" class="ch.qos.logback.core.FileAppender">
+        <file>src\main\resources\logs\drone.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
 
     <!-- Definição dos loggers específicos para cada classe -->
+    <logger name="com.climate.datas.datacenter.DataCenter" level="info" additivity="true">
+        <appender-ref ref="DATACENTER_LOG"/>
+    </logger>
+
+    <logger name="com.climate.datas.loadbalancer.LoadBalancer" level="info" additivity="true">
+        <appender-ref ref="LOADBALANCER_LOG"/>
+    </logger>
+
+    <logger name="com.climate.datas.loadbalancer.LoadBalancer" level="info" additivity="true">
+        <appender-ref ref="SERVER_LOG"/>
+    </logger>
+
+    <logger name="com.climate.datas.drone.Drone" level="info" additivity="true">
+        <appender-ref ref="DRONE_LOG"/>
+    </logger>
 
     <!-- Logger geral que recebe todos os logs -->
     <root level="info">
