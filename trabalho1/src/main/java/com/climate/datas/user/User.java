@@ -1,28 +1,33 @@
 package com.climate.datas.user;
 
-import com.climate.datas.utils.Loggable;
-import com.climate.datas.utils.ServerInfo;
-import com.climate.datas.utils.drone.DatagramDrone;
-import com.climate.datas.utils.user.UserResponseEnum;
-import com.climate.datas.utils.common.Communicator;
-import com.climate.datas.utils.user.UserResponse;
-
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.MulticastSocket;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+import com.climate.datas.utils.Loggable;
+import com.climate.datas.utils.ServerInfo;
+import com.climate.datas.utils.common.Communicator;
+import com.climate.datas.utils.drone.DatagramDrone;
+import com.climate.datas.utils.user.UserResponse;
+import com.climate.datas.utils.user.UserResponseEnum;
+
 public class User extends Communicator implements Loggable, AutoCloseable {
-    private final int id;                           // ID do usuário
-    private final int portBalancer;                 // Porta do load balancer
-    private String hostBalancer;                    // host do load balancer
-    private InetSocketAddress grupo;                // Endereço do grupo multicast
-    private MulticastSocket dataSocket;             // MulticastSocket
-    private NetworkInterface interfaceAddress;      // Endereço da interface de rede
-    private ServerInfo servidor;                    // Informações do servidor
-    private final Scanner scanner;                  // Scanner para entrada do usuário
-    private volatile boolean running = false;       // Flag indicadora de execução
+    private final int id;                            // ID do usuário
+    private final int portBalancer;                  // Porta do load balancer
+    private String hostBalancer;                     // host do load balancer
+    private InetSocketAddress grupo;                 // Endereço do grupo multicast
+    private MulticastSocket dataSocket;              // MulticastSocket
+    private NetworkInterface interfaceAddress;       // Endereço da interface de rede
+    private ServerInfo servidor;                     // Informações do servidor
+    private final Scanner scanner;                   // Scanner para entrada do usuário
+    private volatile boolean running = false;        // Flag indicadora de execução
     private final String interfaceName = "Ethernet"; // Nome da interface de rede
 
     private static final Map<Integer, UserResponseEnum> OPTIONS = Map.of(0, UserResponseEnum.HASHING, 1, UserResponseEnum.ROUND_ROBIN);
@@ -31,11 +36,7 @@ public class User extends Communicator implements Loggable, AutoCloseable {
         super("User-" + id);
         this.id = id;
         this.portBalancer = 50000; // Porta do load balancer
-        try {
-            this.hostBalancer = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            this.hostBalancer = "26.137.178.91";
-        }
+        this.hostBalancer = "10.215.36.129";
         scanner = new Scanner(System.in);
         try {
             interfaceAddress = NetworkInterface.getByName(interfaceName);

@@ -1,13 +1,12 @@
 package com.climate.datas.datacenter;
 
-import com.climate.datas.utils.Loggable;
-import com.climate.datas.utils.ServerInfo;
-import com.climate.datas.utils.common.Communicator;
-import com.climate.datas.utils.drone.DatagramDrone;
-import lombok.Getter;
-
 import java.io.IOException;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.MulticastSocket;
+import java.net.NetworkInterface;
+import java.net.Socket;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -15,6 +14,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import com.climate.datas.utils.Loggable;
+import com.climate.datas.utils.ServerInfo;
+import com.climate.datas.utils.common.Communicator;
+import com.climate.datas.utils.drone.DatagramDrone;
+
+import lombok.Getter;
 
 public class DataCenter implements AutoCloseable, Loggable {
     private final String host;                      // Endereço do load balancer
@@ -25,7 +31,6 @@ public class DataCenter implements AutoCloseable, Loggable {
     private final ExecutorService threadPool;       // Pool de threads para tratar as conexões
     private final List<ServerInfo> servers;         // Info dos servidores
     private final List<Communicator> communicators; // Lista de comunicadores para enviar dados
-    private final String interfaceName = "Ethernet"; // Nome da interface de rede
     Random random = new Random();
 
     @Getter
@@ -34,11 +39,7 @@ public class DataCenter implements AutoCloseable, Loggable {
     public DataCenter() throws Exception {
         this.port = 49999;
         this.host = "230.0.0.1";
-        try {
-            this.hostServers = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            this.hostServers = "26.137.178.91";
-        }
+        this.hostServers = "10.215.36.129";
         this.threadPool = Executors.newVirtualThreadPerTaskExecutor();
         this.servers = List.of(new ServerInfo(hostServers, 50001), new ServerInfo(hostServers, 50002));
         this.communicators = new ArrayList<>();
@@ -66,7 +67,7 @@ public class DataCenter implements AutoCloseable, Loggable {
         try {
             dataSocket = new MulticastSocket(port);
             grupo = new InetSocketAddress(InetAddress.getByName(host), port);
-            dataSocket.joinGroup(grupo, NetworkInterface.getByName(interfaceName));
+            dataSocket.joinGroup(grupo, NetworkInterface.getByName("Ethernet"));
             running = true;
         } catch (Exception e) {
             throw new Exception("Não foi possível iniciar o DataCenter na porta " + port + " em " + host, e);
@@ -166,7 +167,7 @@ public class DataCenter implements AutoCloseable, Loggable {
         running = false;
         if (dataSocket != null && !dataSocket.isClosed()) {
             try {
-                dataSocket.leaveGroup(grupo, NetworkInterface.getByName(interfaceName));
+                dataSocket.leaveGroup(grupo, NetworkInterface.getByName("Ethernet"));
                 dataSocket.close();
             } catch (Exception e) {
                 erro("Erro ao fechar o socket do DataCenter: " + e.getMessage());

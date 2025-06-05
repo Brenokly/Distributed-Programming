@@ -14,7 +14,7 @@ public class DataBase {
             throw new IllegalArgumentException("DroneId ou dados não podem ser nulos.");
         }
 
-        database.computeIfAbsent(droneId, k -> Collections.synchronizedList(new ArrayList<>()))
+        database.computeIfAbsent(droneId, _ -> Collections.synchronizedList(new ArrayList<>()))
                 .add(data);
     }
 

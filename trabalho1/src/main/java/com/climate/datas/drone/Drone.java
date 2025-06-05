@@ -14,7 +14,11 @@ import java.util.stream.Stream;
 
 import com.climate.datas.utils.Loggable;
 import com.climate.datas.utils.ServerInfo;
-import com.climate.datas.utils.drone.*;
+import com.climate.datas.utils.drone.DatagramDrone;
+import com.climate.datas.utils.drone.DroneId;
+import com.climate.datas.utils.drone.Generators;
+import com.climate.datas.utils.drone.Range;
+import com.climate.datas.utils.drone.RegionFormat;
 
 /*
  * Drones são coletores de dados que sobrevoam regiões (Norte, Sul, Leste, Oeste)
@@ -240,5 +244,7 @@ public class Drone implements AutoCloseable, Loggable {
                 System.out.println("Houve problema com os drones: " + e.getMessage());
             }
         }
+
+        scanner.close();
     }
 }

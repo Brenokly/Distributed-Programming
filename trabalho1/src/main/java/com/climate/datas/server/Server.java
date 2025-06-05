@@ -1,12 +1,13 @@
 package com.climate.datas.server;
 
-import com.climate.datas.database.DataBase;
-import com.climate.datas.utils.Loggable;
-import com.climate.datas.utils.common.Communicator;
-import com.climate.datas.utils.drone.DatagramDrone;
+import static com.climate.datas.utils.DataConverter.convertToStandardFormat;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.concurrent.ExecutorService;
@@ -14,7 +15,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static com.climate.datas.utils.DataConverter.convertToStandardFormat;
+import com.climate.datas.database.DataBase;
+import com.climate.datas.utils.Loggable;
+import com.climate.datas.utils.common.Communicator;
+import com.climate.datas.utils.drone.DatagramDrone;
 
 public class Server implements AutoCloseable, Loggable {
     private final String name;                      // Nome do servidor
@@ -24,17 +28,12 @@ public class Server implements AutoCloseable, Loggable {
     private ServerSocket serverSocket;              // Socket do server atual
     private volatile boolean running = false;       // Flag indicadora de execução
     private final ExecutorService threadPool;       // Pool de threads para tratar as conexões
-
-    private final DataBase database;                 // Referência ao banco de dados
+    private final DataBase database;                // Referência ao banco de dados
 
     public Server(int port, String ipMulticast, DataBase database) throws IOException {
         this.port = port;
         this.ipMulticast = ipMulticast;
-        try {
-            this.host = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            this.host = "26.137.178.91";
-        }
+        this.host = "10.215.36.129";
         this.name = "Server-" + port; // Nome do servidor baseado na porta
         this.threadPool = Executors.newVirtualThreadPerTaskExecutor();
         this.database = database;

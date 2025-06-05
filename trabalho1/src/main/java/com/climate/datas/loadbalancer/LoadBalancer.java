@@ -1,19 +1,20 @@
 package com.climate.datas.loadbalancer;
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import com.climate.datas.utils.Loggable;
 import com.climate.datas.utils.ServerInfo;
 import com.climate.datas.utils.common.Communicator;
 import com.climate.datas.utils.user.UserResponse;
-
-import java.io.IOException;
-import java.net.*;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.List;
-import java.util.Random;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class LoadBalancer implements AutoCloseable, Loggable {
     private String host;                            // Endereço do load balancer
@@ -22,16 +23,11 @@ public class LoadBalancer implements AutoCloseable, Loggable {
     private volatile boolean running = false;       // Flag indicadora de execução
     private final ExecutorService threadPool;       // Pool de threads para tratar as conexões
     private final List<ServerInfo> multiCastIp;     // Info dos servidores
-    private final Random random = new Random();
     private final AtomicInteger index = new AtomicInteger(0);
 
     public LoadBalancer() throws IOException {
         this.port = 50000;
-        try {
-            this.host = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            this.host = "26.137.178.91";
-        }
+        this.host = "10.215.36.129";
 
         threadPool = Executors.newVirtualThreadPerTaskExecutor();
         multiCastIp = List.of(new ServerInfo("230.0.0.2", 50001), new ServerInfo("230.0.0.3", 50002));
