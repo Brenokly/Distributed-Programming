@@ -33,7 +33,7 @@ public class Server implements AutoCloseable, Loggable {
     public Server(int port, String ipMulticast, DataBase database) throws IOException {
         this.port = port;
         this.ipMulticast = ipMulticast;
-        this.host = "10.10.71.85";
+        this.host ="10.10.71.58";
         this.name = "Server-" + port; // Nome do servidor baseado na porta
         this.threadPool = Executors.newVirtualThreadPerTaskExecutor();
         this.database = database;

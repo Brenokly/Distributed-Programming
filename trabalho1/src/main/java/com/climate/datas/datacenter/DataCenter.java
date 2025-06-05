@@ -39,7 +39,7 @@ public class DataCenter implements AutoCloseable, Loggable {
     public DataCenter() throws Exception {
         this.port = 49999;
         this.host = "230.0.0.1";
-        this.hostServers = "10.10.71.85";
+        this.hostServers = "10.10.71.58";
         this.threadPool = Executors.newVirtualThreadPerTaskExecutor();
         this.servers = List.of(new ServerInfo(hostServers, 50001), new ServerInfo(hostServers, 50002));
         this.communicators = new ArrayList<>();

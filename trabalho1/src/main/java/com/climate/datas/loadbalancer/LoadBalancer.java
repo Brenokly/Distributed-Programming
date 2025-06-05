@@ -27,7 +27,7 @@ public class LoadBalancer implements AutoCloseable, Loggable {
 
     public LoadBalancer() throws IOException {
         this.port = 50000;
-        this.host = "10.10.71.85";
+        this.host = "10.10.71.58";
 
         threadPool = Executors.newVirtualThreadPerTaskExecutor();
         multiCastIp = List.of(new ServerInfo("230.0.0.2", 50001), new ServerInfo("230.0.0.3", 50002));

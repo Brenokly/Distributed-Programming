@@ -232,10 +232,10 @@ public class Drone implements AutoCloseable, Loggable {
                     drone4.close();
 
                     System.out.println("Coleta e Envio de dados finalizados.");
-                }, 10, TimeUnit.SECONDS);
+                }, 180, TimeUnit.SECONDS);
 
                 executor.shutdown();
-                if (!executor.awaitTermination(10, TimeUnit.SECONDS)) {
+                if (!executor.awaitTermination(180, TimeUnit.SECONDS)) {
                     System.out.println("Forçando encerramento...");
                     executor.shutdownNow();
                 }
