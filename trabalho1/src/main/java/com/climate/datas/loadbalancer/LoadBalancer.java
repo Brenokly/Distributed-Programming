@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
@@ -27,7 +28,12 @@ public class LoadBalancer implements AutoCloseable, Loggable {
 
     public LoadBalancer() throws IOException {
         this.port = 50000;
-        this.host = "10.215.36.129";
+        try {
+            this.host = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            erro("Erro ao obter o endereço IP do host: " + e.getMessage());
+            this.host = "26.137.178.91";
+        }
 
         threadPool = Executors.newVirtualThreadPerTaskExecutor();
         multiCastIp = List.of(new ServerInfo("230.0.0.2", 50001), new ServerInfo("230.0.0.3", 50002));

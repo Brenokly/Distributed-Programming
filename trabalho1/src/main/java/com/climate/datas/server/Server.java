@@ -8,6 +8,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.concurrent.ExecutorService;
@@ -33,7 +34,12 @@ public class Server implements AutoCloseable, Loggable {
     public Server(int port, String ipMulticast, DataBase database) throws IOException {
         this.port = port;
         this.ipMulticast = ipMulticast;
-        this.host = "10.215.36.129";
+        try {
+            this.host = InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            erro("Erro ao obter o endereço IP do host: " + e.getMessage());
+            this.host = "26.137.178.91";
+        }
         this.name = "Server-" + port; // Nome do servidor baseado na porta
         this.threadPool = Executors.newVirtualThreadPerTaskExecutor();
         this.database = database;

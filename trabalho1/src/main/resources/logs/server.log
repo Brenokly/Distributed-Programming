@@ -18,3 +18,10 @@
 2025-06-05 15:34:09 [virtual-24] INFO  c.c.datas.loadbalancer.LoadBalancer - Usuário desconectado ou enviou mensagem inválida.
 2025-06-05 15:34:25 [virtual-31] INFO  c.c.datas.loadbalancer.LoadBalancer - Usuário recebeu o grupo de servidores: ServerInfo(host=230.0.0.2, port=50001)
 2025-06-05 15:34:25 [virtual-31] INFO  c.c.datas.loadbalancer.LoadBalancer - Usuário desconectado ou enviou mensagem inválida.
+2025-06-05 16:12:05 [main] INFO  c.c.datas.loadbalancer.LoadBalancer - LoadBalancer rodando em 10.215.36.129:50000
+2025-06-05 16:17:03 [main] INFO  c.c.datas.loadbalancer.LoadBalancer - LoadBalancer rodando em 10.215.36.129:50000
+2025-06-05 16:18:01 [main] INFO  c.c.datas.loadbalancer.LoadBalancer - LoadBalancer rodando em 10.215.36.129:50000
+2025-06-05 16:20:05 [main] ERROR c.c.datas.loadbalancer.LoadBalancer - Erro ao iniciar o LoadBalancer: Cannot assign requested address: bind
+2025-06-05 16:26:33 [main] INFO  c.c.datas.loadbalancer.LoadBalancer - LoadBalancer rodando em 10.10.71.85:50000
+2025-06-05 16:26:46 [virtual-24] INFO  c.c.datas.loadbalancer.LoadBalancer - Usuário recebeu o grupo de servidores: ServerInfo(host=230.0.0.3, port=50002)
+2025-06-05 16:26:46 [virtual-24] INFO  c.c.datas.loadbalancer.LoadBalancer - Usuário desconectado ou enviou mensagem inválida.
