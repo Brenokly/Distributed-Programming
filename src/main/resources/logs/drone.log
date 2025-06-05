@@ -1,0 +1,18 @@
+2025-06-05 16:57:28 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (1032.4;610.42;16.28;64.8)
+2025-06-05 16:57:28 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Drone Leste gerou: {1023.79,641.52,27.6,65.74}
+2025-06-05 16:57:28 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:28 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:29 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 1016.93#720.65#21.52#61.11
+2025-06-05 16:57:29 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:29 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Drone Norte gerou: 971.02-805.96-36.51-85.96
+2025-06-05 16:57:29 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:31 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Drone Leste gerou: {974.37,797.87,33.07,61.69}
+2025-06-05 16:57:31 [pool-4-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:31 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 981.18#823.93#26.8#71.47
+2025-06-05 16:57:31 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:33 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Drone Sul gerou: (1011.1;406.8;10.01;62.14)
+2025-06-05 16:57:33 [pool-3-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:34 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Drone Norte gerou: 958.45-1048.49-36.7-80.86
+2025-06-05 16:57:34 [pool-2-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999
+2025-06-05 16:57:35 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Drone Oeste gerou: 1003.05#726.83#24.38#70.5
+2025-06-05 16:57:35 [pool-5-thread-1] INFO  com.climate.datas.drone.Drone - Mensagem enviada com sucesso para o IP Multicast: 230.0.0.1:49999

@@ -6,7 +6,6 @@ import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
 import java.net.NetworkInterface;
 import java.net.SocketException;
-import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
@@ -37,12 +36,8 @@ public class User extends Communicator implements Loggable, AutoCloseable {
         super("User-" + id);
         this.id = id;
         this.portBalancer = 50000; // Porta do load balancer
-        try {
-            this.hostBalancer = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            erro("Erro ao obter o endereço IP do host: " + e.getMessage());
-            this.hostBalancer = "26.137.178.91";
-        }
+        this.hostBalancer = "10.10.71.58";
+
         scanner = new Scanner(System.in);
         try {
             interfaceAddress = NetworkInterface.getByName(interfaceName);

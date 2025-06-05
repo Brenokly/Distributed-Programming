@@ -7,7 +7,6 @@ import java.net.InetSocketAddress;
 import java.net.MulticastSocket;
 import java.net.NetworkInterface;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -40,12 +39,7 @@ public class DataCenter implements AutoCloseable, Loggable {
     public DataCenter() throws Exception {
         this.port = 49999;
         this.host = "230.0.0.1";
-        try {
-            this.hostServers = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
-            erro("Erro ao obter o endereço IP do host: " + e.getMessage());
-            this.hostServers = "26.137.178.91";
-        }
+        this.hostServers = "10.10.71.85";
         this.threadPool = Executors.newVirtualThreadPerTaskExecutor();
         this.servers = List.of(new ServerInfo(hostServers, 50001), new ServerInfo(hostServers, 50002));
         this.communicators = new ArrayList<>();
