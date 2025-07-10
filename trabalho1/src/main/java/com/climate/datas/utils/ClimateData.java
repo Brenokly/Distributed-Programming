@@ -1,9 +1,11 @@
 package com.climate.datas.utils;
 
-public record ClimateData(double temperatura, double umidade, double pressao, double radiacao) {
+import java.time.LocalDateTime;
+
+public record ClimateData(String region, double temperature, double humidity, double pressure, double radiation, LocalDateTime timestamp) {
 
     @Override
     public String toString() {
-        return "[" + temperatura + "//" + umidade + "//" + pressao + "//" + radiacao + "]";
+        return "[" + region + "//" + temperature + "//" + humidity + "//" + pressure + "//" + radiation + "//" + timestamp + "]";
     }
 }

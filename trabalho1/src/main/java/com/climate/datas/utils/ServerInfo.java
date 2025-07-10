@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ServerInfo implements JsonSerializable {
+
     private String host;
     private int port;
 }
