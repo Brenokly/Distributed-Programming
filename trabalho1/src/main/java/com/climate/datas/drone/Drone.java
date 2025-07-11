@@ -23,7 +23,7 @@ import com.climate.datas.utils.drone.RegionFormat;
 public class Drone implements Runnable, AutoCloseable {
 
     private static final Logger logger = LoggerFactory.getLogger(Drone.class);
-    private static final String BROKER_URL = "tcp://mqtt.eclipseprojects.io:1883";
+    private static final String BROKER_URL = "tcp://broker.emqx.io:1883";
     private static final Random random = new Random();
 
     private final String region;
@@ -60,6 +60,27 @@ public class Drone implements Runnable, AutoCloseable {
         this.scheduler = Executors.newSingleThreadScheduledExecutor();
     }
 
+    public void connect() throws MqttException {
+        String clientId = "drone-" + region + "-" + System.currentTimeMillis();
+        mqttClient = new MqttClient(BROKER_URL, clientId, new MemoryPersistence());
+        MqttConnectOptions connOpts = new MqttConnectOptions();
+        connOpts.setCleanSession(true);
+
+        logger.info("Drone {} conectando ao broker: {}", region, BROKER_URL);
+        mqttClient.connect(connOpts);
+        logger.info("Drone {} conectado com sucesso.", region);
+    }
+
+    public void startCollecting() {
+        if (mqttClient == null || !mqttClient.isConnected()) {
+            logger.error("Não é possível iniciar a coleta. Drone não está conectado ao MQTT.");
+            return;
+        }
+        System.out.println("Iniciando coleta de dados para a região " + region + "...");
+        logger.info("Iniciando a coleta de dados para a região {}.", region);
+        scheduleNext();
+    }
+
     @Override
     public void run() {
         try {
@@ -74,7 +95,6 @@ public class Drone implements Runnable, AutoCloseable {
 
             // Inicia o agendamento de coleta e envio
             scheduleNext();
-
         } catch (MqttException e) {
             logger.error("Falha ao iniciar MQTT para o drone {}: {}", region, e.getMessage());
         }
@@ -105,6 +125,7 @@ public class Drone implements Runnable, AutoCloseable {
                     message.setQos(1);
                     mqttClient.publish(topic, message);
                     logger.debug("Drone {} publicou no tópico '{}'", region, topic);
+                    System.out.println("\nDrone " + region + " publicou: " + payload);
                 } else {
                     logger.warn("Drone {} não está conectado, pulando publicação.", region);
                 }

@@ -1,0 +1,47 @@
+2025-07-11 14:33:03 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectado ao RabbitMQ e exchange 'climate_data_exchange' declarada.
+2025-07-11 14:33:03 [main] INFO  com.climate.datas.gateway.Gateway - Gateway 20252025-07-11 14:33:07 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NO2025-07-11 14:33:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1032.89;544.62;10.39;75.72)
+2025-07-11 14:33:14 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1012.36;486.68;10.40;78.14)
+2025-07-11 14:33:19 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1029.65;525.67;18.75;67.69)
+2025-07-11 14:33:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1047.46;506.58;12.46;76.41)
+
+9
+.83}
+ate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': leste|[leste//29.59//56.79//976.11//752.85//2025-07-11T14:33:08.528173400]
+2025-07-11 14:33:08 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//29.59//56.79//976.11//752.85//2025-07-11T14:33:08.528173400]
+2025-07-11 14:33:10 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//20.7//65.56//1019.86//624.85//2025-07-11T14:33:10.024419600]
+2025-07-11 14:33:10 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': oeste|[oeste//20.7//65.56//1019.86//624.85//2025-07-11T14:33:10.024419600]
+2025-07-11 14:33:10 [pool-1-thread-2] ERROR com.climate.datas.gateway.Gateway - Erro ao processar mensagem de ufersa/pw/climadata/norte: For input string: "958.40-813.10-38.16-81.37"
+2025-07-11 14:33:10 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//10.39//75.72//1032.89//544.62//2025-07-11T14:33:10.117819100]
+2025-07-11 14:33:10 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': sul|[sul//10.39//75.72//1032.89//544.62//2025-07-11T14:33:10.117819100]
+2025-07-11 14:33:10 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//20.7//65.56//1019.86//624.85//2025-07-11T14:33:10.024419600]
+2025-07-11 14:33:10 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//10.39//75.72//1032.89//544.62//2025-07-11T14:33:10.117819100]
+2025-07-11 14:33:11 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//27.55//66.66//979.67//956.35//2025-07-11T14:33:11.407685]
+2025-07-11 14:33:11 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': leste|[leste//27.55//66.66//979.67//956.35//2025-07-11T14:33:11.407685]
+2025-07-11 14:33:11 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//27.55//66.66//979.67//956.35//2025-07-11T14:33:11.407685]
+2025-07-11 14:33:13 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//23.66//56.72//1003.92//853.06//2025-07-11T14:33:13.021512]
+2025-07-11 14:33:13 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': oeste|[oeste//23.66//56.72//1003.92//853.06//2025-07-11T14:33:13.021512]
+2025-07-11 14:33:13 [pool-1-thread-1] ERROR com.climate.datas.gateway.Gateway - Erro ao processar mensagem de ufersa/pw/climadata/norte: For input string: "994.30-969.47-38.76-79.00"
+2025-07-11 14:33:13 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//23.66//56.72//1003.92//853.06//2025-07-11T14:33:13.021512]
+2025-07-11 14:33:14 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//10.4//78.14//1012.36//486.68//2025-07-11T14:33:14.299375300]
+2025-07-11 14:33:14 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': sul|[sul//10.4//78.14//1012.36//486.68//2025-07-11T14:33:14.299375300]
+2025-07-11 14:33:14 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//10.4//78.14//1012.36//486.68//2025-07-11T14:33:14.299375300]
+2025-07-11 14:33:15 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//28.51//53.76//1009.6//681.4//2025-07-11T14:33:15.462796100]
+2025-07-11 14:33:15 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': leste|[leste//28.51//53.76//1009.6//681.4//2025-07-11T14:33:15.462796100]
+2025-07-11 14:33:15 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//28.51//53.76//1009.6//681.4//2025-07-11T14:33:15.462796100]
+2025-07-11 14:33:16 [pool-1-thread-2] ERROR com.climate.datas.gateway.Gateway - Erro ao processar mensagem de ufersa/pw/climadata/norte: For input string: "962.45-918.78-39.35-73.05"
+2025-07-11 14:33:18 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//25.12//56.5//985.18//874.07//2025-07-11T14:33:18.076034300]
+2025-07-11 14:33:18 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': oeste|[oeste//25.12//56.5//985.18//874.07//2025-07-11T14:33:18.076034300]
+2025-07-11 14:33:18 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//25.12//56.5//985.18//874.07//2025-07-11T14:33:18.076034300]
+2025-07-11 14:33:19 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//18.75//67.69//1029.65//525.67//2025-07-11T14:33:19.400424300]
+2025-07-11 14:33:19 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': sul|[sul//18.75//67.69//1029.65//525.67//2025-07-11T14:33:19.400424300]
+2025-07-11 14:33:19 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//18.75//67.69//1029.65//525.67//2025-07-11T14:33:19.400424300]
+2025-07-11 14:33:20 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//27.92//69.83//982.49//935.75//2025-07-11T14:33:20.244237200]
+2025-07-11 14:33:20 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': leste|[leste//27.92//69.83//982.49//935.75//2025-07-11T14:33:20.244237200]
+2025-07-11 14:33:20 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//27.92//69.83//982.49//935.75//2025-07-11T14:33:20.244237200]
+2025-07-11 14:33:21 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//28.71//63.09//1005.6//797.33//2025-07-11T14:33:21.270085]
+2025-07-11 14:33:21 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': oeste|[oeste//28.71//63.09//1005.6//797.33//2025-07-11T14:33:21.270085]
+2025-07-11 14:33:21 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//28.71//63.09//1005.6//797.33//2025-07-11T14:33:21.270085]
+2025-07-11 14:33:21 [pool-1-thread-2] ERROR com.climate.datas.gateway.Gateway - Erro ao processar mensagem de ufersa/pw/climadata/norte: For input string: "953.36-982.62-39.98-70.79"
+2025-07-11 14:33:21 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//12.46//76.41//1047.46//506.58//2025-07-11T14:33:21.676031600]
+2025-07-11 14:33:21 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_exchange': sul|[sul//12.46//76.41//1047.46//506.58//2025-07-11T14:33:21.676031600]
+2025-07-11 14:33:21 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//12.46//76.41//1047.46//506.58//2025-07-11T14:33:21.676031600]

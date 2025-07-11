@@ -30,33 +30,39 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
     private static final Logger logger = LoggerFactory.getLogger(Gateway.class);
 
     // Conexões MQTT
-    private static final String MQTT_BROKER = "tcp://mqtt.eclipseprojects.io:1883";
-    private static final String DRONE_TOPIC_FILTER = "ufersa/pw/climadata/#"; // Filtro para todos os drones
+    private static final String MQTT_BROKER = "tcp://broker.emqx.io:1883";
+    private static final String DRONE_TOPIC_FILTER = "ufersa/pw/climadata/#";
     private static final String GATEWAY_PUBLISH_TOPIC = "ufersa/pw/gateway/processed_data";
     private MqttClient mqttClient;
 
     // Conexões RabbitMQ
     private static final String RABBITMQ_HOST = "localhost";
-    private static final String RABBITMQ_QUEUE_NAME = "climate_dashboard_queue";
+    private static final String RABBITMQ_EXCHANGE_NAME = "climate_data_exchange";
     private Connection rabbitConnection;
     private Channel rabbitChannel;
 
     private final DataBase inMemoryDatabase = new DataBase();
     private final ExecutorService processingExecutor = Executors.newCachedThreadPool();
 
-    public Gateway() throws MqttException, IOException, TimeoutException {
-        // Configuração do cliente MQTT
-        String clientId = "gateway-" + System.currentTimeMillis();
-        mqttClient = new MqttClient(MQTT_BROKER, clientId, new MemoryPersistence());
-        mqttClient.setCallback(this);
-
+    public void start() throws IOException, TimeoutException, MqttException {
         // Configuração do RabbitMQ
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RABBITMQ_HOST);
         this.rabbitConnection = factory.newConnection();
         this.rabbitChannel = rabbitConnection.createChannel();
-        // Declara uma fila durável
-        rabbitChannel.queueDeclare(RABBITMQ_QUEUE_NAME, true, false, false, null);
+        // MUDANÇA: Declara uma exchange do tipo fanout. Ela irá distribuir as msgs para todos os consumidores.
+        rabbitChannel.exchangeDeclare(RABBITMQ_EXCHANGE_NAME, "fanout");
+        logger.info("Gateway conectado ao RabbitMQ e exchange '{}' declarada.", RABBITMQ_EXCHANGE_NAME);
+
+        // Configuração do cliente MQTT
+        String clientId = "gateway-" + System.currentTimeMillis();
+        mqttClient = new MqttClient(MQTT_BROKER, clientId, new MemoryPersistence());
+        mqttClient.setCallback(this);
+        logger.info("Gateway conectando ao broker MQTT...");
+        mqttClient.connect();
+        logger.info("Gateway conectado.");
+        mqttClient.subscribe(DRONE_TOPIC_FILTER, 1);
+        logger.info("Gateway inscrito no tópico de drones: {}", DRONE_TOPIC_FILTER);
     }
 
     @Override
@@ -68,6 +74,7 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
             // Assina o tópico dos drones
             mqttClient.subscribe(DRONE_TOPIC_FILTER, 1);
             logger.info("Gateway inscrito no tópico: {}", DRONE_TOPIC_FILTER);
+            System.out.println("Gateway está inscrito no tópico: " + DRONE_TOPIC_FILTER);
         } catch (MqttException e) {
             logger.error("Erro ao iniciar o Gateway: {}", e.getMessage());
         }
@@ -76,35 +83,28 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
     @Override
     public void connectionLost(Throwable cause) {
         logger.warn("Conexão com o broker MQTT perdida! Causa: {}", cause.getMessage());
-        // Aqui poderia ser implementada a lógica de reconexão
+        // Aqui irá ser implementada a lógica de reconexão, se necessário.
     }
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
-        // Submete o processamento da mensagem para outro thread para não bloquear o callback
         processingExecutor.submit(() -> {
             String payload = new String(message.getPayload(), StandardCharsets.UTF_8);
             logger.debug("Mensagem recebida do tópico {}: {}", topic, payload);
-
+            System.out.println("\nMensagem recebida do tópico " + topic + ": " + payload);
             try {
-                // Extrai a região do tópico
                 String region = topic.substring(topic.lastIndexOf('/') + 1);
-
-                // Parseia a mensagem e converte para o formato padrão
                 ClimateData data = parseDroneData(region, payload);
                 if (data == null) {
-                    logger.warn("Não foi possível parsear os dados da região {}: {}", region, payload);
+                    logger.warn("Não foi possível parsear dados da região {}: {}", region, payload);
                     return;
                 }
 
-                // 1. Armazena na base de dados em memória
                 inMemoryDatabase.saveData(data.region(), data.toString());
                 logger.info("Gateway armazenou dados de {}: {}", region, data);
 
-                // 2. Publica no RabbitMQ para o dashboard/histórico [cite: 1170]
                 publishToRabbitMQ(data);
 
-                // 3. Publica no MQTT para consumidores em tempo real [cite: 1178]
                 publishToMqtt(data);
 
             } catch (Exception e) {
@@ -139,9 +139,11 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
 
     private void publishToRabbitMQ(ClimateData data) {
         try {
-            String message = data.toString(); // Usando o formato padrão: [temperatura | umidade | pressao | radiacao]
-            rabbitChannel.basicPublish("", RABBITMQ_QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
-            logger.info("Gateway publicou para RabbitMQ: {}", message);
+            // Mensagem precisa da região para o dashboard poder agrupar
+            String message = data.region() + "|" + data.toString();
+            // MUDANÇA: Publica na exchange, não em uma fila. A routingKey é ignorada em fanout.
+            rabbitChannel.basicPublish(RABBITMQ_EXCHANGE_NAME, "", null, message.getBytes(StandardCharsets.UTF_8));
+            logger.info("Gateway publicou para Exchange RabbitMQ '{}': {}", RABBITMQ_EXCHANGE_NAME, message);
         } catch (IOException e) {
             logger.error("Falha ao publicar no RabbitMQ: {}", e.getMessage());
         }
@@ -149,12 +151,12 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
 
     private void publishToMqtt(ClimateData data) {
         try {
-            String message = data.region() + "|" + data.toString();
+            // Para o MQTT em tempo real, a região já está no tópico, então enviamos apenas os dados.
+            String message = data.toString();
             MqttMessage mqttMessage = new MqttMessage(message.getBytes(StandardCharsets.UTF_8));
             mqttMessage.setQos(1);
-            // Publica em um tópico específico para dados processados
             mqttClient.publish(GATEWAY_PUBLISH_TOPIC + "/" + data.region(), mqttMessage);
-            logger.info("Gateway publicou para MQTT em tempo real: {}", message);
+            logger.info("Gateway publicou para Tópico MQTT '{}': {}", GATEWAY_PUBLISH_TOPIC + "/" + data.region(), message);
         } catch (MqttException e) {
             logger.error("Falha ao publicar no MQTT: {}", e.getMessage());
         }
@@ -163,13 +165,13 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
     @Override
     public void close() throws Exception {
         processingExecutor.shutdownNow();
-        if (mqttClient.isConnected()) {
+        if (mqttClient != null && mqttClient.isConnected()) {
             mqttClient.disconnect();
         }
-        if (rabbitChannel.isOpen()) {
+        if (rabbitChannel != null && rabbitChannel.isOpen()) {
             rabbitChannel.close();
         }
-        if (rabbitConnection.isOpen()) {
+        if (rabbitConnection != null && rabbitConnection.isOpen()) {
             rabbitConnection.close();
         }
         logger.info("Gateway finalizado.");
@@ -178,5 +180,30 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
     @Override
     public void deliveryComplete(IMqttDeliveryToken token) {
         // Método necessário, mas não utilizado!
+    }
+
+    public static void main(String[] args) {
+        try {
+            Gateway gateway = new Gateway();
+
+            // Garante que os recursos sejam fechados ao encerrar a aplicação
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                try {
+                    gateway.close();
+                } catch (Exception e) {
+                    logger.error("Erro ao fechar o gateway.", e);
+                }
+            }));
+
+            // Inicia o gateway
+            gateway.start();
+            logger.info("Gateway está em execução. Pressione Ctrl+C para encerrar.");
+
+            // Mantém a aplicação rodando
+            Thread.currentThread().join();
+
+        } catch (IOException | InterruptedException | TimeoutException | MqttException e) {
+            logger.error("Falha fatal ao iniciar o Gateway: {}", e.getMessage(), e);
+        }
     }
 }
