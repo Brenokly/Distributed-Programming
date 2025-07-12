@@ -13,32 +13,62 @@ public class DroneSul {
     private static final Logger logger = LoggerFactory.getLogger(DroneSul.class);
 
     public static void main(String[] args) {
+        System.out.println("--- Lançador do Drone SUL ---");
+        Scanner scanner = new Scanner(System.in);
+        Drone drone = null;
+
         try {
-            Drone drone = new Drone("SUL");
-
-            // Adiciona um Shutdown Hook para fechar o drone de forma limpa com Ctrl+C
-            Runtime.getRuntime().addShutdownHook(new Thread(drone::close));
-
+            // Cria e conecta o Drone apenas UMA VEZ
+            drone = new Drone("SUL");
+            Runtime.getRuntime().addShutdownHook(new Thread(drone::close)); // Para fechar com Ctrl+C
             drone.connect();
 
-            // Início interativo da coleta, conforme especificação
-            System.out.println("Drone da região Sul está pronto.");
-            System.out.println("Pressione Enter para iniciar a coleta e envio de dados...");
-            new Scanner(System.in).nextLine();
+            int option = -1;
+            boolean isCollecting = false;
 
-            drone.startCollecting();
+            while (option != 0) {
+                System.out.println("\n--- MENU DE CONTROLE DO DRONE SUL ---");
+                System.out.println("1 - Iniciar Coleta de Dados");
+                System.out.println("2 - Simular Falha de Conexão");
+                System.out.println("0 - Encerrar Drone");
+                System.out.print("Opção: ");
 
-            // Mantém a thread principal viva enquanto o scheduler trabalha
-            // O programa será encerrado com Ctrl+C
-            Thread.currentThread().join();
+                option = Integer.parseInt(scanner.nextLine());
 
-        } catch (MqttException e) {
-            // Agora o logger funciona aqui
-            logger.error("Falha fatal na conexão MQTT do drone Sul: {}", e.getMessage(), e);
-        } catch (InterruptedException e) {
-            // E aqui também
-            logger.info("Thread principal do drone Sul interrompida. Encerrando...");
-            Thread.currentThread().interrupt();
+                switch (option) {
+                    case 1:
+                        if (!isCollecting) {
+                            drone.startCollecting();
+                            isCollecting = true;
+                        } else {
+                            System.out.println("A coleta já está em andamento.");
+                        }
+                        break;
+                    case 2:
+                        if (isCollecting) {
+                            drone.simulateMqttFailure();
+                            isCollecting = false;
+                            System.out.println("FALHA SIMULADA. O drone está desconectado e não irá reconectar (AutomaticReconnect=false).");
+                        } else {
+                            System.out.println("A coleta não está ativa para simular uma falha.");
+                        }
+                        break;
+                    case 0:
+                        System.out.println("Encerrando...");
+                        break;
+                    default:
+                        System.out.println("Opção inválida.");
+                        break;
+                }
+            }
+
+        } catch (NumberFormatException | MqttException e) {
+            logger.error("Falha fatal na aplicação do Drone: {}", e.getMessage(), e);
+        } finally {
+            if (drone != null) {
+                drone.close();
+            }
+            scanner.close();
         }
     }
 }

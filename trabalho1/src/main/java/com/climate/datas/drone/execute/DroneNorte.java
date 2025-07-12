@@ -33,10 +33,8 @@ public class DroneNorte {
             Thread.currentThread().join();
 
         } catch (MqttException e) {
-            // Agora o logger funciona aqui
             logger.error("Falha fatal na conexão MQTT do drone Norte: {}", e.getMessage(), e);
         } catch (InterruptedException e) {
-            // E aqui também
             logger.info("Thread principal do drone Norte interrompida. Encerrando...");
             Thread.currentThread().interrupt();
         }

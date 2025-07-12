@@ -7,12 +7,11 @@ import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeoutException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
@@ -25,7 +24,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
-public class Gateway implements Runnable, MqttCallback, AutoCloseable {
+public class Gateway implements MqttCallback, AutoCloseable {
 
     private static final Logger logger = LoggerFactory.getLogger(Gateway.class);
 
@@ -37,47 +36,43 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
 
     // Conexões RabbitMQ
     private static final String RABBITMQ_HOST = "localhost";
-    private static final String RABBITMQ_EXCHANGE_NAME = "climate_data_exchange";
+    private static final String RABBITMQ_EXCHANGE_NAME = "climate_data_topic_exchange";
     private Connection rabbitConnection;
     private Channel rabbitChannel;
 
     private final DataBase inMemoryDatabase = new DataBase();
     private final ExecutorService processingExecutor = Executors.newCachedThreadPool();
 
+    public Gateway() {
+    }
+
+    /**
+     * Inicia as conexões com os brokers MQTT e RabbitMQ.
+     */
     public void start() throws IOException, TimeoutException, MqttException {
         // Configuração do RabbitMQ
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RABBITMQ_HOST);
         this.rabbitConnection = factory.newConnection();
         this.rabbitChannel = rabbitConnection.createChannel();
-        // MUDANÇA: Declara uma exchange do tipo fanout. Ela irá distribuir as msgs para todos os consumidores.
-        rabbitChannel.exchangeDeclare(RABBITMQ_EXCHANGE_NAME, "fanout");
-        logger.info("Gateway conectado ao RabbitMQ e exchange '{}' declarada.", RABBITMQ_EXCHANGE_NAME);
+
+        rabbitChannel.exchangeDeclare(RABBITMQ_EXCHANGE_NAME, "topic");
+        logger.info("Gateway conectado ao RabbitMQ e exchange de TÓPICO '{}' declarada.", RABBITMQ_EXCHANGE_NAME);
 
         // Configuração do cliente MQTT
         String clientId = "gateway-" + System.currentTimeMillis();
         mqttClient = new MqttClient(MQTT_BROKER, clientId, new MemoryPersistence());
+
+        MqttConnectOptions connOpts = new MqttConnectOptions();
+        connOpts.setCleanSession(false);
+        connOpts.setAutomaticReconnect(true);
+
         mqttClient.setCallback(this);
         logger.info("Gateway conectando ao broker MQTT...");
-        mqttClient.connect();
+        mqttClient.connect(connOpts);
         logger.info("Gateway conectado.");
         mqttClient.subscribe(DRONE_TOPIC_FILTER, 1);
         logger.info("Gateway inscrito no tópico de drones: {}", DRONE_TOPIC_FILTER);
-    }
-
-    @Override
-    public void run() {
-        try {
-            logger.info("Gateway conectando ao broker MQTT...");
-            mqttClient.connect();
-            logger.info("Gateway conectado.");
-            // Assina o tópico dos drones
-            mqttClient.subscribe(DRONE_TOPIC_FILTER, 1);
-            logger.info("Gateway inscrito no tópico: {}", DRONE_TOPIC_FILTER);
-            System.out.println("Gateway está inscrito no tópico: " + DRONE_TOPIC_FILTER);
-        } catch (MqttException e) {
-            logger.error("Erro ao iniciar o Gateway: {}", e.getMessage());
-        }
     }
 
     @Override
@@ -90,68 +85,79 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
     public void messageArrived(String topic, MqttMessage message) {
         processingExecutor.submit(() -> {
             String payload = new String(message.getPayload(), StandardCharsets.UTF_8);
-            logger.debug("Mensagem recebida do tópico {}: {}", topic, payload);
-            System.out.println("\nMensagem recebida do tópico " + topic + ": " + payload);
             try {
                 String region = topic.substring(topic.lastIndexOf('/') + 1);
                 ClimateData data = parseDroneData(region, payload);
                 if (data == null) {
-                    logger.warn("Não foi possível parsear dados da região {}: {}", region, payload);
                     return;
                 }
+
+                System.out.println("Dados recebidos do drone " + region + ": " + data);
 
                 inMemoryDatabase.saveData(data.region(), data.toString());
                 logger.info("Gateway armazenou dados de {}: {}", region, data);
 
-                publishToRabbitMQ(data);
-
-                publishToMqtt(data);
+                publishToRabbitMQ(data); // Publica para o Dashboard
+                publishToMqtt(data);     // Publica para o RealTime
 
             } catch (Exception e) {
                 logger.error("Erro ao processar mensagem de {}: {}", topic, e.getMessage());
+                System.out.println("Erro ao processar mensagem de " + topic + ": " + e.getMessage());
             }
         });
     }
 
     private ClimateData parseDroneData(String region, String payload) {
-        // Regex para extrair 4 números de uma string, ignorando os caracteres especiais
-        Pattern pattern = Pattern.compile("[\\d\\.\\-]+");
-        Matcher matcher = pattern.matcher(payload);
+        String[] stringValues;
 
-        double[] values = new double[4];
-        int i = 0;
-        while (matcher.find() && i < 4) {
-            values[i++] = Double.parseDouble(matcher.group());
+        switch (region.toUpperCase()) {
+            case "NORTE" -> // Divide a string usando o hífen como delimitador
+                stringValues = payload.split("-");
+            case "SUL" ->  // Remove os parênteses e depois divide pelo ponto e vírgula
+                stringValues = payload.replace("(", "").replace(")", "").split(";");
+            case "LESTE" -> // Remove as chaves e depois divide pela vírgula
+                stringValues = payload.replace("{", "").replace("}", "").split(",");
+            case "OESTE" -> // Divide a string usando a cerquilha como delimitador
+                stringValues = payload.split("#");
+            default -> {
+                logger.warn("Região desconhecida para parsing: {}", region);
+                return null;
+            }
         }
 
-        if (i != 4) {
-            return null; // Não encontrou 4 valores
+        if (stringValues.length != 4) {
+            logger.warn("Payload da região {} não contém 4 valores: {}", region, payload);
+            return null;
         }
-        return new ClimateData(
-                region,
-                values[2], // temperatura
-                values[3], // umidade
-                values[0], // pressao
-                values[1], // radiacao
-                LocalDateTime.now()
-        );
+
+        try {
+            double pressao = Double.parseDouble(stringValues[0]);
+            double radiacao = Double.parseDouble(stringValues[1]);
+            double temperatura = Double.parseDouble(stringValues[2]);
+            double umidade = Double.parseDouble(stringValues[3]);
+
+            return new ClimateData(region, temperatura, umidade, pressao, radiacao, LocalDateTime.now());
+
+        } catch (NumberFormatException e) {
+            logger.error("Erro de formato de número ao parsear payload da região {}: {}", region, payload, e);
+            return null;
+        }
     }
 
-    private void publishToRabbitMQ(ClimateData data) {
+    private synchronized void publishToRabbitMQ(ClimateData data) {
         try {
-            // Mensagem precisa da região para o dashboard poder agrupar
-            String message = data.region() + "|" + data.toString();
-            // MUDANÇA: Publica na exchange, não em uma fila. A routingKey é ignorada em fanout.
-            rabbitChannel.basicPublish(RABBITMQ_EXCHANGE_NAME, "", null, message.getBytes(StandardCharsets.UTF_8));
-            logger.info("Gateway publicou para Exchange RabbitMQ '{}': {}", RABBITMQ_EXCHANGE_NAME, message);
+            String message = data.toString();
+            String routingKey = "dados.climaticos." + data.region().toLowerCase();
+
+            rabbitChannel.basicPublish(RABBITMQ_EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
+            logger.info("Gateway publicou para Exchange RabbitMQ '{}' com chave '{}'", RABBITMQ_EXCHANGE_NAME, routingKey);
         } catch (IOException e) {
-            logger.error("Falha ao publicar no RabbitMQ: {}", e.getMessage());
+            logger.error("Falha CRÍTICA ao publicar no RabbitMQ: {}", e.getMessage());
         }
     }
 
     private void publishToMqtt(ClimateData data) {
         try {
-            // Para o MQTT em tempo real, a região já está no tópico, então enviamos apenas os dados.
             String message = data.toString();
             MqttMessage mqttMessage = new MqttMessage(message.getBytes(StandardCharsets.UTF_8));
             mqttMessage.setQos(1);
@@ -186,7 +192,6 @@ public class Gateway implements Runnable, MqttCallback, AutoCloseable {
         try {
             Gateway gateway = new Gateway();
 
-            // Garante que os recursos sejam fechados ao encerrar a aplicação
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 try {
                     gateway.close();

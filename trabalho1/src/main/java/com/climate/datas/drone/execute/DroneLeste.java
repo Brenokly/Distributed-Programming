@@ -17,6 +17,8 @@ public class DroneLeste {
             Drone drone = new Drone("LESTE");
 
             // Adiciona um Shutdown Hook para fechar o drone de forma limpa com Ctrl+C
+            // Um Shutdown Hook é uma thread que é executada quando o programa é encerrado,
+            // permitindo que você libere recursos ou faça limpeza antes de sair.
             Runtime.getRuntime().addShutdownHook(new Thread(drone::close));
 
             drone.connect();
@@ -33,12 +35,10 @@ public class DroneLeste {
             Thread.currentThread().join();
 
         } catch (MqttException e) {
-            // Agora o logger funciona aqui
             logger.error("Falha fatal na conexão MQTT do drone Leste: {}", e.getMessage(), e);
         } catch (InterruptedException e) {
-            // E aqui também
-            logger.info("Thread principal do drone Leste interrompida. Encerrando...");
-            Thread.currentThread().interrupt();
         }
+        logger.info("Thread principal do drone Leste interrompida. Encerrando...");
+        Thread.currentThread().interrupt();
     }
 }

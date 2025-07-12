@@ -1,5 +1,6 @@
 package com.climate.datas.user.execute;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import org.slf4j.Logger;
@@ -19,33 +20,40 @@ public class DashboardUserLauncher {
         System.out.println("Escolha os dados que deseja receber:");
         System.out.println("1: Todos os dados de todas as regiões");
         System.out.println("2: Apenas dados da região NORTE");
-        // ... (adicione outras opções se desejar)
+        System.out.println("3: Apenas dados da região SUL");
+        System.out.println("4: Apenas dados da região LESTE");
+        System.out.println("5: Apenas dados da região OESTE");
         System.out.print("Opção de subscrição: ");
         int subscriptionChoice = Integer.parseInt(scanner.nextLine());
 
         String bindingKey;
-        if (subscriptionChoice == 1) {
-            bindingKey = "dados.climaticos.#";
-        } else if (subscriptionChoice == 2) {
-            bindingKey = "dados.climaticos.norte";
-        } else {
-            System.out.println("Opção inválida. Assinando para todos os dados por padrão.");
-            bindingKey = "dados.climaticos.#";
+        switch (subscriptionChoice) {
+            case 1 ->
+                bindingKey = "dados.climaticos.#";
+            case 2 ->
+                bindingKey = "dados.climaticos.norte";
+            case 3 ->
+                bindingKey = "dados.climaticos.sul";
+            case 4 ->
+                bindingKey = "dados.climaticos.leste";
+            case 5 ->
+                bindingKey = "dados.climaticos.oeste";
+            default -> {
+                System.out.println("Opção inválida. Assinando para todos os dados por padrão.");
+                bindingKey = "dados.climaticos.#";
+            }
         }
 
-        try {
-            DashboardUser dashboardUser = new DashboardUser();
-
+        try (DashboardUser dashboardUser = new DashboardUser();) {
             // Inicia o consumidor em uma nova thread para não bloquear o menu
             new Thread(() -> {
                 try {
                     dashboardUser.startListening(bindingKey);
-                } catch (Exception e) {
+                } catch (IOException e) {
                     logger.error("Erro no thread consumidor do RabbitMQ.", e);
                 }
             }).start();
 
-            // Loop do menu interativo principal
             int userAction = -1;
             while (userAction != 0) {
                 System.out.println("\n--- MENU DE AÇÕES ---");

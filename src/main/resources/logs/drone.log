@@ -73,3 +73,697 @@
 2025-07-11 14:33:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1005.60#797.33#28.71#63.09
 2025-07-11 14:33:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 953.36-982.62-39.98-70.79
 2025-07-11 14:33:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1047.46;506.58;12.46;76.41)
+2025-07-11 20:34:19 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:19 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:20 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 20:34:20 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 20:34:20 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:21 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 20:34:21 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:22 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 20:34:43 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:44 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 20:34:45 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:46 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 20:34:46 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:47 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 20:34:48 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 20:34:49 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 20:35:28 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 20:35:29 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 20:35:29 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 20:35:30 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 20:35:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {971.47,613.34,32.25,55.58}
+2025-07-11 20:35:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1022.78,695.61,26.31,62.58}
+2025-07-11 20:35:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 968.40-968.21-33.54-85.43
+2025-07-11 20:35:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1006.34;510.74;12.66;65.40)
+2025-07-11 20:35:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 989.63#713.80#21.63#69.13
+2025-07-11 20:35:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1026.71,683.49,26.05,64.66}
+2025-07-11 20:35:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 982.29-1000.25-30.13-78.77
+2025-07-11 20:35:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1024.63;686.45;18.31;76.29)
+2025-07-11 20:35:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 999.16#878.34#29.57#74.65
+2025-07-11 20:35:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 953.83-1131.50-30.99-75.51
+2025-07-11 20:35:40 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1026.88,818.92,33.57,50.83}
+2025-07-11 20:35:40 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1012.12;534.40;12.35;62.37)
+2025-07-11 20:35:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1010.17#873.88#24.36#66.55
+2025-07-11 20:35:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1024.18,699.61,32.08,50.99}
+2025-07-11 20:35:44 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.37-1138.66-35.68-77.76
+2025-07-11 20:35:45 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1008.77;645.55;16.74;67.71)
+2025-07-11 20:35:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 984.53#568.53#21.04#57.50
+2025-07-11 20:35:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1028.18,961.31,32.36,51.32}
+2025-07-11 20:35:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 960.20-1153.61-39.90-70.03
+2025-07-11 20:35:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1008.52;745.35;19.67;75.83)
+2025-07-11 20:35:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {995.86,868.10,27.63,57.61}
+2025-07-11 20:35:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 973.72-808.66-38.11-85.34
+2025-07-11 20:35:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1018.42#897.32#26.07#71.96
+2025-07-11 20:35:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1047.06;528.29;17.82;79.15)
+2025-07-11 20:35:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 991.89-1014.56-31.89-72.95
+2025-07-11 20:35:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1002.57,636.17,34.34,53.16}
+2025-07-11 20:35:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1003.11#736.08#22.17#58.34
+2025-07-11 20:35:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 974.75-1008.10-30.46-78.93
+2025-07-11 20:35:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1044.35;592.91;10.98;76.41)
+2025-07-11 20:35:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {979.10,604.11,27.10,52.33}
+2025-07-11 20:35:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1009.85#576.01#21.19#73.29
+2025-07-11 20:35:57 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1037.01;631.72;11.89;66.40)
+2025-07-11 20:35:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 955.30-1181.00-32.69-75.04
+2025-07-11 20:35:59 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {993.90,928.72,34.31,69.17}
+2025-07-11 20:36:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 993.49#751.78#24.72#73.69
+2025-07-11 20:36:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 953.15-1103.16-39.95-76.91
+2025-07-11 20:36:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1032.94;538.19;10.64;75.45)
+2025-07-11 21:41:41 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:41:41 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 21:41:43 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:41:44 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 21:41:45 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:41:46 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 21:41:47 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:41:47 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 21:42:19 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 21:42:19 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 21:42:20 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 21:42:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1015.35,938.12,28.51,68.59}
+2025-07-11 21:42:21 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 21:42:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 997.97-946.89-39.64-84.40
+2025-07-11 21:42:23 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1010.70;420.13;15.71;62.57)
+2025-07-11 21:42:23 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 991.78#893.64#24.99#61.55
+2025-07-11 21:42:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1002.79,834.25,31.57,53.71}
+2025-07-11 21:42:25 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 982.99-1062.44-37.17-82.70
+2025-07-11 21:42:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1045.39;455.49;19.96;60.05)
+2025-07-11 21:42:27 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 996.78#668.36#27.36#73.63
+2025-07-11 21:42:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {997.40,935.04,27.68,69.03}
+2025-07-11 21:42:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1039.17;665.65;10.78;74.99)
+2025-07-11 21:42:30 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 967.48-1144.79-33.41-81.57
+2025-07-11 21:42:30 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1006.78#722.62#21.17#62.53
+2025-07-11 21:42:43 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:42:43 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 21:42:44 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:42:45 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 21:42:46 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:42:47 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 21:42:48 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:42:48 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 21:43:12 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 21:43:13 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 21:43:14 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 21:43:15 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 21:43:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {993.93,992.64,30.82,67.49}
+2025-07-11 21:43:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 999.85-858.17-36.50-88.67
+2025-07-11 21:43:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 990.61#851.83#28.00#69.64
+2025-07-11 21:43:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1008.21;515.46;13.51;78.38)
+2025-07-11 21:43:19 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1009.36,724.46,33.98,64.34}
+2025-07-11 21:43:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1018.05;708.20;12.62;64.94)
+2025-07-11 21:43:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 971.07-1197.02-36.61-89.74
+2025-07-11 21:43:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1008.83#626.88#22.80#68.68
+2025-07-11 21:43:23 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1017.94,837.07,27.27,54.39}
+2025-07-11 21:43:23 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 992.94-1193.47-37.67-84.85
+2025-07-11 21:43:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1002.96;609.31;13.56;74.21)
+2025-07-11 21:43:25 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1019.40#545.85#29.03#61.43
+2025-07-11 21:43:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1001.64;779.36;13.05;78.11)
+2025-07-11 21:43:27 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {983.20,634.68,31.48,52.88}
+2025-07-11 21:43:27 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 995.70#595.13#22.22#59.59
+2025-07-11 21:43:28 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 978.25-847.70-31.66-84.18
+2025-07-11 21:43:30 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1005.74#775.46#25.07#55.20
+2025-07-11 21:43:30 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1042.19;764.20;17.46;69.38)
+2025-07-11 21:43:32 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 996.12-1018.11-36.46-82.13
+2025-07-11 21:43:32 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {977.81,633.68,34.76,68.41}
+2025-07-11 21:43:32 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1001.42#748.39#20.10#56.55
+2025-07-11 21:43:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1009.59;665.13;18.75;63.91)
+2025-07-11 21:43:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {990.86,920.73,34.96,56.05}
+2025-07-11 21:43:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 986.41-846.52-32.92-80.45
+2025-07-11 21:43:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1006.06#640.40#21.35#64.18
+2025-07-11 21:43:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1022.92;412.54;14.02;65.89)
+2025-07-11 21:43:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 974.80-863.32-36.20-74.14
+2025-07-11 21:43:40 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 996.49#573.23#25.20#61.73
+2025-07-11 21:43:41 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {997.13,722.61,25.86,50.19}
+2025-07-11 21:43:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1027.67;617.36;13.93;63.24)
+2025-07-11 21:43:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.36-991.56-36.63-78.48
+2025-07-11 21:43:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1010.71#861.87#26.69#55.11
+2025-07-11 21:43:45 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1034.00;756.05;13.57;61.52)
+2025-07-11 21:43:45 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1010.70,855.87,34.61,67.99}
+2025-07-11 21:43:46 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 970.88-1129.11-34.16-75.82
+2025-07-11 21:43:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1007.13#898.39#26.30#58.21
+2025-07-11 21:43:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 975.58-915.15-31.66-86.22
+2025-07-11 21:43:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {980.84,834.08,33.20,61.50}
+2025-07-11 21:43:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1007.41;595.07;13.35;71.90)
+2025-07-11 21:43:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1011.01#508.61#24.68#70.49
+2025-07-11 21:43:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 985.20-883.28-34.31-86.10
+2025-07-11 21:43:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1004.79;784.86;17.02;75.71)
+2025-07-11 21:43:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {979.40,950.75,25.18,65.23}
+2025-07-11 21:43:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 993.90-1123.37-37.60-78.24
+2025-07-11 21:43:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 989.49#782.32#23.85#65.47
+2025-07-11 21:43:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1022.71,979.71,26.29,64.35}
+2025-07-11 21:43:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1027.85;684.12;13.81;65.53)
+2025-07-11 21:43:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 976.28-1189.61-32.70-74.77
+2025-07-11 21:43:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 982.17#585.34#26.64#70.40
+2025-07-11 21:44:00 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1028.19,983.18,25.97,67.60}
+2025-07-11 21:44:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 984.20#805.14#27.08#68.33
+2025-07-11 21:44:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1010.70;683.47;19.23;67.54)
+2025-07-11 21:44:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 983.13-1047.14-33.28-89.36
+2025-07-11 21:44:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1009.09,686.49,33.54,66.56}
+2025-07-11 21:44:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 993.90#811.93#27.66#58.89
+2025-07-11 21:44:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1018.19;633.37;10.34;64.07)
+2025-07-11 21:44:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 999.14-816.02-38.54-78.89
+2025-07-11 21:44:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1028.90,741.19,27.82,68.06}
+2025-07-11 21:44:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 992.19#776.92#24.17#69.74
+2025-07-11 21:44:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1032.12;428.01;18.68;69.33)
+2025-07-11 21:44:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1007.03,690.53,25.14,61.52}
+2025-07-11 21:44:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 963.15-948.28-32.55-78.98
+2025-07-11 21:44:11 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1024.24;620.30;18.63;76.55)
+2025-07-11 21:44:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {972.51,674.84,34.88,53.94}
+2025-07-11 21:44:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 991.10#596.22#23.03#60.14
+2025-07-11 21:44:14 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 990.42-993.53-36.33-77.66
+2025-07-11 21:44:15 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1017.63#801.01#26.58#73.92
+2025-07-11 21:44:15 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1014.37,785.05,34.85,63.77}
+2025-07-11 21:44:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1001.70;543.73;14.21;78.66)
+2025-07-11 21:44:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 959.25-853.33-38.16-70.08
+2025-07-11 21:44:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 995.92#845.61#25.51#66.11
+2025-07-11 21:44:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {981.55,935.43,27.67,56.79}
+2025-07-11 21:44:19 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1026.86;721.74;12.94;72.87)
+2025-07-11 21:44:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {987.29,935.02,29.36,50.97}
+2025-07-11 21:44:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1001.38#876.00#20.01#73.18
+2025-07-11 21:44:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 974.26-997.50-34.63-74.21
+2025-07-11 21:44:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1011.43;665.22;19.58;72.99)
+2025-07-11 21:44:25 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {973.75,784.01,33.50,55.64}
+2025-07-11 21:44:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 960.94-1173.81-33.85-83.66
+2025-07-11 21:44:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1002.14;426.09;17.15;78.29)
+2025-07-11 21:44:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 988.26#551.10#23.73#56.32
+2025-07-11 21:44:28 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1019.18#529.65#28.75#73.99
+2025-07-11 21:44:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 995.37-1001.75-35.77-82.74
+2025-07-11 21:44:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1019.33;443.43;13.95;76.84)
+2025-07-11 21:44:30 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {975.50,722.32,34.21,61.59}
+2025-07-11 21:44:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 995.46#663.31#24.31#71.75
+2025-07-11 21:44:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 962.88-871.36-32.73-75.42
+2025-07-11 21:44:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1037.24;581.30;11.03;75.28)
+2025-07-11 21:44:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {987.23,743.68,26.76,63.50}
+2025-07-11 21:44:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1001.91#705.07#21.60#56.46
+2025-07-11 21:44:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 979.11-1165.90-32.69-84.39
+2025-07-11 21:44:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {977.19,894.80,30.19,50.69}
+2025-07-11 21:44:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1036.33;543.00;13.01;74.85)
+2025-07-11 21:44:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1001.76#851.46#28.72#63.21
+2025-07-11 21:44:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 975.03-1149.79-33.35-70.12
+2025-07-11 21:44:41 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 980.69#814.28#26.58#70.25
+2025-07-11 21:44:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {988.73,847.32,34.49,68.41}
+2025-07-11 21:44:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 958.37-923.68-34.38-72.06
+2025-07-11 21:44:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1011.35;505.86;16.46;70.22)
+2025-07-11 21:44:44 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1002.35#723.58#26.39#71.59
+2025-07-11 21:44:46 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 967.06-879.02-36.94-70.98
+2025-07-11 21:44:46 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1027.40,921.72,28.01,60.06}
+2025-07-11 21:44:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1040.91;563.25;14.10;72.98)
+2025-07-11 21:44:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1000.03;798.15;15.25;74.13)
+2025-07-11 21:44:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 991.08#567.77#24.17#60.92
+2025-07-11 21:44:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 977.18-1107.95-32.66-82.70
+2025-07-11 21:44:51 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {980.12,785.32,25.03,50.76}
+2025-07-11 21:44:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 998.74#589.75#21.68#69.59
+2025-07-11 21:44:54 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1009.27;504.92;13.51;66.37)
+2025-07-11 21:44:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 971.98-908.98-35.27-85.06
+2025-07-11 21:44:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1014.69,910.20,33.25,57.67}
+2025-07-11 21:44:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1017.59#869.10#22.05#72.77
+2025-07-11 21:44:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 988.72-904.42-30.57-78.81
+2025-07-11 21:44:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1036.90;689.41;16.70;71.96)
+2025-07-11 21:45:00 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {999.32,629.29,25.12,52.89}
+2025-07-11 21:45:00 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1012.05;663.25;12.47;63.25)
+2025-07-11 21:45:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1013.78#671.55#29.91#71.62
+2025-07-11 21:45:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 962.44-1058.24-36.96-76.68
+2025-07-11 21:45:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {986.90,919.52,28.65,52.60}
+2025-07-11 21:45:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1005.70#820.15#28.96#71.64
+2025-07-11 21:45:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1009.15;552.57;10.51;60.50)
+2025-07-11 21:45:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 958.91-1058.77-33.74-76.83
+2025-07-11 21:45:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1021.70,878.60,26.25,61.43}
+2025-07-11 21:45:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 999.97#527.38#23.84#68.39
+2025-07-11 21:45:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1011.68;561.63;12.80;60.74)
+2025-07-11 21:47:33 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:47:33 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 21:47:36 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:47:37 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 21:47:38 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:47:38 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 21:47:39 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:47:40 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 21:47:57 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 21:47:58 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 21:47:58 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 21:47:59 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1009.00,949.21,29.37,64.15}
+2025-07-11 21:47:59 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 21:48:00 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 986.01-953.01-37.52-88.90
+2025-07-11 21:48:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1041.77;555.73;13.44;79.93)
+2025-07-11 21:48:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 984.38#697.06#21.50#68.91
+2025-07-11 21:48:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1017.63,795.68,32.66,65.49}
+2025-07-11 21:48:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 955.26-1134.39-31.66-79.22
+2025-07-11 21:48:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1013.10;476.01;19.32;76.87)
+2025-07-11 21:48:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 989.98#894.75#27.46#62.30
+2025-07-11 21:48:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 981.21-1158.97-37.38-74.23
+2025-07-11 21:48:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {983.79,995.16,27.63,51.34}
+2025-07-11 21:48:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1000.22;643.39;18.32;65.46)
+2025-07-11 21:48:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1000.70;441.17;13.94;67.47)
+2025-07-11 21:48:11 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1016.29#539.47#29.01#64.97
+2025-07-11 21:48:11 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 996.10-932.26-35.62-88.59
+2025-07-11 21:48:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {975.10,986.77,31.19,57.17}
+2025-07-11 21:48:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1007.14;552.35;17.55;72.04)
+2025-07-11 21:48:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1000.26#875.01#23.18#73.70
+2025-07-11 21:48:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1001.47;626.54;13.07;78.04)
+2025-07-11 21:48:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 963.62-922.38-32.09-82.88
+2025-07-11 21:48:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {984.99,888.27,26.37,54.44}
+2025-07-11 21:48:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1012.28#890.39#24.21#72.40
+2025-07-11 21:55:11 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:55:12 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 21:55:14 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:55:14 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 21:55:15 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:55:16 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 21:55:17 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 21:55:17 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 21:55:45 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 21:55:45 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 21:55:46 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 21:55:48 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 954.45-1161.88-35.45-85.39
+2025-07-11 21:55:48 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 21:55:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {996.86,907.35,28.03,58.21}
+2025-07-11 21:55:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 980.89#524.43#23.25#71.31
+2025-07-11 21:55:51 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 972.86-853.65-34.46-75.41
+2025-07-11 21:55:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1006.27,858.56,33.10,57.74}
+2025-07-11 21:55:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1031.62;704.51;19.80;61.92)
+2025-07-11 21:55:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 992.53#568.42#26.91#55.39
+2025-07-11 21:55:54 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 963.15-1051.38-35.33-84.35
+2025-07-11 21:55:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1015.60,956.89,25.28,67.73}
+2025-07-11 21:55:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1048.67;405.15;11.87;71.18)
+2025-07-11 21:55:57 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 997.78#521.31#21.38#61.63
+2025-07-11 21:55:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1036.74;426.12;12.17;75.85)
+2025-07-11 21:55:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 983.97-1035.76-38.15-76.29
+2025-07-11 21:55:59 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1019.48,721.45,25.64,51.31}
+2025-07-11 21:56:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 982.06-999.29-30.34-70.49
+2025-07-11 21:56:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1014.94#667.31#20.49#68.84
+2025-07-11 21:56:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1004.82;665.00;18.14;68.92)
+2025-07-11 21:56:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1020.38,713.06,33.66,57.32}
+2025-07-11 21:56:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 954.24-943.32-32.04-77.14
+2025-07-11 21:56:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1010.72#754.28#29.58#57.97
+2025-07-11 21:56:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1041.72;562.13;19.06;76.12)
+2025-07-11 21:56:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1025.53,894.89,26.45,65.31}
+2025-07-11 21:56:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 964.09-1196.41-32.07-80.82
+2025-07-11 21:56:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1004.26;500.59;13.91;60.23)
+2025-07-11 21:56:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 980.71#752.83#26.08#64.40
+2025-07-11 21:56:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1014.95,904.66,27.69,59.93}
+2025-07-11 21:56:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 959.68-887.46-30.73-78.16
+2025-07-11 21:56:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 985.24-1114.22-37.89-81.70
+2025-07-11 21:56:14 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1020.35;688.94;11.48;67.16)
+2025-07-11 21:56:14 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {976.65,851.20,28.64,55.15}
+2025-07-11 21:56:14 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 985.19#738.52#23.93#63.39
+2025-07-11 21:56:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 992.87-1003.54-31.34-78.05
+2025-07-11 21:56:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1023.03,797.09,34.22,60.90}
+2025-07-11 21:56:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1043.98;748.19;13.22;71.06)
+2025-07-11 21:56:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1010.35#892.80#24.68#70.06
+2025-07-11 21:56:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 977.27-916.01-32.12-80.81
+2025-07-11 21:56:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 996.17#796.80#22.95#61.08
+2025-07-11 21:56:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1005.85,623.98,25.10,59.00}
+2025-07-11 21:56:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1035.40;577.25;10.15;66.85)
+2025-07-11 21:56:23 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 975.96-1035.48-31.87-81.19
+2025-07-11 21:56:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1015.65#560.20#25.73#59.69
+2025-07-11 21:56:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1024.32;430.83;11.97;66.80)
+2025-07-11 21:56:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {974.39,687.79,34.91,52.18}
+2025-07-11 21:56:27 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 997.70#595.86#25.23#68.30
+2025-07-11 21:56:27 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 965.80-1035.42-35.24-73.95
+2025-07-11 21:56:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1034.13;692.31;16.93;64.76)
+2025-07-11 21:56:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1006.51#682.66#26.68#67.33
+2025-07-11 21:56:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1010.96,763.23,33.96,52.88}
+2025-07-11 21:56:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 972.87-1149.71-34.90-75.83
+2025-07-11 21:56:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1001.23;740.54;18.56;61.78)
+2025-07-11 21:56:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 987.42#541.81#28.69#64.42
+2025-07-11 21:56:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 966.83-1199.84-37.91-72.26
+2025-07-11 21:56:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {983.93,995.07,30.18,62.57}
+2025-07-11 21:56:35 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1016.36;420.42;12.70;75.32)
+2025-07-11 21:56:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1002.58,977.72,25.50,57.50}
+2025-07-11 21:56:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 985.20-824.48-32.80-85.72
+2025-07-11 21:56:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1004.40#784.73#21.00#67.77
+2025-07-11 21:56:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1021.94;475.56;17.60;63.74)
+2025-07-11 21:56:40 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {998.58,725.98,29.68,54.27}
+2025-07-11 21:56:41 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.88-833.79-32.67-87.24
+2025-07-11 21:56:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 995.96#788.40#28.93#66.14
+2025-07-11 21:56:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1025.96;416.09;15.70;65.03)
+2025-07-11 22:03:34 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:03:34 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 22:03:35 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:03:35 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:03:36 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:03:37 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 22:03:38 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:03:38 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 22:04:10 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:04:10 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 22:04:11 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:04:12 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 22:04:13 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:04:13 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:04:14 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:04:15 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 22:04:28 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 22:04:29 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 22:04:29 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 22:04:31 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 22:04:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1018.34,855.19,32.10,68.31}
+2025-07-11 22:04:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1000.78#536.47#27.08#64.48
+2025-07-11 22:04:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1004.60;472.47;14.72;77.22)
+2025-07-11 22:04:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 963.96-865.89-38.65-88.82
+2025-07-11 22:04:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1019.05,951.01,30.16,69.04}
+2025-07-11 22:04:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1030.67;638.79;14.52;61.65)
+2025-07-11 22:04:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {982.33,674.86,29.31,52.46}
+2025-07-11 22:04:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 995.50-949.70-31.15-86.82
+2025-07-11 22:04:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1007.48#743.08#24.16#56.29
+2025-07-11 22:04:40 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1009.29,681.10,28.35,55.52}
+2025-07-11 22:04:40 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1017.61;429.05;10.79;69.56)
+2025-07-11 22:04:41 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 974.11-1034.68-37.38-76.01
+2025-07-11 22:04:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1007.85#774.90#28.75#62.15
+2025-07-11 22:04:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {991.18,777.46,34.87,56.27}
+2025-07-11 22:04:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1047.43;493.74;14.45;67.11)
+2025-07-11 22:04:45 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 988.53-838.30-32.23-80.16
+2025-07-11 22:04:46 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1007.45,990.40,34.10,54.79}
+2025-07-11 22:04:46 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 988.37#609.41#22.07#58.80
+2025-07-11 22:04:48 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1015.04;580.30;14.94;64.00)
+2025-07-11 22:04:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 990.46-1076.15-30.55-77.98
+2025-07-11 22:04:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1009.96#851.77#23.71#64.78
+2025-07-11 22:04:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {993.45,622.67,34.56,51.83}
+2025-07-11 22:04:50 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1026.35;572.50;12.44;60.28)
+2025-07-11 22:04:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1009.63#884.46#27.79#56.17
+2025-07-11 22:04:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1028.75;781.97;12.10;72.48)
+2025-07-11 22:04:54 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 979.98-893.37-35.40-73.66
+2025-07-11 22:04:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {996.84,717.26,25.58,66.33}
+2025-07-11 22:04:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1006.47#564.67#23.33#62.85
+2025-07-11 22:04:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 973.42-1045.78-30.95-78.05
+2025-07-11 22:04:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1015.69;772.57;19.74;64.95)
+2025-07-11 22:05:00 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 996.92#854.86#28.18#56.94
+2025-07-11 22:05:00 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1010.23,724.49,30.48,57.73}
+2025-07-11 22:05:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1015.60;467.12;19.98;67.28)
+2025-07-11 22:05:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 967.22-1079.22-32.44-82.86
+2025-07-11 22:05:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1005.50#723.17#21.94#63.87
+2025-07-11 22:05:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 963.68-1062.63-39.72-79.10
+2025-07-11 22:05:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {990.33,867.49,31.53,66.28}
+2025-07-11 22:05:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1037.82;672.70;11.57;75.44)
+2025-07-11 22:05:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1003.63,744.52,34.89,67.18}
+2025-07-11 22:05:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1017.63;688.69;15.77;73.57)
+2025-07-11 22:05:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1005.97#788.31#26.41#69.15
+2025-07-11 22:05:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 959.09-805.88-31.55-87.41
+2025-07-11 22:05:11 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1013.54,678.83,26.67,54.73}
+2025-07-11 22:05:11 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1033.39;418.63;14.35;69.91)
+2025-07-11 22:05:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1018.06#594.75#28.58#72.26
+2025-07-11 22:05:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 961.38-849.36-34.11-80.02
+2025-07-11 22:05:14 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1025.84;671.58;16.85;68.63)
+2025-07-11 22:05:15 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 950.11-1000.82-38.36-73.80
+2025-07-11 22:05:15 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1009.91,726.55,30.49,54.48}
+2025-07-11 22:05:15 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 983.36#856.55#25.12#65.35
+2025-07-11 22:05:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 959.19-806.21-31.80-86.36
+2025-07-11 22:05:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1000.53,797.94,34.34,69.95}
+2025-07-11 22:05:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1038.79;507.28;15.72;72.49)
+2025-07-11 22:05:19 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 976.56-1119.84-36.37-83.50
+2025-07-11 22:05:19 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 990.61#745.72#28.89#71.97
+2025-07-11 22:05:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1018.99;749.73;19.68;67.41)
+2025-07-11 22:05:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {993.77,849.50,33.86,59.52}
+2025-07-11 22:12:25 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:12:25 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:12:26 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:12:26 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 22:12:26 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 22:12:26 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:12:28 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:12:28 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 22:12:45 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 22:12:46 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 22:12:47 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 22:12:47 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 22:12:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1019.59,914.13,29.12,57.33}
+2025-07-11 22:12:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 994.96-1043.52-33.35-73.97
+2025-07-11 22:12:51 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 987.26#831.84#22.29#59.57
+2025-07-11 22:12:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 957.84-843.51-37.22-81.08
+2025-07-11 22:12:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1049.16;517.91;19.48;62.33)
+2025-07-11 22:12:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1004.20,914.14,26.52,63.02}
+2025-07-11 22:12:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1018.04#516.48#28.14#66.12
+2025-07-11 22:12:54 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1033.05;664.44;18.24;78.20)
+2025-07-11 22:12:54 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 952.08-1007.14-35.64-78.92
+2025-07-11 22:12:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1024.83,913.24,28.43,59.01}
+2025-07-11 22:12:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 981.11#602.75#22.69#64.18
+2025-07-11 22:12:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 979.77-967.66-31.24-76.48
+2025-07-11 22:12:58 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1013.03;421.82;10.32;77.12)
+2025-07-11 22:12:59 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {973.88,681.54,27.61,57.62}
+2025-07-11 22:12:59 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1011.04#758.24#25.62#70.24
+2025-07-11 22:13:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1036.71;713.24;18.22;76.46)
+2025-07-11 22:13:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 990.68-906.93-32.61-72.89
+2025-07-11 22:13:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1014.29,936.10,30.16,52.11}
+2025-07-11 22:13:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 997.31#678.68#20.70#62.73
+2025-07-11 22:13:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1040.70;627.61;18.50;71.86)
+2025-07-11 22:13:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 958.20-1014.78-35.59-79.56
+2025-07-11 22:33:46 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:33:46 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:33:46 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 22:33:47 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:33:48 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:33:48 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 22:33:49 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:33:49 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 22:33:59 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 22:33:59 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 22:34:01 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 22:34:01 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 22:34:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 951.44-861.80-33.77-77.86
+2025-07-11 22:34:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1015.87,725.50,34.23,69.45}
+2025-07-11 22:34:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1018.68#501.81#20.06#62.92
+2025-07-11 22:34:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1039.74;408.22;12.23;79.13)
+2025-07-11 22:34:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 956.90-1199.16-37.90-72.78
+2025-07-11 22:34:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {974.32,840.83,32.20,54.70}
+2025-07-11 22:34:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 984.52#684.36#23.78#60.18
+2025-07-11 22:34:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1027.82,637.81,29.50,69.54}
+2025-07-11 22:34:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 983.86-877.42-30.01-89.80
+2025-07-11 22:34:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1038.31;714.34;12.58;78.39)
+2025-07-11 22:34:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {991.65,693.76,31.01,57.72}
+2025-07-11 22:34:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 981.68#653.66#25.49#58.38
+2025-07-11 22:34:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 955.31-1027.91-39.28-78.53
+2025-07-11 22:43:45 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:43:46 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 22:45:38 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:45:39 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:45:50 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 22:45:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 995.86-892.57-32.89-82.77
+2025-07-11 22:46:00 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 986.53-950.96-35.98-86.66
+2025-07-11 22:46:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 981.97-1091.49-33.47-77.84
+2025-07-11 22:46:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 978.30-855.17-31.86-80.84
+2025-07-11 22:49:20 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:49:20 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:49:23 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:49:23 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:49:30 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 22:49:35 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 982.68-883.84-37.79-84.53
+2025-07-11 22:49:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 974.47-1083.11-31.39-85.74
+2025-07-11 22:49:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 970.70-1136.70-33.55-86.02
+2025-07-11 22:49:48 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 985.13-900.23-34.56-75.42
+2025-07-11 22:50:20 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:50:21 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:50:24 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:50:24 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:50:33 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 22:50:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 962.65-988.10-33.45-70.58
+2025-07-11 22:50:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 950.67-951.32-37.92-86.15
+2025-07-11 22:50:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 989.93-979.26-34.80-79.02
+2025-07-11 22:50:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 979.03-1006.57-37.76-75.20
+2025-07-11 22:50:51 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 958.64-976.27-30.74-79.12
+2025-07-11 22:50:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 994.55-1109.92-30.61-82.70
+2025-07-11 22:57:19 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 22:57:19 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 22:57:34 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 22:57:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 982.54-1123.14-35.33-84.69
+2025-07-11 22:57:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 977.92-937.62-34.97-81.71
+2025-07-11 22:57:44 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 981.28-1196.37-30.57-88.17
+2025-07-11 22:57:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 969.31-1093.46-39.73-74.24
+2025-07-11 22:57:53 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 983.99-898.70-36.03-82.36
+2025-07-11 22:57:55 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 963.86-1171.34-32.74-81.34
+2025-07-11 22:57:59 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 959.31-1052.18-31.31-72.44
+2025-07-11 22:58:04 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 996.04-895.15-35.48-70.20
+2025-07-11 22:58:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 982.71-1153.70-37.86-75.22
+2025-07-11 23:00:55 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:00:55 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 23:00:56 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:00:57 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:00:59 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:00:59 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 23:01:00 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:01:01 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 23:01:07 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 23:01:08 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 23:01:09 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 23:01:10 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 23:01:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 955.63-1032.46-30.04-72.36
+2025-07-11 23:01:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1049.41;624.36;18.86;70.18)
+2025-07-11 23:01:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1002.91,840.91,28.28,60.68}
+2025-07-11 23:01:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 997.68#628.66#24.72#59.79
+2025-07-11 23:01:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 951.54-832.42-38.38-79.63
+2025-07-11 23:01:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {985.08,628.28,34.64,50.28}
+2025-07-11 23:01:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 977.77-943.83-34.30-77.90
+2025-07-11 23:01:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1037.05;541.46;11.08;67.29)
+2025-07-11 23:01:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1018.69#888.12#21.90#56.41
+2025-07-11 23:01:19 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 978.89-1081.18-31.94-77.94
+2025-07-11 23:01:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1008.43,766.82,25.16,68.95}
+2025-07-11 23:01:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1017.01#766.44#20.79#71.29
+2025-07-11 23:01:21 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1014.89;700.38;17.16;71.04)
+2025-07-11 23:01:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {972.09,730.97,32.34,55.50}
+2025-07-11 23:01:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 986.50-1004.32-34.15-89.92
+2025-07-11 23:01:25 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1020.97;758.09;17.69;70.61)
+2025-07-11 23:01:25 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1023.58,797.11,30.98,57.80}
+2025-07-11 23:01:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 995.44#803.04#25.99#72.32
+2025-07-11 23:01:27 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 999.10-1131.31-31.34-80.14
+2025-07-11 23:01:43 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:01:43 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 23:01:44 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:01:44 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:01:45 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:01:46 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 23:01:47 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:01:47 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 23:01:53 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:01:54 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 23:02:04 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 23:02:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1010.74,899.23,29.88,63.92}
+2025-07-11 23:02:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1012.09,988.04,32.89,50.77}
+2025-07-11 23:02:14 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {994.01,883.75,34.60,60.10}
+2025-07-11 23:02:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1028.56,853.45,31.57,62.21}
+2025-07-11 23:02:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {990.81,727.63,30.86,56.34}
+2025-07-11 23:02:45 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 23:02:48 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1009.56#802.63#24.21#59.92
+2025-07-11 23:02:57 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 23:03:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1029.25;480.98;16.24;63.23)
+2025-07-11 23:03:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1025.43;512.99;13.58;62.20)
+2025-07-11 23:03:13 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:03:13 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:03:19 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 23:03:23 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 970.80-1118.55-37.08-77.17
+2025-07-11 23:10:39 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:10:39 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:10:39 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 23:10:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 981.96-1191.05-37.89-76.63
+2025-07-11 23:10:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 956.05-1163.74-34.02-77.09
+2025-07-11 23:10:51 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 975.93-1009.93-37.82-79.54
+2025-07-11 23:11:05 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:11:06 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 23:11:07 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:11:07 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:11:09 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:11:09 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 23:11:10 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:11:11 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 23:11:21 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 23:11:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1020.13,821.88,34.63,52.10}
+2025-07-11 23:11:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {991.85,658.40,29.76,57.54}
+2025-07-11 23:12:06 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:12:06 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 23:12:08 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:12:08 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:12:10 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:12:11 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 23:12:12 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:12:13 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 23:12:20 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 23:12:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1028.26,608.33,29.53,66.81}
+2025-07-11 23:12:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1027.41,685.59,32.88,66.74}
+2025-07-11 23:12:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {981.26,860.28,28.39,66.27}
+2025-07-11 23:12:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {977.07,705.27,27.33,57.90}
+2025-07-11 23:12:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {972.37,922.14,30.88,65.58}
+2025-07-11 23:12:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1003.85,784.98,30.12,66.46}
+2025-07-11 23:12:44 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1020.47,711.42,32.08,53.03}
+2025-07-11 23:12:49 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {987.05,910.19,28.91,62.13}
+2025-07-11 23:14:33 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:14:34 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:14:39 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 23:14:44 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 967.43-1117.13-37.94-71.27
+2025-07-11 23:14:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 957.76-929.71-32.84-70.62
+2025-07-11 23:14:52 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 964.64-1031.32-31.80-87.04
+2025-07-11 23:14:57 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 961.11-1181.77-33.38-76.29
+2025-07-11 23:15:01 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 969.34-986.34-35.94-72.90
+2025-07-11 23:15:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 986.98-998.61-36.07-74.85
+2025-07-11 23:15:08 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 959.23-968.35-31.75-87.27
+2025-07-11 23:15:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 996.66-1054.91-30.96-84.61
+2025-07-11 23:15:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 953.79-829.13-37.77-74.25
+2025-07-11 23:15:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 971.78-1177.39-31.17-78.29
+2025-07-11 23:15:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.38-1164.81-33.25-76.01
+2025-07-11 23:15:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 980.00-1064.19-35.51-83.38
+2025-07-11 23:15:31 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 956.39-931.79-39.00-81.30
+2025-07-11 23:15:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 955.37-1145.67-35.63-73.63
+2025-07-11 23:15:35 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 983.07-1191.22-32.79-73.65
+2025-07-11 23:15:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 970.09-828.73-38.38-70.01
+2025-07-11 23:15:44 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 988.66-1089.79-34.08-77.36
+2025-07-11 23:15:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 978.06-1118.09-38.87-83.57
+2025-07-11 23:15:51 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 986.87-919.40-31.18-83.34
+2025-07-11 23:15:56 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 979.73-1187.34-39.46-72.84
+2025-07-11 23:15:59 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.91-851.26-36.92-82.39
+2025-07-11 23:16:02 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 953.96-932.37-35.71-79.12
+2025-07-11 23:16:05 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 950.79-1009.29-38.44-83.34
+2025-07-11 23:19:49 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:19:49 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 23:19:59 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 23:20:03 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {974.47,777.91,30.45,54.88}
+2025-07-11 23:20:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {997.28,687.63,25.61,59.38}
+2025-07-11 23:20:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1004.74,820.73,28.46,64.72}
+2025-07-11 23:25:19 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:25:19 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 23:25:25 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 23:25:28 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {972.60,884.53,28.46,58.54}
+2025-07-11 23:25:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {975.32,963.05,34.52,55.45}
+2025-07-11 23:25:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {970.51,948.83,33.53,51.52}
+2025-07-11 23:25:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1011.38,949.08,27.56,52.81}
+2025-07-11 23:25:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {984.43,859.73,34.16,56.51}
+2025-07-11 23:27:42 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:27:43 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-11 23:27:45 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:27:45 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-11 23:27:47 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:27:47 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-11 23:27:48 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:27:49 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 23:27:52 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-11 23:27:53 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-11 23:28:02 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-11 23:28:04 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-11 23:28:05 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-11 23:28:06 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1008.55,973.02,31.55,63.01}
+2025-07-11 23:28:06 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-11 23:28:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1046.73;766.75;18.68;67.44)
+2025-07-11 23:28:07 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.30-1043.10-35.40-73.49
+2025-07-11 23:28:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1011.74#864.19#20.79#62.82
+2025-07-11 23:28:09 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1040.56;582.03;15.31;75.19)
+2025-07-11 23:28:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {995.51,714.80,29.38,52.47}
+2025-07-11 23:28:10 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 963.97-1194.34-38.69-70.53
+2025-07-11 23:28:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 980.23#586.50#21.73#60.82
+2025-07-11 23:28:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 999.66-953.93-34.73-86.92
+2025-07-11 23:28:12 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {975.63,702.69,31.39,63.12}
+2025-07-11 23:28:13 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1040.08;576.82;18.15;71.78)
+2025-07-11 23:28:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 954.04-813.33-36.99-73.53
+2025-07-11 23:28:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1007.42,857.77,29.71,51.97}
+2025-07-11 23:28:16 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 992.54#807.17#27.30#68.29
+2025-07-11 23:28:17 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1048.09;752.74;13.25;70.94)
+2025-07-11 23:28:18 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 981.58-912.53-30.46-71.89
+2025-07-11 23:28:19 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 992.43#750.21#23.65#62.50
+2025-07-11 23:28:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1020.90;789.28;15.69;76.35)
+2025-07-11 23:28:20 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1000.04,920.54,31.08,57.87}
+2025-07-11 23:28:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 977.25-1138.71-37.29-78.32
+2025-07-11 23:28:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 991.75#575.09#22.70#66.03
+2025-07-11 23:28:22 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1016.80;473.24;11.27;60.40)
+2025-07-11 23:28:24 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1014.28,833.08,28.39,53.09}
+2025-07-11 23:28:25 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1012.95;503.50;13.25;69.06)
+2025-07-11 23:28:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 971.45-880.43-36.72-72.02
+2025-07-11 23:28:26 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {987.29,927.97,27.06,56.40}
+2025-07-11 23:28:27 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 992.06#701.06#24.29#55.44
+2025-07-11 23:28:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1027.71,644.70,30.13,61.68}
+2025-07-11 23:28:29 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 977.33-1189.99-38.74-81.46
+2025-07-11 23:28:30 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1014.68#558.28#24.78#59.91
+2025-07-11 23:28:30 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1024.05;478.14;15.78;71.52)
+2025-07-11 23:28:32 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1018.96#829.77#23.85#62.28
+2025-07-11 23:28:33 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1012.28,613.88,33.25,61.85}
+2025-07-11 23:28:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 973.72-1094.21-30.42-73.87
+2025-07-11 23:28:34 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1019.69;467.88;19.41;66.95)
+2025-07-11 23:28:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {989.61,897.54,33.31,56.62}
+2025-07-11 23:28:36 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 984.97#559.30#26.98#71.72
+2025-07-11 23:28:37 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1031.40;418.93;10.32;72.14)
+2025-07-11 23:28:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.16-1038.22-35.63-79.06
+2025-07-11 23:28:38 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1020.43,675.45,26.25,51.25}
+2025-07-11 23:28:39 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 985.99#875.37#26.01#56.95
+2025-07-11 23:28:40 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1013.49;522.64;11.62;74.46)
+2025-07-11 23:28:42 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 983.62-902.90-38.89-88.35
+2025-07-11 23:28:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1018.93;535.20;16.66;65.82)
+2025-07-11 23:28:43 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1008.49,633.63,26.94,56.68}
+2025-07-11 23:28:44 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1008.04#713.92#20.91#68.88
+2025-07-11 23:28:45 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {996.34,910.33,25.30,55.40}
+2025-07-11 23:28:46 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1011.74;425.21;19.37;60.95)
+2025-07-11 23:28:47 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 998.37-925.91-33.85-77.68

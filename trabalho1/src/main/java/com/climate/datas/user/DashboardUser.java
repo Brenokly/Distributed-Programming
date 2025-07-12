@@ -1,11 +1,11 @@
 package com.climate.datas.user;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
@@ -24,9 +24,9 @@ public class DashboardUser implements AutoCloseable {
     private static final String RABBITMQ_HOST = "localhost";
     private static final String EXCHANGE_NAME = "climate_data_topic_exchange";
 
-    private Connection connection;
-    private Channel channel;
-    private final List<ClimateData> historicalData = new CopyOnWriteArrayList<>();
+    private final Connection connection;
+    private final Channel channel;
+    private final List<ClimateData> historicalData = new ArrayList<>();
 
     public DashboardUser() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
@@ -35,23 +35,23 @@ public class DashboardUser implements AutoCloseable {
         this.channel = connection.createChannel();
     }
 
-    /**
-     * Inicia o processo de escuta das mensagens do RabbitMQ em segundo plano.
-     */
+    // Inicia o processo de escuta das mensagens do RabbitMQ em segundo plano.
     public void startListening(String bindingKey) throws IOException {
         channel.exchangeDeclare(EXCHANGE_NAME, "topic");
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, bindingKey);
         logger.info("Dashboard-User está ouvindo a exchange '{}' com o filtro '{}'.", EXCHANGE_NAME, bindingKey);
+        System.out.println("Dashboard-User está ouvindo a exchange '" + EXCHANGE_NAME + "' com o filtro '" + bindingKey + "'.");
 
         DeliverCallback deliverCallback = (_, delivery) -> {
-            String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
+            String message = new String(delivery.getBody(), "UTF-8");
             try {
                 ClimateData data = parseStandardFormat(message);
                 historicalData.add(data);
                 logger.trace("Dado recebido e armazenado: {}", data);
             } catch (Exception e) {
                 logger.error("Erro ao processar mensagem: {}", message, e);
+                System.out.println("Erro ao processar mensagem: " + message + " - " + e.getMessage());
             }
         };
 
@@ -60,19 +60,28 @@ public class DashboardUser implements AutoCloseable {
     }
 
     private ClimateData parseStandardFormat(String message) {
-        String[] parts = message.split("\\|");
-        String region = parts[0];
-        String content = parts[1].replace("[", "").replace("]", "");
-        String[] valueParts = content.split("\\s*\\|\\s*");
-        return new ClimateData(region, Double.parseDouble(valueParts[0]), Double.parseDouble(valueParts[1]), Double.parseDouble(valueParts[2]), Double.parseDouble(valueParts[3]), LocalDateTime.now());
+        try {
+            String content = message.replaceAll("[\\[\\]]", "");
+            String[] values = content.split("//");
+
+            String region = values[0];
+            double temperature = Double.parseDouble(values[1]);
+            double humidity = Double.parseDouble(values[2]);
+            double pressure = Double.parseDouble(values[3]);
+            double radiation = Double.parseDouble(values[4]);
+            LocalDateTime timestamp = LocalDateTime.parse(values[5], DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+
+            return new ClimateData(region, temperature, humidity, pressure, radiation, timestamp);
+        } catch (NumberFormatException e) {
+            logger.error("Falha ao parsear a mensagem recebida: {}", message, e);
+            return null;
+        }
     }
 
     // ====================================================================
     // MÉTODOS PARA INTERAÇÃO E DASHBOARD
     // ====================================================================
-    /**
-     * Gera e imprime o dashboard com os dados coletados até o momento.
-     */
+    // Gera e imprime o dashboard com os dados coletados até o momento.
     public void generateDashboard() {
         System.out.println("\n==================== DASHBOARD CLIMÁTICO ATUAL ====================");
         if (historicalData.isEmpty()) {
@@ -104,9 +113,7 @@ public class DashboardUser implements AutoCloseable {
         System.out.println("===================================================================\n");
     }
 
-    /**
-     * Realiza uma busca na base de dados em memória e imprime os resultados.
-     */
+    // Realiza uma busca na base de dados em memória e imprime os resultados.
     public void searchByRegion(String region) {
         System.out.printf("\n--- BUSCANDO DADOS PARA A REGIÃO: %s ---\n", region.toUpperCase());
         List<ClimateData> results = historicalData.stream()

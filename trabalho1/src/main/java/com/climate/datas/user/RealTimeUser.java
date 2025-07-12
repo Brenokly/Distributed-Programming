@@ -2,6 +2,7 @@ package com.climate.datas.user;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -21,11 +22,10 @@ import com.climate.datas.utils.ClimateData; // Ajuste o import se necessário
 public class RealTimeUser implements MqttCallback, AutoCloseable {
 
     private static final Logger logger = LoggerFactory.getLogger(RealTimeUser.class);
-    private static final String MQTT_BROKER = "tcp://mqtt.eclipseprojects.io:1883";
+    private static final String MQTT_BROKER = "tcp://broker.emqx.io:1883";
     public static final String BASE_TOPIC = "ufersa/pw/gateway/processed_data";
 
-    private MqttClient mqttClient;
-    // Base de dados em memória para armazenar os dados recebidos em tempo real
+    private final MqttClient mqttClient;
     private final List<ClimateData> receivedData = new CopyOnWriteArrayList<>();
 
     public RealTimeUser() throws MqttException {
@@ -52,22 +52,32 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
 
         // 2. Parseia e armazena os dados para o dashboard dinâmico
         try {
-            ClimateData data = parseRealTimeData(region, payload);
+            ClimateData data = parseRealTimeData(payload);
             receivedData.add(data);
         } catch (Exception e) {
             logger.error("Não foi possível parsear e armazenar os dados em tempo real: {}", payload, e);
         }
     }
 
-    private ClimateData parseRealTimeData(String region, String message) {
-        String content = message.replace("[", "").replace("]", "");
-        String[] valueParts = content.split("\\s*\\|\\s*");
-        return new ClimateData(region, Double.parseDouble(valueParts[0]), Double.parseDouble(valueParts[1]), Double.parseDouble(valueParts[2]), Double.parseDouble(valueParts[3]), LocalDateTime.now());
+    private ClimateData parseRealTimeData(String message) {
+        try {
+            String content = message.replaceAll("[\\[\\]]", "");
+            String[] values = content.split("//");
+
+            String region = values[0];
+            double temperature = Double.parseDouble(values[1]);
+            double humidity = Double.parseDouble(values[2]);
+            double pressure = Double.parseDouble(values[3]);
+            double radiation = Double.parseDouble(values[4]);
+            LocalDateTime timestamp = LocalDateTime.parse(values[5], DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+
+            return new ClimateData(region, temperature, humidity, pressure, radiation, timestamp);
+        } catch (NumberFormatException e) {
+            logger.error("Falha ao parsear a mensagem recebida: {}", message, e);
+            return null;
+        }
     }
 
-    /**
-     * Gera o conteúdo do dashboard como uma String para ser salva em arquivo.
-     */
     public String generateDashboardContent() {
         StringBuilder sb = new StringBuilder();
         sb.append("==================== DASHBOARD DINÂMICO (MQTT) ====================\n");
@@ -90,7 +100,14 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
         sb.append("\n--- UMIDADE RELATIVA: Ranking de Média e Contribuição Percentual ---\n");
         appendRankings(sb, avgHumidity, "%");
 
-        // ... (Adicione os outros rankings da mesma forma)
+        Map<String, Double> avgPressure = calculateAverageByMetric(ClimateData::pressure);
+        sb.append("\n--- PRESSÃO ATMOSFÉRICA: Ranking de Média e Contribuição Percentual ---\n");
+        appendRankings(sb, avgPressure, "hPa");
+
+        Map<String, Double> avgRadiation = calculateAverageByMetric(ClimateData::radiation);
+        sb.append("\n--- RADIAÇÃO SOLAR: Ranking de Média e Contribuição Percentual ---\n");
+        appendRankings(sb, avgRadiation, "W/m²");
+
         sb.append("===================================================================\n");
         return sb.toString();
     }

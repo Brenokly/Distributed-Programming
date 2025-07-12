@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import com.climate.datas.drone.Drone;
 
 public class DroneOeste {
+
     private static final Logger logger = LoggerFactory.getLogger(DroneOeste.class);
 
     public static void main(String[] args) {
@@ -27,15 +28,12 @@ public class DroneOeste {
 
             drone.startCollecting();
 
-            // Mantém a thread principal viva enquanto o scheduler trabalha
             // O programa será encerrado com Ctrl+C
             Thread.currentThread().join();
 
         } catch (MqttException e) {
-            // Agora o logger funciona aqui
             logger.error("Falha fatal na conexão MQTT do drone Oeste: {}", e.getMessage(), e);
         } catch (InterruptedException e) {
-            // E aqui também
             logger.info("Thread principal do drone Oeste interrompida. Encerrando...");
             Thread.currentThread().interrupt();
         }

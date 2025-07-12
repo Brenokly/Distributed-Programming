@@ -20,17 +20,17 @@ import org.slf4j.LoggerFactory;
 import com.climate.datas.utils.drone.Range;
 import com.climate.datas.utils.drone.RegionFormat;
 
-public class Drone implements Runnable, AutoCloseable {
+public class Drone implements AutoCloseable {
 
     private static final Logger logger = LoggerFactory.getLogger(Drone.class);
-    private static final String BROKER_URL = "tcp://broker.emqx.io:1883";
+    private static final String BROKER_URL = "tcp://broker.emqx.io:1883";               // Usei um broker diferente!
     private static final Random random = new Random();
 
     private final String region;
     private final String topic;
     private final RegionFormat regionFormat;
     private MqttClient mqttClient;
-    private final ScheduledExecutorService scheduler;
+    private ScheduledExecutorService scheduler;
 
     private static final Map<String, BiFunction<Double, Double, Double>> generators = Map.of(
             "pressure", (min, max) -> min + (max - min) * random.nextDouble(),
@@ -57,7 +57,6 @@ public class Drone implements Runnable, AutoCloseable {
         this.region = region;
         this.regionFormat = RegionFormat.fromRegionName(region);
         this.topic = "ufersa/pw/climadata/" + region.toLowerCase();
-        this.scheduler = Executors.newSingleThreadScheduledExecutor();
     }
 
     public void connect() throws MqttException {
@@ -65,6 +64,7 @@ public class Drone implements Runnable, AutoCloseable {
         mqttClient = new MqttClient(BROKER_URL, clientId, new MemoryPersistence());
         MqttConnectOptions connOpts = new MqttConnectOptions();
         connOpts.setCleanSession(true);
+        connOpts.setAutomaticReconnect(true);
 
         logger.info("Drone {} conectando ao broker: {}", region, BROKER_URL);
         mqttClient.connect(connOpts);
@@ -78,30 +78,14 @@ public class Drone implements Runnable, AutoCloseable {
         }
         System.out.println("Iniciando coleta de dados para a região " + region + "...");
         logger.info("Iniciando a coleta de dados para a região {}.", region);
+        if (scheduler == null || scheduler.isShutdown()) {
+            this.scheduler = Executors.newSingleThreadScheduledExecutor();
+        }
         scheduleNext();
     }
 
-    @Override
-    public void run() {
-        try {
-            String clientId = "drone-" + region + "-" + System.currentTimeMillis();
-            mqttClient = new MqttClient(BROKER_URL, clientId, new MemoryPersistence());
-            MqttConnectOptions connOpts = new MqttConnectOptions();
-            connOpts.setCleanSession(true);
-
-            logger.info("Drone {} conectando ao broker: {}", region, BROKER_URL);
-            mqttClient.connect(connOpts);
-            logger.info("Drone {} conectado.", region);
-
-            // Inicia o agendamento de coleta e envio
-            scheduleNext();
-        } catch (MqttException e) {
-            logger.error("Falha ao iniciar MQTT para o drone {}: {}", region, e.getMessage());
-        }
-    }
-
     private void scheduleNext() {
-        if (scheduler.isShutdown()) {
+        if (scheduler == null || scheduler.isShutdown()) {
             return;
         }
         long delay = 2000 + random.nextInt(3001);
@@ -171,6 +155,27 @@ public class Drone implements Runnable, AutoCloseable {
             }
         } catch (MqttException e) {
             logger.error("Erro ao desconectar drone {}: {}", region, e.getMessage());
+        }
+    }
+
+    public void simulateMqttFailure() {
+        logger.warn("!!! SIMULANDO FALHA DE COMUNICAÇÃO - PARANDO AGENDADOR E DESCONECTANDO FORÇADAMENTE !!!");
+
+        // 1. Para imediatamente a geração de novas mensagens
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdownNow();
+            logger.info("Agendador de tarefas do drone parado.");
+        }
+
+        // 2. Desconecta à força para simular uma queda de rede
+        try {
+            if (mqttClient != null && mqttClient.isConnected()) {
+                // Este método (em teoria) corta a conexão abruptamente
+                mqttClient.disconnectForcibly();
+                logger.info("Conexão MQTT forçadamente encerrada.");
+            }
+        } catch (MqttException e) {
+            logger.error("Erro ao forçar a desconexão para simular falha.", e);
         }
     }
 }

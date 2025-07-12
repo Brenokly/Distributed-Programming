@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +49,7 @@ public class RealTimeUserLauncher {
             };
 
             user.connectAndSubscribe(topicFilter);
-            System.out.println("Monitorando dados em tempo real...");
+            System.out.println("Monitorando dados em tempo real...\n");
 
             // Adiciona o Shutdown Hook para gerar o relatório final
             final RealTimeUser finalUser = user;
@@ -57,7 +58,6 @@ public class RealTimeUserLauncher {
                 saveDashboardToFile(finalUser.generateDashboardContent(), "dashboard_final_mqtt.txt");
             }));
 
-            // Loop do menu de ações
             int action = -1;
             while (action != 0) {
                 System.out.println("\n--- MENU DE AÇÕES (Real-Time) ---");
@@ -80,7 +80,7 @@ public class RealTimeUserLauncher {
                 }
             }
 
-        } catch (Exception e) {
+        } catch (NumberFormatException | MqttException e) {
             logger.error("Falha fatal no RealTime User: {}", e.getMessage(), e);
         } finally {
             if (user != null) {
