@@ -1,6 +1,6 @@
 # ☁️ Projeto de Simulação de Coleta de Dados Climáticos Distribuídos
 
-## Disciplina: Programação Distribuída 🌐
+## Disciplina: Programação Concorrente e Distribuída 🌐
 
 ### Curso: Ciência da Computação 💻
 
@@ -8,16 +8,19 @@
 
 ### Ano: 2025 📅
 
+---
+
 ## 📖 Sumário
 
 1. [Introdução](#introducao)
 2. [Objetivos](#objetivos)
-3. [Prática Unidade 1 - Simulação de um Sistema Distribuído para Coleta de Dados Climáticos](#pratica-unidade-1)
+3. [Prática Offline 2 - Simulação com Comunicação Indireta](#pratica-offline-2)
 
    * [Objetivo](#objetivo)
    * [Conceitos-Chave](#conceitos-chave)
    * [Requisitos do Sistema](#requisitos-do-sistema)
    * [Fluxo da Simulação](#fluxo-da-simulacao)
+   * [Como Executar](#como-executar)
 4. [Metodologia](#metodologia)
 5. [Estrutura do Projeto](#estrutura-do-projeto)
 6. [Referências Bibliográficas](#referencias-bibliograficas)
@@ -26,108 +29,148 @@
 
 ## 📚 Introdução <a id="introducao"></a>
 
-Este projeto é uma simulação de um sistema distribuído para coleta e gerenciamento de dados climáticos, desenvolvido como atividade da Unidade 1 da disciplina de Programação Distribuída. O sistema simula drones que coletam dados climáticos e os enviam para centros de dados e usuários utilizando conceitos e técnicas de programação distribuída.
-
-## 🎯 Objetivos <a id="objetivos"></a>
-
-O objetivo da disciplina é capacitar os alunos na construção de sistemas distribuídos, aplicando conceitos de comunicação entre processos, concorrência, paralelismo, balanceamento de carga, transmissão multicast e uso de serviços de execução concorrente.
+Este projeto é uma simulação de um sistema distribuído para coleta, processamento e gerenciamento de dados climáticos, desenvolvido como atividade da Prática Offline 2 da disciplina de Programação Concorrente e Distribuída. O sistema simula drones que coletam dados climáticos e os enviam para um Gateway central, que por sua vez os disponibiliza para diferentes tipos de usuários através de sistemas de comunicação indireta, como MQTT e RabbitMQ.
 
 ---
 
-## 🛰️ Prática Unidade 1 - Simulação de um Sistema Distribuído para Coleta de Dados Climáticos <a id="pratica-unidade-1"></a>
+## 🎯 Objetivos <a id="objetivos"></a>
+
+O objetivo da disciplina é capacitar os alunos na construção de sistemas distribuídos, aplicando conceitos de comunicação entre processos, concorrência, paralelismo e, nesta prática, com foco em sistemas de mensagens, desacoplamento e comunicação indireta.
+
+---
+
+## 🛰️ Prática Offline 2 - Simulação com Comunicação Indireta <a id="pratica-offline-2"></a>
 
 ### 🎯 Objetivo <a id="objetivo"></a>
 
-Desenvolver um sistema distribuído capaz de simular a coleta de dados climáticos por drones, armazenamento centralizado dos dados e distribuição desses dados a usuários através de multicast, aplicando técnicas de balanceamento de carga e programação concorrente.
+Desenvolver uma simulação de um sistema distribuído para a coleta, armazenamento e distribuição de dados climáticos, utilizando drones, um gateway central e usuários conectados via MQTT e RabbitMQ, aplicando conceitos de comunicação indireta, concorrência e programação funcional em Java.
+
+---
 
 ### 🏷️ Conceitos-Chave <a id="conceitos-chave"></a>
 
-* **Sockets:** TCP e UDP, incluindo multicast.
-* **Balanceamento de Carga:** Distribuição de requisições entre servidores.
-* **Multicast:** Comunicação eficiente para grupos de usuários.
-* **Programação Concorrente:** Threads, executores, lambdas e streams.
-* **Programação Funcional: Streams, BinaryOperator, 
+* **Comunicação Indireta:** Desacoplamento espacial e temporal entre os componentes do sistema.
+* **MQTT:** Protocolo leve de publicação/assinatura, ideal para telemetria e comunicação em tempo real.
+* **RabbitMQ (AMQP):** Broker robusto, usado com Topic Exchange para entrega filtrável de dados.
+* **Publish/Subscribe:** Arquitetura onde produtores enviam mensagens sem conhecer os consumidores.
+* **Programação Concorrente:** Uso de `ExecutorService` e `ScheduledExecutorService`.
+* **Programação Funcional:** Aplicação de Lambdas e Streams para manipulação e transformação de dados.
+
+---
 
 ### 📜 Requisitos do Sistema <a id="requisitos-do-sistema"></a>
 
-* **Drones:**
+#### **Drones**
 
-  * 4 drones simulam coleta de dados climáticos em regiões (Norte, Sul, Leste e Oeste).
-  * Cada drone gera dados no formato específico:
+* 4 drones (Norte, Sul, Leste e Oeste) atuam como produtores MQTT.
+* Cada um gera dados com formatos diferentes:
 
-    * Norte → `pressao-radiacao-temperatura-umidade`
-    * Sul → `(pressao;radiacao;temperatura;umidade)`
-    * Leste → `{pressao,radiacao,temperatura,umidade}`
-    * Oeste → `pressao#radiacao#temperatura#umidade`
-  * Drones transmitem dados para um **Servidor Multicast**.
+  * Norte → `pressao-radiacao-temperatura-umidade`
+  * Sul → `(pressao;radiacao;temperatura;umidade)`
+  * Leste → `{pressao,radiacao,temperatura,umidade}`
+  * Oeste → `pressao#radiacao#temperatura#umidade`
+* Publicam em tópicos distintos: `ufersa/pw/climadata/<regiao>`
 
-* **Servidor de Base de Dados:**
+#### **Gateway (Centro Distribuidor)**
 
-  * Recebe dados do Servidor Multicast.
-  * Encaminha os dados via **Unicast TCP** para um dos dois **Servidores de Dados**, aplicando balanceamento de carga (escolha aleatória).
+* **Consumidor MQTT:** Inscreve-se em `ufersa/pw/climadata/#`
+* **Processador:** Converte todos os formatos para:
+  `[regiao//temperatura//umidade//pressao//radiacao//timestamp]`
+* **Produtor Dual:**
 
-* **Servidores de Dados:**
+  * Publica no RabbitMQ via Topic Exchange (`dados.climaticos.<regiao>`)
+  * Publica em tópico MQTT processado (`ufersa/pw/gateway/processed_data/<regiao>`)
 
-  * Recebem dados do servidor de base de dados.
-  * Armazenam os dados no formato padronizado: `[temperatura//umidade//pressao//radiacao]`.
-  * Enviam atualizações para um grupo **Multicast** específico de cada servidor.
+#### **Usuários**
 
-* **Usuários:**
+* **DashboardUser (RabbitMQ):**
 
-  * Se conectam ao sistema por meio de um **Servidor Localizador/Balanceador**, que informa o IP do grupo multicast de um dos servidores de dados.
-  * Recebem os dados climáticos atualizados em tempo real via multicast.
+  * Menu interativo para inscrição em tópicos (ex: `dados.climaticos.#`)
+  * Armazena dados para análise e dashboard
+
+* **RealTimeUser (MQTT):**
+
+  * Conecta ao tópico do Gateway
+  * Exibe dados em tempo real e permite geração de relatórios `.txt`
+
+---
 
 ### 🔄 Fluxo da Simulação <a id="fluxo-da-simulacao"></a>
 
-1. **Inicialização:**
+1. **Publicação:**
+   Drones iniciam e publicam dados a cada 2–5 segundos.
 
-   * Drones iniciam a simulação de coleta de dados aleatórios (com faixas realistas).
-   * Dados são enviados para o **Servidor Multicast** central.
+2. **Processamento e Roteamento:**
+   Gateway processa os dados e os envia para MQTT e RabbitMQ.
 
-2. **Processamento:**
+3. **Consumo e Interação:**
+   Usuários iniciam, escolhem os dados a monitorar e interagem via menus.
 
-   * O Servidor de Base de Dados recebe dados multicast, realiza a transformação para o formato padronizado e faz o balanceamento enviando por TCP para um dos dois servidores de dados.
+4. **Simulação de Falha:**
+   Drones podem simular falha (pausa de envio) e retomar posteriormente.
 
-3. **Distribuição:**
+---
 
-   * Cada servidor de dados publica as informações em um grupo multicast próprio.
-   * Usuários se conectam a um grupo multicast, obtendo o IP através do servidor localizador, e recebem atualizações em tempo real.
+### 🚀 Como Executar <a id="como-executar"></a>
 
-4. **Encerramento:**
+1. **Pré-requisito:**
+   Inicie o broker RabbitMQ via Docker:
 
-   * A simulação roda por um tempo definido (ex.: 3 minutos).
-   * Ao final, gera-se um log dos dados transmitidos, coletados e processados.
+   ```bash
+   docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
+   ```
+
+2. **Compile o Projeto:**
+
+   ```bash
+   mvn clean package
+   ```
+
+3. **Execute os Componentes (em terminais separados):**
+
+   * `Gateway`: deve iniciar primeiro
+   * `Drones`: execute os desejados (ex: DroneNorte.java)
+   * `DashboardUserLauncher` e `RealTimeUserLauncher`: usuários consumidores
 
 ---
 
 ## 🏫 Metodologia <a id="metodologia"></a>
 
-* **Técnicas:** Desenvolvimento incremental, aulas teóricas e práticas, testes locais e simulações.
-* **Tecnologias:** Java, Sockets (TCP/UDP/Multicast), Programação Concorrente (Executors, Threads, Lambdas).
-* **Avaliação:** Entregas práticas, demonstração de funcionamento do sistema, qualidade do código, uso correto dos conceitos de programação distribuída.
+* **Técnicas:** Desenvolvimento de sistema distribuído desacoplado com mensageria
+* **Tecnologias:** Java, MQTT (Paho), RabbitMQ (AMQP), Threads, Executors, Lambdas, Streams
+* **Avaliação:** Entregas práticas, demonstrações em múltiplas máquinas e qualidade de código
 
 ---
 
 ## 📂 Estrutura do Projeto <a id="estrutura-do-projeto"></a>
 
 ```
-📁 Distributed-Programming
+📁 seu-projeto
  ├── 📁 src
- │   ├── 📁 main/java/org/example
- │   │   ├── 📁 client            # Código dos usuários (clientes que recebem dados)
- │   │   ├── 📁 drones            # Simulação dos drones (Norte, Sul, Leste, Oeste)
- │   │   ├── 📁 locator           # Servidor localizador/balanceador
- │   │   ├── 📁 multicastserver   # Servidor central que recebe dados dos drones
- │   │   ├── 📁 datacenter        # Base de dados que balanceia dados para os servidores
- │   │   ├── 📁 dataservers       # Servidores que armazenam dados e enviam multicast aos usuários
- │   │   ├── 📁 utils             # Utilitários gerais, formatos, logs, transformação de dados
- │   │   │   ├── 📄 DataConverter.java
- │   │   │   ├── 📄 Logger.java
- │   │   │   ├── 📄 RandomGenerator.java
- │   │   │   ├── 📄 Config.java
- │   │   │   └── 📄 Constants.java
+ │   ├── 📁 main
+ │   │   ├── 📁 java
+ │   │   │   └── 📁 com/climate/datas
+ │   │   │       ├── 📁 database      # Armazenamento em memória
+ │   │   │       │   └── 📄 DataBase.java
+ │   │   │       ├── 📁 drone         # Lógica dos drones e seus lançadores
+ │   │   │       │   ├── 📁 execute
+ │   │   │       │   │   ├── 📄 DroneNorte.java
+ │   │   │       │   │   └── ...
+ │   │   │       │   └── 📄 Drone.java
+ │   │   │       ├── 📁 gateway       # Lógica do Gateway
+ │   │   │       │   └── 📄 Gateway.java
+ │   │   │       ├── 📁 user          # Lógica dos usuários
+ │   │   │       │   ├── 📁 execute
+ │   │   │       │   │   ├── 📄 DashboardUserLauncher.java
+ │   │   │       │   │   └── 📄 RealTimeUserLauncher.java
+ │   │   │       │   ├── 📄 DashboardUser.java
+ │   │   │       │   └── 📄 RealTimeUser.java
+ │   │   │       └── 📁 utils         # Modelos e utilitários
+ │   │   │           └── 📄 ClimateData.java
+ │   │   └── 📁 resources
+ │   │       └── 📄 logback.xml       # Configuração de logs (opcional)
  ├── 📄 README.md
- ├── 📄 pom.xml
+ └── 📄 pom.xml
 ```
 
 ---
@@ -137,3 +180,6 @@ Desenvolver um sistema distribuído capaz de simular a coleta de dados climátic
 ### 📖 Obrigatórias:
 
 * Coulouris, George. *Sistemas distribuídos: conceitos e projeto*. Bookman, 2013.
+* Documentação oficial do RabbitMQ e do protocolo MQTT
+
+---
