@@ -1,0 +1,16 @@
+com\climate\datas\user\execute\DashboardUserLauncher.class
+com\climate\datas\drone\execute\DroneSul.class
+com\climate\datas\utils\drone\Range.class
+com\climate\datas\user\RealTimeUser.class
+com\climate\datas\user\execute\RealTimeUserLauncher.class
+com\climate\datas\utils\ClimateData.class
+com\climate\datas\drone\execute\DroneLeste.class
+com\climate\datas\utils\drone\RegionFormat.class
+com\climate\datas\utils\Loggable.class
+com\climate\datas\gateway\Gateway.class
+com\climate\datas\drone\execute\DroneOeste.class
+com\climate\datas\drone\Drone.class
+com\climate\datas\user\DashboardUser.class
+com\climate\datas\database\DataBase.class
+com\climate\datas\drone\execute\DroneNorte.class
+com\climate\datas\drone\Drone$1.class
