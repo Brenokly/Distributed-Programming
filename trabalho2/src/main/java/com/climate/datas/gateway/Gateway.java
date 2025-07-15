@@ -1,4 +1,3 @@
-// package com.climate.datas.gateway; // Mantenha seu pacote
 package com.climate.datas.gateway;
 
 import java.io.IOException;

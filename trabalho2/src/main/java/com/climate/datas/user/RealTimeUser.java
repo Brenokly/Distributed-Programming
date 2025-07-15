@@ -17,7 +17,7 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.climate.datas.utils.ClimateData; // Ajuste o import se necessário
+import com.climate.datas.utils.ClimateData;
 
 public class RealTimeUser implements MqttCallback, AutoCloseable {
 
@@ -27,6 +27,7 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
 
     private final MqttClient mqttClient;
     private final List<ClimateData> receivedData = new CopyOnWriteArrayList<>();
+    private final int maxLastMessage = 20;
 
     public RealTimeUser() throws MqttException {
         String clientId = "realtime-user-" + System.currentTimeMillis();
@@ -53,10 +54,19 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
         // 2. Parseia e armazena os dados para o dashboard dinâmico
         try {
             ClimateData data = parseRealTimeData(payload);
-            receivedData.add(data);
+            addlastMessage(data);
         } catch (Exception e) {
             logger.error("Não foi possível parsear e armazenar os dados em tempo real: {}", payload, e);
         }
+    }
+
+    private void addlastMessage(ClimateData data) {
+        if (receivedData.size() == maxLastMessage) { // Se chegou na capacidade máxima, removo o primeiro elemento (mais
+                                                     // antigo).
+            receivedData.removeFirst();
+        }
+
+        receivedData.addLast(data);
     }
 
     private ClimateData parseRealTimeData(String message) {
@@ -69,7 +79,8 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
             double humidity = Double.parseDouble(values[2]);
             double pressure = Double.parseDouble(values[3]);
             double radiation = Double.parseDouble(values[4]);
-            LocalDateTime timestamp = LocalDateTime.parse(values[5], DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+            LocalDateTime timestamp = LocalDateTime.parse(values[5],
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
 
             return new ClimateData(region, temperature, humidity, pressure, radiation, timestamp);
         } catch (NumberFormatException e) {
@@ -112,7 +123,8 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
         return sb.toString();
     }
 
-    private Map<String, Double> calculateAverageByMetric(java.util.function.ToDoubleFunction<ClimateData> metricExtractor) {
+    private Map<String, Double> calculateAverageByMetric(
+            java.util.function.ToDoubleFunction<ClimateData> metricExtractor) {
         return receivedData.stream()
                 .collect(Collectors.groupingBy(ClimateData::region, Collectors.averagingDouble(metricExtractor)));
     }

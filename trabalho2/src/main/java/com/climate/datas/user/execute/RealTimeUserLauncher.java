@@ -61,7 +61,7 @@ public class RealTimeUserLauncher {
             int action = -1;
             while (action != 0) {
                 System.out.println("\n--- MENU DE AÇÕES (Real-Time) ---");
-                System.out.println("1: Gerar Dashboard em arquivo .txt agora");
+                System.out.println("1: Gerar DashBoard dos últimos 20 dados?");
                 System.out.println("0: Sair");
                 System.out.print("Sua escolha: ");
 

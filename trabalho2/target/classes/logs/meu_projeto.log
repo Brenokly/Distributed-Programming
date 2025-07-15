@@ -217,3 +217,429 @@ Caused by: java.io.EOFException: null
 2025-07-14 10:26:00.177 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//19.14//79.40//1044.45//756.77//2025-07-14T10:26:00]
 2025-07-14 10:26:00.178 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
 2025-07-14 10:26:00.435 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//19.14//79.40//1044.45//756.77//2025-07-14T10:26:00]
+2025-07-15 16:59:51.817 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-15 16:59:52.403 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-15 16:59:53.032 [main] INFO  com.climate.datas.drone.Drone - Drone LESTE conectado com sucesso.
+2025-07-15 16:59:53.081 [main] INFO  com.climate.datas.drone.Drone - Drone NORTE conectado com sucesso.
+2025-07-15 16:59:59.157 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-15 16:59:59.869 [main] INFO  com.climate.datas.drone.Drone - Drone OESTE conectado com sucesso.
+2025-07-15 17:00:04.167 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-15 17:00:04.875 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-15 17:00:16.186 [AMQP Connection 0:0:0:0:0:0:0:1:5672] WARN  c.r.c.impl.ForgivingExceptionHandler - An unexpected connection driver error occurred (Exception message: Socket closed)
+2025-07-15 17:00:23.901 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectado ao RabbitMQ e exchange de TÓPICO 'climate_data_topic_exchange' declarada.
+2025-07-15 17:00:23.987 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectando ao broker MQTT...
+2025-07-15 17:00:24.635 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectado.
+2025-07-15 17:00:24.796 [main] INFO  com.climate.datas.gateway.Gateway - Gateway inscrito no tópico de drones: ufersa/pw/climadata/#
+2025-07-15 17:00:24.796 [main] INFO  com.climate.datas.gateway.Gateway - Gateway está em execução. Pressione Ctrl+C para encerrar.
+2025-07-15 17:00:33.955 [Thread-0] INFO  c.climate.datas.user.DashboardUser - Dashboard-User está ouvindo a exchange 'climate_data_topic_exchange' com o filtro 'dados.climaticos.#'.
+2025-07-15 17:00:43.889 [main] INFO  com.climate.datas.user.RealTimeUser - RealTime-User conectando ao broker MQTT...
+2025-07-15 17:00:44.763 [main] INFO  com.climate.datas.user.RealTimeUser - RealTime-User conectado.
+2025-07-15 17:00:44.763 [main] INFO  com.climate.datas.user.RealTimeUser - Inscrevendo-se no tópico: ufersa/pw/gateway/processed_data/norte
+2025-07-15 17:00:49.461 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região LESTE.
+2025-07-15 17:00:52.150 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região NORTE.
+2025-07-15 17:00:56.431 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {986.81,674.37,32.32,52.51}
+2025-07-15 17:00:56.472 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.62-1048.14-35.48-71.78
+2025-07-15 17:00:56.600 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região OESTE.
+2025-07-15 17:00:56.779 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//35.48//71.78//987.62//1048.14//2025-07-15T17:00:56]
+2025-07-15 17:00:56.779 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//32.32//52.51//986.81//674.37//2025-07-15T17:00:56]
+2025-07-15 17:00:56.797 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:00:56.798 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:00:57.024 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//32.32//52.51//986.81//674.37//2025-07-15T17:00:56]
+2025-07-15 17:00:57.024 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//35.48//71.78//987.62//1048.14//2025-07-15T17:00:56]
+2025-07-15 17:00:58.687 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 994.89-912.13-30.07-82.50
+2025-07-15 17:00:58.836 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//30.07//82.50//994.89//912.13//2025-07-15T17:00:58]
+2025-07-15 17:00:58.837 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:00:59.166 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//30.07//82.50//994.89//912.13//2025-07-15T17:00:58]
+2025-07-15 17:00:59.170 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {972.66,879.54,33.39,64.20}
+2025-07-15 17:00:59.316 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//33.39//64.20//972.66//879.54//2025-07-15T17:00:59]
+2025-07-15 17:00:59.317 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:00:59.650 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//33.39//64.20//972.66//879.54//2025-07-15T17:00:59]
+2025-07-15 17:00:59.791 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-15 17:01:01.532 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 952.95-1107.96-32.48-85.56
+2025-07-15 17:01:01.720 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//32.48//85.56//952.95//1107.96//2025-07-15T17:01:01]
+2025-07-15 17:01:01.721 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:02.025 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//32.48//85.56//952.95//1107.96//2025-07-15T17:01:01]
+2025-07-15 17:01:02.332 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 990.32#712.73#26.83#69.31
+2025-07-15 17:01:02.519 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//26.83//69.31//990.32//712.73//2025-07-15T17:01:02]
+2025-07-15 17:01:02.521 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:02.853 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//26.83//69.31//990.32//712.73//2025-07-15T17:01:02]
+2025-07-15 17:01:03.337 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {972.25,866.95,25.55,62.92}
+2025-07-15 17:01:03.484 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//25.55//62.92//972.25//866.95//2025-07-15T17:01:03]
+2025-07-15 17:01:03.486 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:03.639 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1034.12;740.20;16.61;70.86)
+2025-07-15 17:01:03.820 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//25.55//62.92//972.25//866.95//2025-07-15T17:01:03]
+2025-07-15 17:01:03.828 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//16.61//70.86//1034.12//740.20//2025-07-15T17:01:03]
+2025-07-15 17:01:03.828 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:04.159 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//16.61//70.86//1034.12//740.20//2025-07-15T17:01:03]
+2025-07-15 17:01:05.766 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 997.16#850.35#20.21#71.75
+2025-07-15 17:01:05.913 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//20.21//71.75//997.16//850.35//2025-07-15T17:01:05]
+2025-07-15 17:01:05.914 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:06.243 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//20.21//71.75//997.16//850.35//2025-07-15T17:01:05]
+2025-07-15 17:01:06.280 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 951.10-962.89-31.90-79.57
+2025-07-15 17:01:06.429 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//31.90//79.57//951.10//962.89//2025-07-15T17:01:06]
+2025-07-15 17:01:06.431 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:06.759 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//31.90//79.57//951.10//962.89//2025-07-15T17:01:06]
+2025-07-15 17:01:06.935 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1020.98,677.84,30.76,63.39}
+2025-07-15 17:01:07.090 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//30.76//63.39//1020.98//677.84//2025-07-15T17:01:07]
+2025-07-15 17:01:07.090 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:07.562 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1046.02;546.36;17.17;74.16)
+2025-07-15 17:01:08.176 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//17.17//74.16//1046.02//546.36//2025-07-15T17:01:08]
+2025-07-15 17:01:08.177 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:08.400 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//17.17//74.16//1046.02//546.36//2025-07-15T17:01:08]
+2025-07-15 17:01:08.400 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//30.76//63.39//1020.98//677.84//2025-07-15T17:01:07]
+2025-07-15 17:01:08.567 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 981.22#626.22#21.62#58.69
+2025-07-15 17:01:08.713 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//21.62//58.69//981.22//626.22//2025-07-15T17:01:08]
+2025-07-15 17:01:08.714 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:08.940 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 955.22-1043.14-39.85-74.28
+2025-07-15 17:01:09.043 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//21.62//58.69//981.22//626.22//2025-07-15T17:01:08]
+2025-07-15 17:01:09.088 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//39.85//74.28//955.22//1043.14//2025-07-15T17:01:09]
+2025-07-15 17:01:09.090 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:09.424 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//39.85//74.28//955.22//1043.14//2025-07-15T17:01:09]
+2025-07-15 17:01:09.736 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1027.27,918.03,32.30,59.64}
+2025-07-15 17:01:09.916 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//32.30//59.64//1027.27//918.03//2025-07-15T17:01:09]
+2025-07-15 17:01:09.917 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:10.597 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//32.30//59.64//1027.27//918.03//2025-07-15T17:01:09]
+2025-07-15 17:01:11.429 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1001.29#879.61#29.32#65.12
+2025-07-15 17:01:11.444 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 966.58-1000.00-36.01-82.35
+2025-07-15 17:01:11.620 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//29.32//65.12//1001.29//879.61//2025-07-15T17:01:11]
+2025-07-15 17:01:11.621 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//36.01//82.35//966.58//1000.00//2025-07-15T17:01:11]
+2025-07-15 17:01:11.622 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:11.641 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:12.072 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//29.32//65.12//1001.29//879.61//2025-07-15T17:01:11]
+2025-07-15 17:01:12.072 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//36.01//82.35//966.58//1000.00//2025-07-15T17:01:11]
+2025-07-15 17:01:13.010 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1028.32;717.06;15.01;71.08)
+2025-07-15 17:01:13.193 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//15.01//71.08//1028.32//717.06//2025-07-15T17:01:13]
+2025-07-15 17:01:13.195 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:13.566 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//15.01//71.08//1028.32//717.06//2025-07-15T17:01:13]
+2025-07-15 17:01:14.521 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1015.79#553.47#22.48#61.91
+2025-07-15 17:01:14.536 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {978.10,716.92,31.16,65.69}
+2025-07-15 17:01:14.676 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//22.48//61.91//1015.79//553.47//2025-07-15T17:01:14]
+2025-07-15 17:01:14.677 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:14.689 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//31.16//65.69//978.10//716.92//2025-07-15T17:01:14]
+2025-07-15 17:01:14.690 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:14.841 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//22.48//61.91//1015.79//553.47//2025-07-15T17:01:14]
+2025-07-15 17:01:14.991 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//31.16//65.69//978.10//716.92//2025-07-15T17:01:14]
+2025-07-15 17:01:15.971 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 960.69-958.48-33.29-78.38
+2025-07-15 17:01:16.123 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//33.29//78.38//960.69//958.48//2025-07-15T17:01:16]
+2025-07-15 17:01:16.126 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:16.479 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//33.29//78.38//960.69//958.48//2025-07-15T17:01:16]
+2025-07-15 17:01:17.991 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1001.79#773.33#24.78#61.47
+2025-07-15 17:01:18.067 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1038.23;535.43;16.98;61.82)
+2025-07-15 17:01:18.618 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//24.78//61.47//1001.79//773.33//2025-07-15T17:01:18]
+2025-07-15 17:01:18.619 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:18.822 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//16.98//61.82//1038.23//535.43//2025-07-15T17:01:18]
+2025-07-15 17:01:18.823 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:19.235 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//24.78//61.47//1001.79//773.33//2025-07-15T17:01:18]
+2025-07-15 17:01:19.253 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1023.61,930.88,34.95,65.69}
+2025-07-15 17:01:19.344 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//16.98//61.82//1038.23//535.43//2025-07-15T17:01:18]
+2025-07-15 17:01:19.452 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//34.95//65.69//1023.61//930.88//2025-07-15T17:01:19]
+2025-07-15 17:01:19.452 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:19.745 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//34.95//65.69//1023.61//930.88//2025-07-15T17:01:19]
+2025-07-15 17:01:19.878 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 989.74-936.17-34.13-75.43
+2025-07-15 17:01:20.065 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//34.13//75.43//989.74//936.17//2025-07-15T17:01:20]
+2025-07-15 17:01:20.066 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:20.456 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//34.13//75.43//989.74//936.17//2025-07-15T17:01:20]
+2025-07-15 17:01:21.867 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1001.13#642.24#27.06#65.84
+2025-07-15 17:01:21.975 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1023.54;472.54;12.19;73.24)
+2025-07-15 17:01:22.124 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//27.06//65.84//1001.13//642.24//2025-07-15T17:01:22]
+2025-07-15 17:01:22.125 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:22.187 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//12.19//73.24//1023.54//472.54//2025-07-15T17:01:22]
+2025-07-15 17:01:22.188 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:23.089 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//12.19//73.24//1023.54//472.54//2025-07-15T17:01:22]
+2025-07-15 17:01:23.089 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//27.06//65.84//1001.13//642.24//2025-07-15T17:01:22]
+2025-07-15 17:01:23.376 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1014.62,723.06,34.52,68.24}
+2025-07-15 17:01:23.566 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//34.52//68.24//1014.62//723.06//2025-07-15T17:01:23]
+2025-07-15 17:01:23.567 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:23.594 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 969.70-887.29-33.46-74.08
+2025-07-15 17:01:23.810 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//33.46//74.08//969.70//887.29//2025-07-15T17:01:23]
+2025-07-15 17:01:23.812 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:23.987 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//34.52//68.24//1014.62//723.06//2025-07-15T17:01:23]
+2025-07-15 17:01:24.191 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//33.46//74.08//969.70//887.29//2025-07-15T17:01:23]
+2025-07-15 17:01:24.411 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1030.96;555.35;15.90;68.50)
+2025-07-15 17:01:24.578 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//15.90//68.50//1030.96//555.35//2025-07-15T17:01:24]
+2025-07-15 17:01:24.578 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:24.955 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//15.90//68.50//1030.96//555.35//2025-07-15T17:01:24]
+2025-07-15 17:01:26.225 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 987.85#652.11#23.65#59.84
+2025-07-15 17:01:26.225 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1007.34,799.38,30.60,52.50}
+2025-07-15 17:01:26.387 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//30.60//52.50//1007.34//799.38//2025-07-15T17:01:26]
+2025-07-15 17:01:26.388 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//23.65//59.84//987.85//652.11//2025-07-15T17:01:26]
+2025-07-15 17:01:26.388 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:26.389 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:26.807 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//30.60//52.50//1007.34//799.38//2025-07-15T17:01:26]
+2025-07-15 17:01:26.807 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//23.65//59.84//987.85//652.11//2025-07-15T17:01:26]
+2025-07-15 17:01:28.695 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 952.40-951.62-32.82-89.07
+2025-07-15 17:01:28.709 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1041.04;753.32;12.63;73.94)
+2025-07-15 17:01:28.873 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//12.63//73.94//1041.04//753.32//2025-07-15T17:01:28]
+2025-07-15 17:01:28.873 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//32.82//89.07//952.40//951.62//2025-07-15T17:01:28]
+2025-07-15 17:01:28.873 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:28.874 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:29.404 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//32.82//89.07//952.40//951.62//2025-07-15T17:01:28]
+2025-07-15 17:01:29.404 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//12.63//73.94//1041.04//753.32//2025-07-15T17:01:28]
+2025-07-15 17:01:29.426 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1003.23#736.10#23.29#74.86
+2025-07-15 17:01:29.635 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//23.29//74.86//1003.23//736.10//2025-07-15T17:01:29]
+2025-07-15 17:01:29.636 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:29.969 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//23.29//74.86//1003.23//736.10//2025-07-15T17:01:29]
+2025-07-15 17:01:30.531 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1017.66,977.94,26.53,50.27}
+2025-07-15 17:01:30.711 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//26.53//50.27//1017.66//977.94//2025-07-15T17:01:30]
+2025-07-15 17:01:30.711 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:31.079 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//26.53//50.27//1017.66//977.94//2025-07-15T17:01:30]
+2025-07-15 17:01:32.495 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 951.23-876.91-38.01-73.59
+2025-07-15 17:01:32.676 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//38.01//73.59//951.23//876.91//2025-07-15T17:01:32]
+2025-07-15 17:01:32.676 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:32.917 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1007.49;552.59;16.52;64.39)
+2025-07-15 17:01:33.073 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//38.01//73.59//951.23//876.91//2025-07-15T17:01:32]
+2025-07-15 17:01:33.075 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//16.52//64.39//1007.49//552.59//2025-07-15T17:01:33]
+2025-07-15 17:01:33.075 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:33.319 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1015.16#897.19#26.85#64.16
+2025-07-15 17:01:33.461 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//16.52//64.39//1007.49//552.59//2025-07-15T17:01:33]
+2025-07-15 17:01:33.490 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//26.85//64.16//1015.16//897.19//2025-07-15T17:01:33]
+2025-07-15 17:01:33.491 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:33.849 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//26.85//64.16//1015.16//897.19//2025-07-15T17:01:33]
+2025-07-15 17:01:35.318 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1026.33,854.46,30.03,62.82}
+2025-07-15 17:01:35.476 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//30.03//62.82//1026.33//854.46//2025-07-15T17:01:35]
+2025-07-15 17:01:35.477 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:35.841 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//30.03//62.82//1026.33//854.46//2025-07-15T17:01:35]
+2025-07-15 17:01:36.307 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 988.32#683.05#23.80#74.13
+2025-07-15 17:01:36.524 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//23.80//74.13//988.32//683.05//2025-07-15T17:01:36]
+2025-07-15 17:01:36.526 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:36.900 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//23.80//74.13//988.32//683.05//2025-07-15T17:01:36]
+2025-07-15 17:01:37.270 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1008.21;489.99;12.91;74.98)
+2025-07-15 17:01:37.300 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 983.94-1109.08-39.01-72.63
+2025-07-15 17:01:37.456 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//12.91//74.98//1008.21//489.99//2025-07-15T17:01:37]
+2025-07-15 17:01:37.457 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:37.485 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//39.01//72.63//983.94//1109.08//2025-07-15T17:01:37]
+2025-07-15 17:01:37.486 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:37.758 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//12.91//74.98//1008.21//489.99//2025-07-15T17:01:37]
+2025-07-15 17:01:37.948 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//39.01//72.63//983.94//1109.08//2025-07-15T17:01:37]
+2025-07-15 17:01:37.990 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1027.86,738.82,31.06,54.84}
+2025-07-15 17:01:38.140 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//31.06//54.84//1027.86//738.82//2025-07-15T17:01:38]
+2025-07-15 17:01:38.141 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:38.473 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//31.06//54.84//1027.86//738.82//2025-07-15T17:01:38]
+2025-07-15 17:01:40.306 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 996.14#751.54#22.00#72.41
+2025-07-15 17:01:40.453 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//22.00//72.41//996.14//751.54//2025-07-15T17:01:40]
+2025-07-15 17:01:40.454 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:40.664 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1011.93,971.51,25.94,50.37}
+2025-07-15 17:01:40.797 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//22.00//72.41//996.14//751.54//2025-07-15T17:01:40]
+2025-07-15 17:01:40.813 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//25.94//50.37//1011.93//971.51//2025-07-15T17:01:40]
+2025-07-15 17:01:40.813 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:40.829 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1009.15;521.70;13.16;68.97)
+2025-07-15 17:01:40.978 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//13.16//68.97//1009.15//521.70//2025-07-15T17:01:40]
+2025-07-15 17:01:40.979 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:41.120 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//25.94//50.37//1011.93//971.51//2025-07-15T17:01:40]
+2025-07-15 17:01:41.325 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//13.16//68.97//1009.15//521.70//2025-07-15T17:01:40]
+2025-07-15 17:01:41.639 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 993.67-878.44-32.35-80.71
+2025-07-15 17:01:41.785 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//32.35//80.71//993.67//878.44//2025-07-15T17:01:41]
+2025-07-15 17:01:41.785 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:42.116 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//32.35//80.71//993.67//878.44//2025-07-15T17:01:41]
+2025-07-15 17:01:42.881 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1003.62#648.54#28.18#61.97
+2025-07-15 17:01:43.028 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//28.18//61.97//1003.62//648.54//2025-07-15T17:01:43]
+2025-07-15 17:01:43.029 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:43.359 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//28.18//61.97//1003.62//648.54//2025-07-15T17:01:43]
+2025-07-15 17:01:43.550 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {987.67,950.47,27.13,59.91}
+2025-07-15 17:01:43.701 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//27.13//59.91//987.67//950.47//2025-07-15T17:01:43]
+2025-07-15 17:01:43.701 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:43.760 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1016.95;455.66;18.10;77.84)
+2025-07-15 17:01:43.906 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//18.10//77.84//1016.95//455.66//2025-07-15T17:01:43]
+2025-07-15 17:01:43.907 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:44.033 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//27.13//59.91//987.67//950.47//2025-07-15T17:01:43]
+2025-07-15 17:01:44.176 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//18.10//77.84//1016.95//455.66//2025-07-15T17:01:43]
+2025-07-15 17:01:44.485 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 991.13-961.06-36.53-83.27
+2025-07-15 17:01:44.638 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//36.53//83.27//991.13//961.06//2025-07-15T17:01:44]
+2025-07-15 17:01:44.640 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:44.969 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//36.53//83.27//991.13//961.06//2025-07-15T17:01:44]
+2025-07-15 17:01:45.136 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1000.03#747.04#20.71#67.57
+2025-07-15 17:01:45.292 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//20.71//67.57//1000.03//747.04//2025-07-15T17:01:45]
+2025-07-15 17:01:45.293 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:45.621 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//20.71//67.57//1000.03//747.04//2025-07-15T17:01:45]
+2025-07-15 17:01:47.076 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1010.48,698.40,32.88,58.68}
+2025-07-15 17:01:47.225 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//32.88//58.68//1010.48//698.40//2025-07-15T17:01:47]
+2025-07-15 17:01:47.225 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:47.354 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 995.68#750.53#25.33#70.88
+2025-07-15 17:01:47.501 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//25.33//70.88//995.68//750.53//2025-07-15T17:01:47]
+2025-07-15 17:01:47.502 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:47.557 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//32.88//58.68//1010.48//698.40//2025-07-15T17:01:47]
+2025-07-15 17:01:47.705 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//25.33//70.88//995.68//750.53//2025-07-15T17:01:47]
+2025-07-15 17:01:47.804 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1018.16;671.35;15.69;73.65)
+2025-07-15 17:01:47.952 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//15.69//73.65//1018.16//671.35//2025-07-15T17:01:47]
+2025-07-15 17:01:47.953 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:48.282 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//15.69//73.65//1018.16//671.35//2025-07-15T17:01:47]
+2025-07-15 17:01:48.654 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 960.56-976.09-34.88-71.11
+2025-07-15 17:01:48.806 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//34.88//71.11//960.56//976.09//2025-07-15T17:01:48]
+2025-07-15 17:01:48.806 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:49.155 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//34.88//71.11//960.56//976.09//2025-07-15T17:01:48]
+2025-07-15 17:01:51.494 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {982.99,784.20,28.94,58.31}
+2025-07-15 17:01:51.602 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1037.46;446.39;17.51;76.00)
+2025-07-15 17:01:51.638 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//28.94//58.31//982.99//784.20//2025-07-15T17:01:51]
+2025-07-15 17:01:51.639 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:51.748 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//17.51//76.00//1037.46//446.39//2025-07-15T17:01:51]
+2025-07-15 17:01:51.750 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:51.866 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1017.07#697.77#29.78#72.57
+2025-07-15 17:01:51.890 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//28.94//58.31//982.99//784.20//2025-07-15T17:01:51]
+2025-07-15 17:01:51.973 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//17.51//76.00//1037.46//446.39//2025-07-15T17:01:51]
+2025-07-15 17:01:52.011 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//29.78//72.57//1017.07//697.77//2025-07-15T17:01:52]
+2025-07-15 17:01:52.011 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:52.342 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//29.78//72.57//1017.07//697.77//2025-07-15T17:01:52]
+2025-07-15 17:01:53.202 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 991.39-1057.88-34.55-73.96
+2025-07-15 17:01:53.351 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//34.55//73.96//991.39//1057.88//2025-07-15T17:01:53]
+2025-07-15 17:01:53.352 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:53.678 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//34.55//73.96//991.39//1057.88//2025-07-15T17:01:53]
+2025-07-15 17:01:54.356 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1045.55;715.46;19.41;67.29)
+2025-07-15 17:01:54.507 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1006.70,772.31,29.92,54.97}
+2025-07-15 17:01:54.511 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//19.41//67.29//1045.55//715.46//2025-07-15T17:01:54]
+2025-07-15 17:01:54.512 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:54.657 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//29.92//54.97//1006.70//772.31//2025-07-15T17:01:54]
+2025-07-15 17:01:54.657 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:54.997 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//19.41//67.29//1045.55//715.46//2025-07-15T17:01:54]
+2025-07-15 17:01:54.998 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//29.92//54.97//1006.70//772.31//2025-07-15T17:01:54]
+2025-07-15 17:01:56.654 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 985.96#699.10#21.34#59.30
+2025-07-15 17:01:56.879 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 953.28-889.82-37.68-79.32
+2025-07-15 17:01:56.945 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//21.34//59.30//985.96//699.10//2025-07-15T17:01:56]
+2025-07-15 17:01:56.946 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:57.238 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//37.68//79.32//953.28//889.82//2025-07-15T17:01:57]
+2025-07-15 17:01:57.239 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:01:57.555 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//21.34//59.30//985.96//699.10//2025-07-15T17:01:56]
+2025-07-15 17:01:57.555 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//37.68//79.32//953.28//889.82//2025-07-15T17:01:57]
+2025-07-15 17:01:58.180 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1013.11,722.76,30.22,61.57}
+2025-07-15 17:01:58.381 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//30.22//61.57//1013.11//722.76//2025-07-15T17:01:58]
+2025-07-15 17:01:58.382 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:01:58.672 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//30.22//61.57//1013.11//722.76//2025-07-15T17:01:58]
+2025-07-15 17:01:58.937 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1028.87;591.33;17.15;70.66)
+2025-07-15 17:01:59.107 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//17.15//70.66//1028.87//591.33//2025-07-15T17:01:59]
+2025-07-15 17:01:59.108 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:01:59.161 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1002.16#893.09#20.37#58.80
+2025-07-15 17:01:59.313 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//20.37//58.80//1002.16//893.09//2025-07-15T17:01:59]
+2025-07-15 17:01:59.314 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:01:59.436 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//17.15//70.66//1028.87//591.33//2025-07-15T17:01:59]
+2025-07-15 17:01:59.581 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//20.37//58.80//1002.16//893.09//2025-07-15T17:01:59]
+2025-07-15 17:01:59.678 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 959.63-905.80-33.90-78.97
+2025-07-15 17:01:59.824 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//33.90//78.97//959.63//905.80//2025-07-15T17:01:59]
+2025-07-15 17:01:59.825 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:00.168 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//33.90//78.97//959.63//905.80//2025-07-15T17:01:59]
+2025-07-15 17:02:01.279 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1041.52;508.45;13.90;72.47)
+2025-07-15 17:02:01.427 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//13.90//72.47//1041.52//508.45//2025-07-15T17:02:01]
+2025-07-15 17:02:01.428 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:01.772 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//13.90//72.47//1041.52//508.45//2025-07-15T17:02:01]
+2025-07-15 17:02:01.932 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 991.57#839.06#28.77#56.43
+2025-07-15 17:02:02.049 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 965.72-939.52-37.40-74.67
+2025-07-15 17:02:02.094 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//28.77//56.43//991.57//839.06//2025-07-15T17:02:02]
+2025-07-15 17:02:02.096 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:02.210 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//37.40//74.67//965.72//939.52//2025-07-15T17:02:02]
+2025-07-15 17:02:02.212 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:02.356 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//28.77//56.43//991.57//839.06//2025-07-15T17:02:02]
+2025-07-15 17:02:02.423 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//37.40//74.67//965.72//939.52//2025-07-15T17:02:02]
+2025-07-15 17:02:02.589 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {995.34,953.43,25.08,51.57}
+2025-07-15 17:02:02.749 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//25.08//51.57//995.34//953.43//2025-07-15T17:02:02]
+2025-07-15 17:02:02.749 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:03.081 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//25.08//51.57//995.34//953.43//2025-07-15T17:02:02]
+2025-07-15 17:02:05.058 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1008.04,668.78,26.97,61.28}
+2025-07-15 17:02:05.211 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//26.97//61.28//1008.04//668.78//2025-07-15T17:02:05]
+2025-07-15 17:02:05.212 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:05.541 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//26.97//61.28//1008.04//668.78//2025-07-15T17:02:05]
+2025-07-15 17:02:06.250 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1037.52;738.58;11.05;77.73)
+2025-07-15 17:02:06.396 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//11.05//77.73//1037.52//738.58//2025-07-15T17:02:06]
+2025-07-15 17:02:06.397 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:06.544 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//11.05//77.73//1037.52//738.58//2025-07-15T17:02:06]
+2025-07-15 17:02:06.556 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 956.27-859.44-31.03-83.56
+2025-07-15 17:02:06.737 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//31.03//83.56//956.27//859.44//2025-07-15T17:02:06]
+2025-07-15 17:02:06.737 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:06.866 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 996.05#679.42#29.92#62.46
+2025-07-15 17:02:07.013 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//29.92//62.46//996.05//679.42//2025-07-15T17:02:07]
+2025-07-15 17:02:07.020 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//31.03//83.56//956.27//859.44//2025-07-15T17:02:06]
+2025-07-15 17:02:07.069 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:07.352 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//29.92//62.46//996.05//679.42//2025-07-15T17:02:07]
+2025-07-15 17:02:07.989 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1002.45,972.28,26.88,57.81}
+2025-07-15 17:02:08.138 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//26.88//57.81//1002.45//972.28//2025-07-15T17:02:08]
+2025-07-15 17:02:08.138 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:08.470 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//26.88//57.81//1002.45//972.28//2025-07-15T17:02:08]
+2025-07-15 17:02:09.046 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1014.88;754.30;18.85;70.98)
+2025-07-15 17:02:09.195 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//18.85//70.98//1014.88//754.30//2025-07-15T17:02:09]
+2025-07-15 17:02:09.195 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:09.527 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//18.85//70.98//1014.88//754.30//2025-07-15T17:02:09]
+2025-07-15 17:02:10.340 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 986.36#808.03#22.09#68.91
+2025-07-15 17:02:10.653 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//22.09//68.91//986.36//808.03//2025-07-15T17:02:10]
+2025-07-15 17:02:10.655 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:10.678 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 991.17-974.10-35.63-80.14
+2025-07-15 17:02:10.834 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//35.63//80.14//991.17//974.10//2025-07-15T17:02:10]
+2025-07-15 17:02:10.978 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//22.09//68.91//986.36//808.03//2025-07-15T17:02:10]
+2025-07-15 17:02:10.993 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:11.104 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1018.46,938.69,34.51,52.65}
+2025-07-15 17:02:11.273 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//34.51//52.65//1018.46//938.69//2025-07-15T17:02:11]
+2025-07-15 17:02:11.273 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:11.312 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//35.63//80.14//991.17//974.10//2025-07-15T17:02:10]
+2025-07-15 17:02:11.458 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//34.51//52.65//1018.46//938.69//2025-07-15T17:02:11]
+2025-07-15 17:02:13.228 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 1008.36#631.38#26.26#58.65
+2025-07-15 17:02:13.361 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1034.77;569.48;14.80;73.62)
+2025-07-15 17:02:13.374 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//26.26//58.65//1008.36//631.38//2025-07-15T17:02:13]
+2025-07-15 17:02:13.374 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:13.507 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//14.80//73.62//1034.77//569.48//2025-07-15T17:02:13]
+2025-07-15 17:02:13.507 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:13.649 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//26.26//58.65//1008.36//631.38//2025-07-15T17:02:13]
+2025-07-15 17:02:13.720 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//14.80//73.62//1034.77//569.48//2025-07-15T17:02:13]
+2025-07-15 17:02:13.906 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1019.59,857.00,33.72,56.16}
+2025-07-15 17:02:14.056 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//33.72//56.16//1019.59//857.00//2025-07-15T17:02:14]
+2025-07-15 17:02:14.057 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:14.390 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//33.72//56.16//1019.59//857.00//2025-07-15T17:02:14]
+2025-07-15 17:02:15.730 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 996.82-1114.52-38.46-74.92
+2025-07-15 17:02:15.879 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//38.46//74.92//996.82//1114.52//2025-07-15T17:02:15]
+2025-07-15 17:02:15.880 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:16.205 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//38.46//74.92//996.82//1114.52//2025-07-15T17:02:15]
+2025-07-15 17:02:16.264 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1000.51;777.51;17.98;69.50)
+2025-07-15 17:02:16.425 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//17.98//69.50//1000.51//777.51//2025-07-15T17:02:16]
+2025-07-15 17:02:16.425 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:16.757 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//17.98//69.50//1000.51//777.51//2025-07-15T17:02:16]
+2025-07-15 17:02:17.452 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {998.57,976.59,33.59,67.11}
+2025-07-15 17:02:17.976 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 998.64#852.33#23.31#59.68
+2025-07-15 17:02:18.064 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//33.59//67.11//998.57//976.59//2025-07-15T17:02:18]
+2025-07-15 17:02:18.078 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:18.195 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//23.31//59.68//998.64//852.33//2025-07-15T17:02:18]
+2025-07-15 17:02:18.196 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:18.338 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//33.59//67.11//998.57//976.59//2025-07-15T17:02:18]
+2025-07-15 17:02:18.481 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//23.31//59.68//998.64//852.33//2025-07-15T17:02:18]
+2025-07-15 17:02:19.772 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1023.24;591.17;19.83;74.51)
+2025-07-15 17:02:19.919 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//19.83//74.51//1023.24//591.17//2025-07-15T17:02:19]
+2025-07-15 17:02:19.921 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:20.021 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 960.65-1109.13-33.78-89.09
+2025-07-15 17:02:20.204 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//33.78//89.09//960.65//1109.13//2025-07-15T17:02:20]
+2025-07-15 17:02:20.214 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:20.214 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {975.48,787.68,25.07,63.92}
+2025-07-15 17:02:20.254 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//19.83//74.51//1023.24//591.17//2025-07-15T17:02:19]
+2025-07-15 17:02:20.439 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//33.78//89.09//960.65//1109.13//2025-07-15T17:02:20]
+2025-07-15 17:02:20.443 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//25.07//63.92//975.48//787.68//2025-07-15T17:02:20]
+2025-07-15 17:02:20.444 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:20.769 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//25.07//63.92//975.48//787.68//2025-07-15T17:02:20]
+2025-07-15 17:02:22.557 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 984.36#571.17#27.55#65.32
+2025-07-15 17:02:22.775 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//27.55//65.32//984.36//571.17//2025-07-15T17:02:22]
+2025-07-15 17:02:22.777 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:23.117 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//27.55//65.32//984.36//571.17//2025-07-15T17:02:22]
+2025-07-15 17:02:24.371 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 971.12-970.21-37.37-75.45
+2025-07-15 17:02:24.443 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1001.32,613.77,26.06,64.06}
+2025-07-15 17:02:24.574 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//37.37//75.45//971.12//970.21//2025-07-15T17:02:24]
+2025-07-15 17:02:24.588 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:24.591 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//26.06//64.06//1001.32//613.77//2025-07-15T17:02:24]
+2025-07-15 17:02:24.592 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:24.592 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1044.76;565.25;14.08;75.51)
+2025-07-15 17:02:24.731 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//37.37//75.45//971.12//970.21//2025-07-15T17:02:24]
+2025-07-15 17:02:24.796 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//14.08//75.51//1044.76//565.25//2025-07-15T17:02:24]
+2025-07-15 17:02:24.796 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:24.850 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//26.06//64.06//1001.32//613.77//2025-07-15T17:02:24]
+2025-07-15 17:02:24.994 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//14.08//75.51//1044.76//565.25//2025-07-15T17:02:24]
+2025-07-15 17:02:25.832 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 986.25#551.97#25.06#57.43
+2025-07-15 17:02:25.991 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//25.06//57.43//986.25//551.97//2025-07-15T17:02:25]
+2025-07-15 17:02:25.992 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:26.321 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//25.06//57.43//986.25//551.97//2025-07-15T17:02:25]
+2025-07-15 17:02:26.698 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone LESTE gerou: {1006.61,915.71,34.92,50.27}
+2025-07-15 17:02:26.844 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de leste: [leste//34.92//50.27//1006.61//915.71//2025-07-15T17:02:26]
+2025-07-15 17:02:26.844 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.leste'
+2025-07-15 17:02:27.180 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/leste': [leste//34.92//50.27//1006.61//915.71//2025-07-15T17:02:26]
+2025-07-15 17:02:27.805 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone NORTE gerou: 987.54-1188.46-33.67-78.08
+2025-07-15 17:02:28.052 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1038.26;779.85;13.00;60.29)
+2025-07-15 17:02:28.092 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 980.57#869.16#29.62#62.18
+2025-07-15 17:02:28.358 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de oeste: [oeste//29.62//62.18//980.57//869.16//2025-07-15T17:02:28]
+2025-07-15 17:02:28.358 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.oeste'
+2025-07-15 17:02:28.358 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//13.00//60.29//1038.26//779.85//2025-07-15T17:02:28]
+2025-07-15 17:02:28.360 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 17:02:28.374 [pool-1-thread-3] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de norte: [norte//33.67//78.08//987.54//1188.46//2025-07-15T17:02:28]
+2025-07-15 17:02:28.385 [pool-1-thread-3] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
+2025-07-15 17:02:28.701 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/oeste': [oeste//29.62//62.18//980.57//869.16//2025-07-15T17:02:28]
+2025-07-15 17:02:28.701 [pool-1-thread-3] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/norte': [norte//33.67//78.08//987.54//1188.46//2025-07-15T17:02:28]
+2025-07-15 17:02:28.701 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//13.00//60.29//1038.26//779.85//2025-07-15T17:02:28]
