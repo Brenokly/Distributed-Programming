@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.climate.datas.utils.ClimateData; // Ajuste o import
+import com.climate.datas.utils.ClimateData;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
@@ -31,6 +31,7 @@ public class DashboardUser implements AutoCloseable {
     public DashboardUser() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RABBITMQ_HOST);
+        factory.setAutomaticRecoveryEnabled(true); // Reconectar automaticamente em caso de falha
         this.connection = factory.newConnection();
         this.channel = connection.createChannel();
     }
@@ -41,7 +42,8 @@ public class DashboardUser implements AutoCloseable {
         String queueName = channel.queueDeclare().getQueue();
         channel.queueBind(queueName, EXCHANGE_NAME, bindingKey);
         logger.info("Dashboard-User está ouvindo a exchange '{}' com o filtro '{}'.", EXCHANGE_NAME, bindingKey);
-        System.out.println("Dashboard-User está ouvindo a exchange '" + EXCHANGE_NAME + "' com o filtro '" + bindingKey + "'.");
+        System.out.println(
+                "Dashboard-User está ouvindo a exchange '" + EXCHANGE_NAME + "' com o filtro '" + bindingKey + "'.");
 
         DeliverCallback deliverCallback = (_, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
@@ -69,7 +71,8 @@ public class DashboardUser implements AutoCloseable {
             double humidity = Double.parseDouble(values[2]);
             double pressure = Double.parseDouble(values[3]);
             double radiation = Double.parseDouble(values[4]);
-            LocalDateTime timestamp = LocalDateTime.parse(values[5], DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
+            LocalDateTime timestamp = LocalDateTime.parse(values[5],
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss"));
 
             return new ClimateData(region, temperature, humidity, pressure, radiation, timestamp);
         } catch (NumberFormatException e) {
@@ -128,7 +131,8 @@ public class DashboardUser implements AutoCloseable {
         System.out.println("--- FIM DA BUSCA ---\n");
     }
 
-    private Map<String, Double> calculateAverageByMetric(java.util.function.ToDoubleFunction<ClimateData> metricExtractor) {
+    private Map<String, Double> calculateAverageByMetric(
+            java.util.function.ToDoubleFunction<ClimateData> metricExtractor) {
         return historicalData.stream()
                 .collect(Collectors.groupingBy(ClimateData::region, Collectors.averagingDouble(metricExtractor)));
     }

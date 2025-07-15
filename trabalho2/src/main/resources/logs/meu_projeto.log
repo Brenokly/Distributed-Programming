@@ -1493,3 +1493,84 @@ java.lang.NumberFormatException: For input string: ""
 2025-07-15 17:47:45.257 [pool-1-thread-3] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.norte'
 2025-07-15 17:47:46.262 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1042.47;469.44;18.83;63.55)
 2025-07-15 17:47:46.954 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone OESTE gerou: 990.16#703.61#23.28#71.99
+2025-07-15 20:21:35.542 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectando ao broker: tcp://broker.emqx.io:1883
+2025-07-15 20:21:36.418 [main] INFO  com.climate.datas.drone.Drone - Drone SUL conectado com sucesso.
+2025-07-15 20:21:57.020 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectado ao RabbitMQ e exchange de TÓPICO 'climate_data_topic_exchange' declarada.
+2025-07-15 20:21:57.054 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectando ao broker MQTT...
+2025-07-15 20:21:57.578 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectado.
+2025-07-15 20:21:57.674 [main] INFO  com.climate.datas.gateway.Gateway - Gateway inscrito no tópico de drones: ufersa/pw/climadata/#
+2025-07-15 20:21:57.674 [main] INFO  com.climate.datas.gateway.Gateway - Gateway está em execução. Pressione Ctrl+C para encerrar.
+2025-07-15 20:21:59.366 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectado ao RabbitMQ e exchange de TÓPICO 'climate_data_topic_exchange' declarada.
+2025-07-15 20:21:59.397 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectando ao broker MQTT...
+2025-07-15 20:21:59.916 [main] INFO  com.climate.datas.gateway.Gateway - Gateway conectado.
+2025-07-15 20:22:00.011 [main] INFO  com.climate.datas.gateway.Gateway - Gateway inscrito no tópico de drones: ufersa/pw/climadata/#
+2025-07-15 20:22:00.011 [main] INFO  com.climate.datas.gateway.Gateway - Gateway está em execução. Pressione Ctrl+C para encerrar.
+2025-07-15 20:22:07.868 [main] INFO  com.climate.datas.user.RealTimeUser - RealTime-User conectando ao broker MQTT...
+2025-07-15 20:22:08.428 [main] INFO  com.climate.datas.user.RealTimeUser - RealTime-User conectado.
+2025-07-15 20:22:08.428 [main] INFO  com.climate.datas.user.RealTimeUser - Inscrevendo-se no tópico: ufersa/pw/gateway/processed_data/#
+2025-07-15 20:22:12.675 [main] INFO  com.climate.datas.drone.Drone - Iniciando a coleta de dados para a região SUL.
+2025-07-15 20:22:16.794 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1026.28;532.92;19.30;65.13)
+2025-07-15 20:22:16.914 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//19.30//65.13//1026.28//532.92//2025-07-15T20:22:16]
+2025-07-15 20:22:16.916 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:22:17.138 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//19.30//65.13//1026.28//532.92//2025-07-15T20:22:16]
+2025-07-15 20:22:21.151 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1010.28;479.49;12.10;79.63)
+2025-07-15 20:22:21.260 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//12.10//79.63//1010.28//479.49//2025-07-15T20:22:21]
+2025-07-15 20:22:21.260 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:22:21.490 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//12.10//79.63//1010.28//479.49//2025-07-15T20:22:21]
+2025-07-15 20:22:23.685 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1004.53;416.40;10.25;69.11)
+2025-07-15 20:22:23.793 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//10.25//69.11//1004.53//416.40//2025-07-15T20:22:23]
+2025-07-15 20:22:23.793 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:22:24.022 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//10.25//69.11//1004.53//416.40//2025-07-15T20:22:23]
+2025-07-15 20:22:24.278 [MQTT Rec: gateway-1752621717024] WARN  com.climate.datas.gateway.Gateway - Conexão com o broker MQTT perdida! Causa: Connection lost
+2025-07-15 20:22:24.262 [MQTT Rec: realtime-user-1752621724710] WARN  com.climate.datas.user.RealTimeUser - Conexão perdida.
+org.eclipse.paho.client.mqttv3.MqttException: Connection lost
+	at org.eclipse.paho.client.mqttv3.internal.CommsReceiver.run(CommsReceiver.java:197)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:318)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:346)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:796)
+	at java.base/java.net.Socket$SocketInputStream.implRead(Socket.java:1116)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1103)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:1097)
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:295)
+	at java.base/java.io.DataInputStream.readByte(DataInputStream.java:275)
+	at org.eclipse.paho.client.mqttv3.internal.wire.MqttInputStream.readMqttWireMessage(MqttInputStream.java:92)
+	at org.eclipse.paho.client.mqttv3.internal.CommsReceiver.run(CommsReceiver.java:137)
+	... 1 common frames omitted
+2025-07-15 20:22:26.088 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1036.58;776.63;17.73;64.66)
+2025-07-15 20:22:26.089 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:31.019 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1032.38;601.79;19.47;79.53)
+2025-07-15 20:22:31.020 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:34.206 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1041.82;703.24;12.28;75.05)
+2025-07-15 20:22:34.207 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:38.783 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1042.74;756.73;12.70;71.87)
+2025-07-15 20:22:38.784 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:41.659 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1037.50;712.58;13.25;76.55)
+2025-07-15 20:22:41.659 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:44.813 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1038.01;510.89;17.25;62.04)
+2025-07-15 20:22:44.814 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:48.687 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1049.65;462.58;16.36;66.33)
+2025-07-15 20:22:48.687 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:51.500 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1002.87;501.02;11.93;75.08)
+2025-07-15 20:22:51.501 [pool-1-thread-1] WARN  com.climate.datas.drone.Drone - Drone SUL não está conectado, pulando publicação.
+2025-07-15 20:22:55.988 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1043.14;524.03;12.79;67.88)
+2025-07-15 20:23:00.458 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1011.47;799.10;16.79;64.47)
+2025-07-15 20:23:00.950 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//12.79//67.88//1043.14//524.03//2025-07-15T20:23:00]
+2025-07-15 20:23:00.950 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//16.79//64.47//1011.47//799.10//2025-07-15T20:23:00]
+2025-07-15 20:23:00.950 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:23:00.951 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:23:01.200 [pool-1-thread-1] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//12.79//67.88//1043.14//524.03//2025-07-15T20:23:00]
+2025-07-15 20:23:01.200 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//16.79//64.47//1011.47//799.10//2025-07-15T20:23:00]
+2025-07-15 20:23:04.414 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1046.35;684.75;18.28;70.17)
+2025-07-15 20:23:04.520 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//18.28//70.17//1046.35//684.75//2025-07-15T20:23:04]
+2025-07-15 20:23:04.521 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:23:04.772 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//18.28//70.17//1046.35//684.75//2025-07-15T20:23:04]
+2025-07-15 20:23:08.702 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1031.09;631.41;17.39;63.22)
+2025-07-15 20:23:08.808 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//17.39//63.22//1031.09//631.41//2025-07-15T20:23:08]
+2025-07-15 20:23:08.808 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:23:09.063 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//17.39//63.22//1031.09//631.41//2025-07-15T20:23:08]
+2025-07-15 20:23:13.299 [pool-1-thread-1] INFO  com.climate.datas.drone.Drone - Drone SUL gerou: (1015.52;633.94;12.14;78.54)
+2025-07-15 20:23:13.403 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway armazenou dados de sul: [sul//12.14//78.54//1015.52//633.94//2025-07-15T20:23:13]
+2025-07-15 20:23:13.404 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Exchange RabbitMQ 'climate_data_topic_exchange' com chave 'dados.climaticos.sul'
+2025-07-15 20:23:13.655 [pool-1-thread-2] INFO  com.climate.datas.gateway.Gateway - Gateway publicou para Tópico MQTT 'ufersa/pw/gateway/processed_data/sul': [sul//12.14//78.54//1015.52//633.94//2025-07-15T20:23:13]

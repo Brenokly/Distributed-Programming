@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
@@ -37,7 +38,11 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
 
     public void connectAndSubscribe(String topicFilter) throws MqttException {
         logger.info("RealTime-User conectando ao broker MQTT...");
-        mqttClient.connect();
+
+        MqttConnectOptions connOpts = new MqttConnectOptions();
+        connOpts.setAutomaticReconnect(true);
+
+        mqttClient.connect(connOpts);
         logger.info("RealTime-User conectado.");
         logger.info("Inscrevendo-se no tópico: {}", topicFilter);
         this.mqttClient.subscribe(topicFilter, 1);
