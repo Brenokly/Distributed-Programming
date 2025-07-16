@@ -31,7 +31,7 @@ public class DashboardUser implements AutoCloseable {
     public DashboardUser() throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RABBITMQ_HOST);
-        factory.setAutomaticRecoveryEnabled(true); // Reconectar automaticamente em caso de falha
+        factory.setAutomaticRecoveryEnabled(true);
         this.connection = factory.newConnection();
         this.channel = connection.createChannel();
     }

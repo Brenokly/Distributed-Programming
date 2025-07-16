@@ -40,6 +40,7 @@ public class RealTimeUser implements MqttCallback, AutoCloseable {
         logger.info("RealTime-User conectando ao broker MQTT...");
 
         MqttConnectOptions connOpts = new MqttConnectOptions();
+        connOpts.setCleanSession(false);
         connOpts.setAutomaticReconnect(true);
 
         mqttClient.connect(connOpts);

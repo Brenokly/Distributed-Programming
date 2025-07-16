@@ -45,11 +45,12 @@ public class Gateway implements MqttCallback, AutoCloseable {
     public Gateway() {
     }
 
-    //Inicia as conexões com os brokers MQTT e RabbitMQ.
+    // Inicia as conexões com os brokers MQTT e RabbitMQ.
     public void start() throws IOException, TimeoutException, MqttException {
         // Configuração do RabbitMQ
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(RABBITMQ_HOST);
+        factory.setAutomaticRecoveryEnabled(true);
         this.rabbitConnection = factory.newConnection();
         this.rabbitChannel = rabbitConnection.createChannel();
 
@@ -94,7 +95,7 @@ public class Gateway implements MqttCallback, AutoCloseable {
                 logger.info("Gateway armazenou dados de {}: {}", region, data);
 
                 publishToRabbitMQ(data); // Publica para o Dashboard
-                publishToMqtt(data);     // Publica para o RealTime
+                publishToMqtt(data); // Publica para o RealTime
 
             } catch (Exception e) {
                 logger.error("Erro ao processar mensagem de {}: {}", topic, e.getMessage());
@@ -109,7 +110,7 @@ public class Gateway implements MqttCallback, AutoCloseable {
         switch (region.toUpperCase()) {
             case "NORTE" -> // Divide a string usando o hífen como delimitador
                 stringValues = payload.split("-");
-            case "SUL" ->  // Remove os parênteses e depois divide pelo ponto e vírgula
+            case "SUL" -> // Remove os parênteses e depois divide pelo ponto e vírgula
                 stringValues = payload.replace("(", "").replace(")", "").split(";");
             case "LESTE" -> // Remove as chaves e depois divide pela vírgula
                 stringValues = payload.replace("{", "").replace("}", "").split(",");
@@ -146,7 +147,8 @@ public class Gateway implements MqttCallback, AutoCloseable {
             String routingKey = "dados.climaticos." + data.region().toLowerCase();
 
             rabbitChannel.basicPublish(RABBITMQ_EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
-            logger.info("Gateway publicou para Exchange RabbitMQ '{}' com chave '{}'", RABBITMQ_EXCHANGE_NAME, routingKey);
+            logger.info("Gateway publicou para Exchange RabbitMQ '{}' com chave '{}'", RABBITMQ_EXCHANGE_NAME,
+                    routingKey);
         } catch (IOException e) {
             logger.error("Falha CRÍTICA ao publicar no RabbitMQ: {}", e.getMessage());
         }
@@ -158,7 +160,8 @@ public class Gateway implements MqttCallback, AutoCloseable {
             MqttMessage mqttMessage = new MqttMessage(message.getBytes(StandardCharsets.UTF_8));
             mqttMessage.setQos(1);
             mqttClient.publish(GATEWAY_PUBLISH_TOPIC + "/" + data.region(), mqttMessage);
-            logger.info("Gateway publicou para Tópico MQTT '{}': {}", GATEWAY_PUBLISH_TOPIC + "/" + data.region(), message);
+            logger.info("Gateway publicou para Tópico MQTT '{}': {}", GATEWAY_PUBLISH_TOPIC + "/" + data.region(),
+                    message);
         } catch (MqttException e) {
             logger.error("Falha ao publicar no MQTT: {}", e.getMessage());
         }
