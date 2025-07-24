@@ -151,7 +151,7 @@ O sistema é composto por cinco processos principais que rodam de forma independ
 │   │   │       │   └── 📄 ClienteHttpDashboard.java
 │   │   │       ├── 📁 config
 │   │   │       │   └── 📄 SharedConfig.java
-│   │   │       ├── 📁 dashboard\_api
+│   │   │       ├── 📁 dashboard_api
 │   │   │       │   ├── 📄 DashboardController.java
 │   │   │       │   └── 📄 ServicoDashboardApplication.java
 │   │   │       ├── 📁 drone
@@ -160,11 +160,11 @@ O sistema é composto por cinco processos principais que rodam de forma independ
 │   │   │       │       └── 📄 DroneNorte.java, ...
 │   │   │       ├── 📁 gateway
 │   │   │       │   └── 📄 Gateway.java
-│   │   │       ├── 📁 realtime\_user
+│   │   │       ├── 📁 realtime_user
 │   │   │       │   ├── 📄 RealTimeUser.java
 │   │   │       │   └── 📁 execute
 │   │   │       │       └── 📄 RealTimeUserLauncher.java
-│   │   │       ├── 📁 storage\_service
+│   │   │       ├── 📁 storage_service
 │   │   │       │   ├── 📄 DataQueryController.java
 │   │   │       │   ├── 📄 RabbitMQConsumerService.java
 │   │   │       │   └── 📄 DataStorageApplication.java
@@ -175,6 +175,7 @@ O sistema é composto por cinco processos principais que rodam de forma independ
 ├── 📄 README.md
 └── 📄 pom.xml
 
+---
 
 ## 📚 Referências Bibliográficas <a id="referencias-bibliograficas"></a>
 
