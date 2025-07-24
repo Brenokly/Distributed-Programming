@@ -28,13 +28,13 @@
 
 ## 📚 Introdução <a id="introducao"></a>
 
-[cite_start]Este projeto é uma simulação de um sistema distribuído para coleta, processamento e gerenciamento de dados climáticos, desenvolvido como atividade da **Prática Offline 3** da disciplina de Programação Concorrente e Distribuída[cite: 5]. [cite_start]O sistema simula um cenário onde Drones atuam como produtores de dados, enviando informações para um Gateway central[cite: 13]. [cite_start]Este Gateway, por sua vez, roteia os dados para diferentes canais de comunicação (MQTT e RabbitMQ) [cite: 36, 66][cite_start], que alimentam uma arquitetura de microsserviços projetada para desacoplar o armazenamento e a visualização dos dados[cite: 67].
+Este projeto é uma simulação de um sistema distribuído para coleta, processamento e gerenciamento de dados climáticos, desenvolvido como atividade da **Prática Offline 3** da disciplina de Programação Concorrente e Distribuída. O sistema simula um cenário onde Drones atuam como produtores de dados, enviando informações para um Gateway central. Este Gateway, por sua vez, roteia os dados para diferentes canais de comunicação (MQTT e RabbitMQ), que alimentam uma arquitetura de microsserviços projetada para desacoplar o armazenamento e a visualização dos dados.
 
 ---
 
 ## 🎯 Objetivos <a id="objetivos"></a>
 
-[cite_start]O objetivo da disciplina é capacitar os alunos na construção de sistemas distribuídos, aplicando conceitos de comunicação entre processos, concorrência, paralelismo e, nesta prática, com foco em uma arquitetura baseada em microsserviços, desacoplamento via mensageria e comunicação síncrona/assíncrona entre serviços[cite: 6, 79].
+O objetivo da disciplina é capacitar os alunos na construção de sistemas distribuídos, aplicando conceitos de comunicação entre processos, concorrência, paralelismo e, nesta prática, com foco em uma arquitetura baseada em microsserviços, desacoplamento via mensageria e comunicação síncrona/assíncrona entre serviços.
 
 ---
 
@@ -42,20 +42,20 @@
 
 ### 🎯 Objetivo <a id="objetivo"></a>
 
-[cite_start]Desenvolver uma simulação de um sistema distribuído para a coleta e gerenciamento de dados climáticos[cite: 6]. [cite_start]A arquitetura implementa o padrão de comunicação indireta com brokers de mensagem (MQTT e RabbitMQ) [cite: 66] [cite_start]e desacopla as responsabilidades de armazenamento e apresentação de dados em microsserviços distintos que se comunicam via API REST[cite: 36, 67]. O projeto aplica conceitos de programação reativa (WebFlux), chamadas assíncronas (`CompletableFuture`) e programação funcional.
+Desenvolver uma simulação de um sistema distribuído para a coleta e gerenciamento de dados climáticos. A arquitetura implementa o padrão de comunicação indireta com brokers de mensagem (MQTT e RabbitMQ) e desacopla as responsabilidades de armazenamento e apresentação de dados em microsserviços distintos que se comunicam via API REST. O projeto aplica conceitos de programação reativa (WebFlux), chamadas assíncronas (`CompletableFuture`) e programação funcional.
 
 ---
 
 ### 🏷️ Conceitos-Chave <a id="conceitos-chave"></a>
 
-* [cite_start]**Microsserviços:** A aplicação é dividida em serviços independentes e especializados (Gateway, Serviço de Armazenamento, API de Dashboard)[cite: 67].
-* [cite_start]**Comunicação Indireta:** Desacoplamento espacial e temporal entre os componentes através dos brokers MQTT e RabbitMQ[cite: 66].
-* [cite_start]**API REST:** O `Cliente HTTP` consome os dados do dashboard através de uma API REST exposta pelo `Serviço de Dashboard`[cite: 41, 67].
+* **Microsserviços:** A aplicação é dividida em serviços independentes e especializados (Gateway, Serviço de Armazenamento, API de Dashboard).
+* **Comunicação Indireta:** Desacoplamento espacial e temporal entre os componentes através dos brokers MQTT e RabbitMQ.
+* **API REST:** O `Cliente HTTP` consome os dados do dashboard através de uma API REST exposta pelo `Serviço de Dashboard`.
 * **Programação Reativa (WebFlux):** A API de Dashboard utiliza o paradigma reativo com `Mono` e `Flux` para lidar com as requisições de forma assíncrona e não-bloqueante.
 * **Programação Assíncrona (`CompletableFuture`):** O `Cliente HTTP` utiliza o `HttpClient` moderno do Java com `CompletableFuture` para realizar chamadas não-bloqueantes à API.
-* [cite_start]**Programação Concorrente:** Uso de `ExecutorService` no Gateway para processamento paralelo das mensagens recebidas[cite: 61].
-* [cite_start]**Programação Funcional:** Amplo uso de Lambdas e Streams para processamento e transformação de dados, principalmente nos cálculos do dashboard[cite: 65].
-* [cite_start]**MQTT e RabbitMQ:** Brokers de mensagem utilizados para diferentes propósitos: MQTT para tempo real e telemetria [cite: 49][cite_start], RabbitMQ para entrega confiável de mensagens para serviços de backend[cite: 37].
+* **Programação Concorrente:** Uso de `ExecutorService` no Gateway para processamento paralelo das mensagens recebidas.
+* **Programação Funcional:** Amplo uso de Lambdas e Streams para processamento e transformação de dados, principalmente nos cálculos do dashboard.
+* **MQTT e RabbitMQ:** Brokers de mensagem utilizados para diferentes propósitos: MQTT para tempo real e telemetria , RabbitMQ para entrega confiável de mensagens para serviços de backend.
 
 ---
 
@@ -63,49 +63,49 @@
 
 O sistema é composto por cinco processos principais que rodam de forma independente.
 
-#### [cite_start]**Drones (Produtores MQTT)** [cite: 30]
+#### **Drones (Produtores MQTT)** 
 
-* [cite_start]4 drones (Norte, Sul, Leste e Oeste) que geram dados climáticos em formatos distintos[cite: 7, 9, 10, 11, 12].
+* 4 drones (Norte, Sul, Leste e Oeste) que geram dados climáticos em formatos distintos.
 * Publicam os dados em tópicos MQTT específicos por região: `ufersa/pw/climadata/<regiao>`.
 
-#### [cite_start]**Gateway (Centro Distribuidor)** [cite: 14]
+#### **Gateway (Centro Distribuidor)** 
 
 * **Consumidor MQTT:** Inscreve-se no tópico `ufersa/pw/climadata/#` para receber dados de todos os drones.
 * **Processador:** Faz o parse dos 4 formatos de dados e os padroniza.
 * **Produtor Dual:** Re-publica os dados processados em dois canais:
-    * [cite_start]**RabbitMQ:** Para a exchange `climate_data_topic_exchange` com a routing key `dados.climaticos.<regiao>`[cite: 37].
-    * [cite_start]**MQTT:** Para o tópico `ufersa/pw/gateway/processed_data/<regiao>`[cite: 49].
+    * **RabbitMQ:** Para a exchange `climate_data_topic_exchange` com a routing key `dados.climaticos.<regiao>`.
+    * **MQTT:** Para o tópico `ufersa/pw/gateway/processed_data/<regiao>`.
 
 #### **Microsserviço de Armazenamento (`DataStorageService`)**
 
-* [cite_start]**Consumidor RabbitMQ:** Ouve a exchange do Gateway para receber todos os dados climáticos[cite: 37].
-* [cite_start]**Armazenamento:** Salva os dados recebidos em uma base de dados em memória[cite: 40].
+* **Consumidor RabbitMQ:** Ouve a exchange do Gateway para receber todos os dados climáticos.
+* **Armazenamento:** Salva os dados recebidos em uma base de dados em memória.
 * **API Interna:** Expõe um endpoint REST simples (`/data`) para que outros serviços possam consultar os dados brutos armazenados.
 
 #### **Microsserviço de Dashboard (`DashboardApiService`)**
 
 * **API WebFlux:** Expõe endpoints REST (`/dashboard` e `/dashboard/{region}`) para o cliente final.
 * **Orquestrador:** Ao receber uma requisição, ele faz uma chamada HTTP para o `DataStorageService` para obter os dados.
-* [cite_start]**Processador de Dashboard:** Com os dados em mãos, ele realiza os cálculos (totais, médias, percentuais) e formata o resultado em JSON[cite: 18, 20, 21, 22, 23, 24, 25].
+* **Processador de Dashboard:** Com os dados em mãos, ele realiza os cálculos (totais, médias, percentuais) e formata o resultado em JSON.
 
-#### [cite_start]**Clientes (Usuários Finais)** [cite: 56]
+#### **Clientes (Usuários Finais)** 
 
 * **Cliente HTTP Dashboard (`ClienteHttpDashboard`):**
-    * [cite_start]Simula um usuário que consome dados históricos[cite: 41].
-    * [cite_start]Possui um menu para o usuário escolher a região desejada[cite: 44].
+    * Simula um usuário que consome dados históricos.
+    * Possui um menu para o usuário escolher a região desejada.
     * Usa `HttpClient` e `CompletableFuture` para fazer chamadas assíncronas à API do `DashboardApiService`.
     * Formata o JSON recebido em um dashboard de texto legível.
 
 * **Usuário em Tempo Real (`RealTimeUser`):**
-    * [cite_start]Consome dados em tempo real diretamente do tópico MQTT do Gateway[cite: 49].
-    * [cite_start]Possui um menu para o usuário escolher a região a ser monitorada[cite: 53].
+    * Consome dados em tempo real diretamente do tópico MQTT do Gateway.
+    * Possui um menu para o usuário escolher a região a ser monitorada.
     * Exibe os dados no console assim que chegam e permite gerar dashboards dinâmicos.
 
 ---
 
 ### 🔄 Fluxo da Simulação <a id="fluxo-da-simulacao"></a>
 
-1.  [cite_start]**Publicação:** Os Drones iniciam e publicam dados brutos via MQTT a cada 2-5 segundos[cite: 29].
+1.  **Publicação:** Os Drones iniciam e publicam dados brutos via MQTT a cada 2-5 segundos.
 2.  **Processamento e Roteamento:** O Gateway consome os dados brutos, os padroniza e os re-publica para o RabbitMQ e para outro tópico MQTT.
 3.  **Armazenamento:** O `DataStorageService` consome as mensagens do RabbitMQ e as armazena em sua base de dados em memória.
 4.  **Consumo em Tempo Real:** O `RealTimeUser` recebe os dados do Gateway via MQTT e os exibe instantaneamente.
@@ -128,7 +128,7 @@ O sistema é composto por cinco processos principais que rodam de forma independ
     * **2º Serviço de Armazenamento:** `DataStorageApplication.java` (o consumidor RabbitMQ com API).
     * **3º Serviço de Dashboard:** `ServicoDashboardApplication.java` (a API WebFlux).
     * **4º Drones:** Execute um ou mais drones (`DroneNorte.java`, `DroneSul.java`, etc.).
-    * [cite_start]**5º Usuários (após 10s)**[cite: 57]: `ClienteHttpDashboard.java` e/ou `RealTimeUserLauncher.java`.
+    * **5º Usuários (após 10s)**: `ClienteHttpDashboard.java` e/ou `RealTimeUserLauncher.java`.
 
 ---
 
@@ -136,13 +136,11 @@ O sistema é composto por cinco processos principais que rodam de forma independ
 
 * **Técnicas:** Desenvolvimento de um sistema distribuído baseado em microsserviços com comunicação desacoplada via mensageria e comunicação síncrona via API REST.
 * **Tecnologias:** Java 23, Paho MQTT, RabbitMQ AMQP Client, Spring Boot, Spring WebFlux, Java `HttpClient`, `CompletableFuture`, Threads, `ExecutorService`, Lambdas, Streams, Maven, SLF4J.
-* [cite_start]**Avaliação:** Entregas práticas, demonstração em múltiplas máquinas e qualidade de código[cite: 71, 72].
+* **Avaliação:** Entregas práticas, demonstração em múltiplas máquinas e qualidade de código.
 
 ---
 
 ## 📂 Estrutura do Projeto <a id="estrutura-do-projeto"></a>
-
-````
 
 📁 climate-data-project
 ├── 📁 src
@@ -177,9 +175,6 @@ O sistema é composto por cinco processos principais que rodam de forma independ
 ├── 📄 README.md
 └── 📄 pom.xml
 
-```
-
----
 
 ## 📚 Referências Bibliográficas <a id="referencias-bibliograficas"></a>
 
